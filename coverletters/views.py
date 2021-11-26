@@ -50,5 +50,9 @@ def hx_dynamic_save_view(request, pk=None):
 # htmx - table
 
 def hx_add_row_view(request):
-    
+
     return render(request, 'coverletters/partials/table_new_row.html')
+
+
+def hx_add_body_column_view(request):
+    pass
