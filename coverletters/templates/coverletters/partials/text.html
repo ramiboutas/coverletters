@@ -1,0 +1,9 @@
+<textarea class="form-control" name="text" cols="40" rows="10" required="" id="id_text" spellcheck="false"
+  {% if object %}
+    hx-post="{% url 'coverletters_hx_dynamic_save_url' object.id %}"
+    hx-trigger="keyup changed delay:1000ms"
+  {% else %}
+    hx-post="{% url 'coverletters_hx_first_save_url' %}"
+    hx-trigger="keyup changed delay:2000ms"
+  {% endif %}
+  hx-swap="none">{{object.text}}</textarea>

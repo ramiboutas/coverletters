@@ -25,12 +25,22 @@ class CoverLetterCreateView(CreateView):
     model = CoverLetter
     fields = ['text']
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["list_of_hashtags"] = range(self.get_object().number_of_hashtags)
+        return context
+
 class CoverLetterDetailView(DetailView):
     model = CoverLetter
 
 class CoverLetterUpdateView(UpdateView):
     model = CoverLetter
     fields = ['text']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["list_of_hashtags"] = range(self.get_object().number_of_hashtags)
+        return context
 
 
 # htmx - saving text
@@ -51,7 +61,13 @@ def hx_dynamic_save_view(request, pk=None):
     object.save()
     return HttpResponse(status=200)
 
-# htmx - table
+
+# htmx - saving table
+def hx_save_table_data_view(request, pk=None):
+    print(request.POST)
+    return HttpResponse("hx_save_table_data_view was called")
+
+# htmx - table manipulation
 
 def hx_add_row_view(request):
     return render(request, 'coverletters/partials/table_new_row.html')

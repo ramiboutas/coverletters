@@ -1,0 +1,28 @@
+<table class="table"
+{% if object %} hx-post="{% url 'coverletters_hx_save_table_data_url' object.pk %}" hx-trigger="keyup changed delay:1000ms" hx-swap="none" {% endif %}>
+
+  <input type="hidden" name="number_of_hashtags" value="{{ object.number_of_hashtags }}">
+  <input type="hidden" name="number_of_items" value="{{ object.number_of_items }}">
+  <thead>
+    <tr>
+      <th scope="col"><input class="border-0" type="text" name="hashtags" value="#address"></th>
+      <th scope="col"><input class="border-0" type="text" name="hashtags" value="#name"></th>
+      <th scope="col"><input class="border-0" type="text" name="hashtags" value="#company"></th>
+      <th scope="col"><input class="border-0" type="text" name="hashtags" value="#position"></th>
+      <th scope="col">
+        <button class="w-100 h-100 btn btn-outline-secondary" type="button" name="button"
+        hx-get="{% url 'coverletters_hx_fire_column_change_event_url' %}" hx-swap="none">+</button>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody id="table-body">
+    <tr>
+      {% for i in list_of_hashtags %}
+        <td><input class="border-0" type="text" name="items" value="" placeholder="Write here..."></td>
+      {% endfor %}
+
+      <td class="text-center">...</td>
+    </tr>
+  </tbody>
+</table>

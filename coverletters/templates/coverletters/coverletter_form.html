@@ -5,49 +5,13 @@
 
   <form>
     {% csrf_token %}
+
     <h2 class="text-center h2">Write here with #hashtags variables</h2>
-    <textarea class="form-control" name="text" cols="40" rows="10" required="" id="id_text" spellcheck="false"
-      {% if object %}
-        hx-post="{% url 'coverletters_hx_dynamic_save_url' object.id %}"
-        hx-trigger="keyup changed delay:1000ms"
-      {% else %}
-        hx-post="{% url 'coverletters_hx_first_save_url' %}"
-        hx-trigger="keyup changed delay:2000ms"
-      {% endif %}
-      hx-swap="none">{{object.text}}</textarea>
+    {% include "coverletters/partials/text.html" %}
+
     <h3 class="text-center h3 mt-5 mb-3">Define your variables</h3>
 
-    <table class="table">
-      <input type="hidden" name="number_of_columns" value="4">
-      <input type="hidden" name="number_of_rows" value="1">
-      <thead>
-        <tr>
-          <th scope="col"><input class="border-0" type="text" name="hashtags" value="#address"></th>
-          <th scope="col"><input class="border-0" type="text" name="hashtags" value="#name"></th>
-          <th scope="col"><input class="border-0" type="text" name="hashtags" value="#company"></th>
-          <th scope="col"><input class="border-0" type="text" name="hashtags" value="#position"></th>
-          <td hx-get="{% url 'coverletters_hx_add_head_column_url' %}"
-          hx-trigger="ColumnsChangedEvent from:body" hx-target="this" hx-swap="outerHTML" >
-          </td>
-          <th scope="col">
-            <button class="w-100 h-100 btn btn-outline-secondary" type="button" name="button"
-            hx-get="{% url 'coverletters_hx_fire_column_change_event_url' %}" hx-swap="none">+</button>
-          </th>
-        </tr>
-      </thead>
-
-      <tbody id="table-body">
-        <tr>
-          <td><input class="border-0" type="text" name="values" value="" placeholder="Write here..."></td>
-          <td><input class="border-0" type="text" name="values" value="" placeholder="Write here..."></td>
-          <td><input class="border-0" type="text" name="values" value="" placeholder="Write here..."></td>
-          <td><input class="border-0" type="text" name="values" value="" placeholder="Write here..."></td>
-          <td hx-get="{% url 'coverletters_hx_add_body_column_url' %}"
-          hx-trigger="ColumnsChangedEvent from:body" hx-target="this" hx-swap="outerHTML"></td>
-          <td class="text-center">...</td>
-        </tr>
-      </tbody>
-    </table>
+    {% include "coverletters/partials/table.html" %}
 
     <button class="w-100 btn btn-outline-secondary" hx-get="{% url 'coverletters_hx_add_row_url' %}"
     hx-swap="beforeend" hx-target="#table-body">+</button>
