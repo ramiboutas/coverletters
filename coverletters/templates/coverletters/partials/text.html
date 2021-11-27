@@ -1,5 +1,5 @@
 {% if object %}
-<textarea class="form-control" name="text" cols="40" rows="10" required="" id="id_text" spellcheck="false"
+<textarea class="form-control" name="text" cols="40" rows="25" required="" id="id_text" spellcheck="false"
   hx-post="{% url 'coverletters_hx_dynamic_save_url' object.id %}"
   hx-trigger="keyup changed delay:1000ms"
   hx-swap="none">{{object.text}}</textarea>

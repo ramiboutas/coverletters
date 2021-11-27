@@ -3,12 +3,12 @@ from django.db.models.signals import post_save, pre_delete
 from django.urls import reverse
 from django.dispatch import receiver
 
-DEFAULT_HASHTAGS = ['#address', '#name', '#jobposition', '#company']
-DEFAULT_NUMBER_OF_ITEMS = 3
+DEFAULT_HASHTAGS = ['#address', '#name', '#charge', '#company']
+DEFAULT_NUMBER_OF_ITEMS = 5
 
 class CoverLetter(models.Model):
     text = models.TextField()
-    number_of_item_rows = models.SmallIntegerField(default=3)
+    number_of_item_rows = models.SmallIntegerField(default=DEFAULT_NUMBER_OF_ITEMS)
     max_item_rows = models.SmallIntegerField(default=12) # maybe for premium -> 25, for free -> 5
     max_hastags = models.SmallIntegerField(default=10) # maybe for premium -> 10, for free -> 5
 

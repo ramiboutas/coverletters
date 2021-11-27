@@ -5,28 +5,26 @@
 
   <form>
     {% csrf_token %}
+    <div class="row">
+      <div class="col-md-8 col-sm-12">
+        <h2 class="text-center h2">1. Write here with #hashtags</h2>
+        {% include "coverletters/partials/text.html" %}
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <h2 class="text-center h2">2. Select your template</h2>
+      </div>
+    </div>
 
-    <h2 class="text-center h2">Write here with #hashtags</h2>
-    {% include "coverletters/partials/text.html" %}
 
-
-    
     <div id="table-related-stuff">
+      <h3 class="text-center h3 mt-5 mb-3">Fill out your table</h3>
       {% include "coverletters/partials/table.html" %}
     </div>
 
 
   </form>
 
-<h1>Here </h1>
-<h1>comes</h1>
-<h1>more </h1>
-<h1>stuff </h1>
-<h1>Just </h1>
-<h1>to </h1>
-<h1>see </h1>
-<h1>the </h1>
-<h1>table </h1>
+
 
 
 

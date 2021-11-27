@@ -58,29 +58,30 @@ def hx_dynamic_save_view(request, pk=None):
     return HttpResponse(status=200)
 
 
-# htmx - saving table
+# htmx - saving table -> save each item individually!
 def hx_save_table_data_view(request, pk=None):
-    print(request.POST)
     return HttpResponse("hx_save_table_data_view was called")
 
 # htmx - table manipulation
 
 def hx_add_row_view(request, pk):
     object = get_object_or_404(CoverLetter, pk=pk)
-    object.number_of_item_rows = object.number_of_item_rows + 1
-    object.save()
-    return render(request, 'coverletters/partials/table_new_row.html', {'object': object})
+    if object.number_of_item_rows < object.max_item_rows:
+        object.number_of_item_rows = object.number_of_item_rows + 1
+        object.save()
+        return render(request, 'coverletters/partials/table_new_row.html', {'object': object})
+    # include message error
+    # return HttpResponse()
+    return HTTPResponseHXRedirect(redirect_to=object.get_update_url())
 
 def hx_add_table_hashtag_view(request, pk):
     object = get_object_or_404(CoverLetter, pk=pk)
-    print(request.POST)
     ht = Hashtag(coverletter=object, name='#new')
     ht.save()
     return render(request, 'coverletters/partials/table.html', {'object': object})
 
 def hx_fire_column_change_event_view(request, pk):
     object = get_object_or_404(CoverLetter, pk=pk)
-    print(request.POST)
     ht = Hashtag(coverletter=object, name='#new')
     ht.save()
     response = HttpResponse()

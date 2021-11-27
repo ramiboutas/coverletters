@@ -1,5 +1,4 @@
 {% if object %}
-<h3 class="text-center h3 mt-5 mb-3">Fill out your table</h3>
   <table class="table">
     <div id="table-messages"></div>
 
@@ -22,7 +21,7 @@
         <input type="hidden" name="number_of_item_rows" value="{{ object.number_of_item_rows }}">
         {% for i in object.list_of_rows %}
         <tr>
-          <td>#</td>
+          <td>x</td>
           {% for hashtag in object.hashtags.all %}
             <td>
               <input class="form-control border-0" type="text" name="items" value="{{ item.name }}" placeholder="Write here...">
@@ -36,20 +35,20 @@
         {% endfor %}
 
     </tbody>
-
-
-
   </table>
+  <div class="d-grid gap-3">
+    {% if object.number_of_item_rows < object.max_item_rows %}
+      <button class="w-100 btn btn-outline-secondary" type="button"
+        hx-get="{% url 'coverletters_hx_add_row_url' object.pk %}"
+        hx-swap="beforeend" hx-target="#table-body">+
+      </button>
+    {% endif %}
 
-  {% if object.number_of_item_rows < object.max_item_rows %}
-    <button class="w-100 btn btn-outline-secondary"
-      hx-get="{% url 'coverletters_hx_add_row_url' object.pk %}"
-      hx-swap="beforeend" hx-target="#table-body">+
+    <button  class="w-100 btn btn-lg btn-outline-danger" type="button" name="button">
+      Download all
     </button>
-  {% endif %}
+  </div>
 
 
-{% else %}
 
-  {# <p>Preparing table ...</p> #}
 {% endif %}
