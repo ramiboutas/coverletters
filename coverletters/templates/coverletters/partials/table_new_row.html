@@ -1,6 +1,10 @@
 <tr>
-  <td><input class="border-0" type="text" name="items" value="" placeholder="Write here..."></td>
-  <td><input class="border-0" type="text" name="items" value="" placeholder="Write here..."></td>
-  <td><input class="border-0" type="text" name="items" value="" placeholder="Write here..."></td>
-  <td><input class="border-0" type="text" name="items" value="" placeholder="Write here..."></td>
+  {% for hashtag in object.hashtags.all %}
+    <td>
+      <input class="form-control border-0" type="text" name="items" value="" placeholder="Write here...">
+    </td>
+  {% endfor %}
+  {% if object.number_of_hashtags < object.max_hastags %}
+    <td class="text-center">...</td>
+  {% endif %}
 </tr>

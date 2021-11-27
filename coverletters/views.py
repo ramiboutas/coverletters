@@ -1,7 +1,7 @@
 from django_htmx.http import trigger_client_event
 
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import resolve, reverse_lazy
+from django.urls import resolve, reverse_lazy, reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.http import require_POST
 from django.views.generic.edit import CreateView, UpdateView
@@ -9,7 +9,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
 
-from .models import CoverLetter
+from .models import CoverLetter, Hashtag
 
 class HTTPResponseHXRedirect(HttpResponseRedirect):
     def __init__(self, *args, **kwargs):
@@ -24,11 +24,11 @@ class CoverLetterListView(ListView):
 class CoverLetterCreateView(CreateView):
     model = CoverLetter
     fields = ['text']
+    def form_valid(self, form):
+        response = super(CoverLetterCreateView, self).form_valid(form)
+        trigger_client_event(response, 'ObjectCreatedEvent', { },)
+        return response
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["list_of_hashtags"] = range(self.get_object().number_of_hashtags)
-        return context
 
 class CoverLetterDetailView(DetailView):
     model = CoverLetter
@@ -37,10 +37,6 @@ class CoverLetterUpdateView(UpdateView):
     model = CoverLetter
     fields = ['text']
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["list_of_hashtags"] = range(self.get_object().number_of_hashtags)
-        return context
 
 
 # htmx - saving text
@@ -69,16 +65,30 @@ def hx_save_table_data_view(request, pk=None):
 
 # htmx - table manipulation
 
-def hx_add_row_view(request):
-    return render(request, 'coverletters/partials/table_new_row.html')
+def hx_add_row_view(request, pk):
+    object = get_object_or_404(CoverLetter, pk=pk)
+    object.number_of_item_rows = object.number_of_item_rows + 1
+    object.save()
+    return render(request, 'coverletters/partials/table_new_row.html', {'object': object})
 
+def hx_add_table_hashtag_view(request, pk):
+    object = get_object_or_404(CoverLetter, pk=pk)
+    print(request.POST)
+    ht = Hashtag(coverletter=object, name='#new')
+    ht.save()
+    return render(request, 'coverletters/partials/table.html', {'object': object})
 
-
-def hx_fire_column_change_event_view(request):
+def hx_fire_column_change_event_view(request, pk):
+    object = get_object_or_404(CoverLetter, pk=pk)
+    print(request.POST)
+    ht = Hashtag(coverletter=object, name='#new')
+    ht.save()
     response = HttpResponse()
     trigger_client_event(response, 'ColumnsChangedEvent', { },)
     return response
 
+def hx_reached_max_of_hashtags_view(request):
+    return render(request, 'coverletters/partials/alert_max_hashtags_reached.html')
 
 
 def hx_add_body_column_view(request):
