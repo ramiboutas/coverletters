@@ -42,7 +42,7 @@ class CoverLetterUpdateView(UpdateView):
 # htmx - saving text
 
 @require_POST
-def hx_first_save_view(request):
+def hx_save_text_first_time_view(request):
     text = request.POST.get("text")
     object = CoverLetter(text=text)
     object.save()
@@ -50,7 +50,7 @@ def hx_first_save_view(request):
 
 
 @require_POST
-def hx_dynamic_save_view(request, pk=None):
+def hx_save_text_dynamic_view(request, pk=None):
     text = request.POST.get("text")
     object = get_object_or_404(CoverLetter, pk=pk)
     object.text = text
@@ -58,11 +58,8 @@ def hx_dynamic_save_view(request, pk=None):
     return HttpResponse(status=200)
 
 
-# htmx - saving table -> save each item individually!
-def hx_save_table_data_view(request, pk=None):
-    return HttpResponse("hx_save_table_data_view was called")
 
-# htmx - table manipulation
+# htmx - table - add row
 
 def hx_add_row_view(request, pk):
     object = get_object_or_404(CoverLetter, pk=pk)
@@ -74,27 +71,19 @@ def hx_add_row_view(request, pk):
     # return HttpResponse()
     return HTTPResponseHXRedirect(redirect_to=object.get_update_url())
 
-def hx_add_table_hashtag_view(request, pk):
+def hx_add_table_column_view(request, pk):
     object = get_object_or_404(CoverLetter, pk=pk)
     ht = Hashtag(coverletter=object, name='#new')
     ht.save()
     return render(request, 'coverletters/partials/table.html', {'object': object})
 
-def hx_fire_column_change_event_view(request, pk):
-    object = get_object_or_404(CoverLetter, pk=pk)
-    ht = Hashtag(coverletter=object, name='#new')
-    ht.save()
-    response = HttpResponse()
-    trigger_client_event(response, 'ColumnsChangedEvent', { },)
-    return response
-
-def hx_reached_max_of_hashtags_view(request):
-    return render(request, 'coverletters/partials/alert_max_hashtags_reached.html')
 
 
-def hx_add_body_column_view(request):
-    return render(request, 'coverletters/partials/table_new_body_td.html')
-
-
-def hx_add_head_column_view(request):
-    return render(request, 'coverletters/partials/table_new_head_th.html')
+# htmx - save hashtag
+def hx_save_hashtag_view(request, pk_parent, pk):
+    name = request.POST.get(f"hashtag_{pk}")
+    if name =="": name = "#"    # if user leaves the field empty -> we add a "#" character
+    hashtag = get_object_or_404(Hashtag, coverletter__pk=pk_parent, pk=pk)
+    hashtag.name = name
+    hashtag.save()
+    return render(request, 'coverletters/partials/hashtag_form_input.html', {'hashtag': hashtag})

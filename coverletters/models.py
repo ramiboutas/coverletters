@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models.signals import post_save, pre_delete
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.dispatch import receiver
 
 DEFAULT_HASHTAGS = ['#address', '#name', '#charge', '#company']
@@ -24,6 +24,16 @@ class CoverLetter(models.Model):
     def get_update_url(self):
         return reverse('coverletters_update', kwargs={'pk':self.pk})
 
+    def save_text_dynamic_url(self):
+        return reverse('coverletters_hx_save_text_dynamic_url', kwargs={'pk':self.pk})
+
+    def add_table_row_url(self):
+        return reverse('coverletters_hx_add_row_url', kwargs={'pk':self.pk})
+
+    def add_table_column_url(self):
+        return reverse('coverletters_hx_add_table_column_url', kwargs={'pk':self.pk})
+
+
 
 class Hashtag(models.Model):
     coverletter = models.ForeignKey(CoverLetter, related_name='hashtags', on_delete=models.CASCADE)
@@ -31,6 +41,10 @@ class Hashtag(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save_url(self):
+        return reverse('coverletters_hx_save_hashtag_url', kwargs={'pk':self.pk, 'pk_parent':self.coverletter.pk})
+
 
 
 class Item(models.Model):

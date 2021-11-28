@@ -8,8 +8,7 @@
   {% for object in object_list %}
     <li>
       {{ object.text|truncatewords:8 }}
-      <a href="{{ object.get_absolute_url }}">Detail</a>
-      <a href="{{ object.get_update_url }}">Update</a>
+      <a href="{{ object.get_update_url }}">Visit</a>
     </li>
   {% endfor %}
   <li>

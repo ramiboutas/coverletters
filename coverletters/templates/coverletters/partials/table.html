@@ -6,12 +6,15 @@
       <tr>
         <th>#</th>
         {% for hashtag in object.hashtags.all %}
-          <th scope="col"><input class="form-control border-0" type="text" name="hashtags" value="{{ hashtag }}"></th>
+          <th scope="col">
+            <input class="form-control border-0" type="text" name="hashtag_{{hashtag.pk}}" value="{{ hashtag }}"
+            hx-post="{{ hashtag.save_url }}" hx-trigger="keyup changed delay:2s" hx-swap="outerHTML" hx-target="this">
+          </th>
         {% endfor %}
         {% if object.number_of_hashtags < object.max_hastags %}
           <th scope="col">
             <button class="w-100 h-100 btn btn-outline-secondary" type="button" name="button"
-            hx-get="{% url 'coverletters_hx_add_table_hashtag_url' object.pk %}" hx-target="#table-related-stuff" hx-swap="innerHTML">+</button>
+            hx-get="{{ object.add_table_column_url }}" hx-target="#table-related-stuff" hx-swap="innerHTML">+</button>
           </th>
         {% endif %}
       </tr>
@@ -39,7 +42,7 @@
   <div class="d-grid gap-3">
     {% if object.number_of_item_rows < object.max_item_rows %}
       <button class="w-100 btn btn-outline-secondary" type="button"
-        hx-get="{% url 'coverletters_hx_add_row_url' object.pk %}"
+        hx-get="{{ object.add_table_row_url }}"
         hx-swap="beforeend" hx-target="#table-body">+
       </button>
     {% endif %}
