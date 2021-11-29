@@ -2,5 +2,5 @@
 <input class="form-control border-0" type="text" placeholder="Write here..."
 name="item_{{row.pk}}_{{column.pk}}"
 value="{% get_item_name row=row column=column %}"
-hx-post="{% url 'coverletters_hx_create_item_url' pk_column=column.pk pk_row=row.pk %}"
+hx-post="{% url 'coverletters_hx_get_or_create_item_url' pk_column=column.pk pk_row=row.pk %}"
 hx-trigger="keyup changed delay:2s" hx-swap="outerHTML" hx-target="this">

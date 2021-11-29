@@ -2,8 +2,9 @@ from django.urls import path, include
 from .views import CoverLetterListView, CoverLetterDetailView, CoverLetterCreateView,CoverLetterUpdateView
 from .views import hx_save_text_first_time_view, hx_save_text_dynamic_view
 from .views import hx_add_table_row_view, hx_add_table_column_view
+from .views import hx_delete_table_column_view, hx_delete_table_row_view
 from .views import hx_save_hashtag_view
-from .views import hx_create_item_view, hx_save_item_view
+from .views import hx_get_or_create_item_view
 
 
 urlpatterns = [
@@ -25,16 +26,18 @@ urlpatterns = [
     # htmx - table - save hashtag (hashtag.save_url)
     path('hx-table-save-hashtag/<int:pk>/<int:pk_column>/', hx_save_hashtag_view, name='coverletters_hx_save_hashtag_url'),
 
+    # htmx - table - delete column (column.delete_url)
+    path('hx-table-delete-column/<int:pk>/<int:pk_parent>/', hx_delete_table_column_view, name='coverletters_hx_delete_table_column_url'),
 
+    # htmx - table - delete column (column.delete_url)
+    path('hx-table-delete-row/<int:pk>/<int:pk_parent>/', hx_delete_table_row_view, name='coverletters_hx_delete_table_row_url'),
 
     # htmx - table - create item
-    path('hx-table-create-item/<int:pk_row>/<int:pk_column>/', hx_create_item_view, name='coverletters_hx_create_item_url'),
+    path('hx-table-create-item/<int:pk_row>/<int:pk_column>/', hx_get_or_create_item_view, name='coverletters_hx_get_or_create_item_url'),
 
     # temporal path - get item
     # path('hx-table-get-item/<int:pk_column>/<int:row_position>/', hx_get_item_view, name='coverletters_hx_get_item_url'),
 
-    # htmx - table - save item (item.save_url)
-    path('hx-table-save-item/<int:pk_parent>/<int:pk>/', hx_save_item_view, name='coverletters_hx_save_item_url'),
 
 
 ]

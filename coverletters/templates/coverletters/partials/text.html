@@ -1,13 +1,13 @@
 {% if object %}
 <textarea class="form-control text-muted" name="text" cols="40" rows="25" required="" id="id_text" spellcheck="false"
   hx-post="{{ object.save_text_dynamic_url }}"
-  hx-trigger="keyup changed delay:3000ms"
+  hx-trigger="keyup changed delay:2s"
   hx-swap="none">{{object.text}}</textarea>
 
 {% else %}
 <textarea class="form-control text-muted" name="text" cols="40" rows="25" required="" id="id_text" spellcheck="false"
   hx-post="{% url 'coverletters_hx_save_text_first_time_url' %}"
-  hx-trigger="load delay:50ms, ObjectCreatedEvent from:body"
+  hx-trigger="load delay:200ms, ObjectCreatedEvent from:body"
   hx-swap="none">Hello #name, I like your
 </textarea>
 {% endif %}

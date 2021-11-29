@@ -5,12 +5,19 @@
 
     <thead>
       <tr>
-        <th>#</th>
+        <th></th>
         {% for column in object.columns.all %}
           <th scope="col">
-            <input class="form-control border-0" type="text"
-            name="hashtag_{{ column.hashtag.pk }}" value="{{ column.hashtag.name }}"
-            hx-post="{{ column.hashtag.save_url }}" hx-trigger="keyup changed delay:2s" hx-swap="outerHTML" hx-target="this">
+            <div class="input-group">
+              <button type="button" class="btn btn-outline-secondary border-0" name="button"
+                hx-post="{{column.delete_url}}" hx-target="#table-related-stuff" hx-swap="innerHTML"
+                hx-confirm="Are you sure you wish to delete the column {{column.hashtag.name}}?">
+                <i class="bi bi-trash"></i>
+              </button>
+              <input class="form-control border-0" type="text"
+              name="hashtag_{{ column.hashtag.pk }}" value="{{ column.hashtag.name }}"
+              hx-post="{{ column.hashtag.save_url }}" hx-trigger="keyup changed delay:2s" hx-swap="outerHTML" hx-target="this">
+            </div>
           </th>
         {% endfor %}
         {% if object.number_of_columns < object.max_of_columns %}
@@ -29,13 +36,19 @@
 
         {% for row in object.rows.all %}
         <tr>
-          <td>x</td>
+          <td>
+            <button type="button" class="btn btn-outline-secondary border-0" name="button"
+              hx-post="{{row.delete_url}}" hx-target="#table-related-stuff" hx-swap="innerHTML"
+              hx-confirm="Are you sure you wish to delete the row?">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
           {% for column in object.columns.all %}
               <td>
                   <input class="form-control border-0" type="text" placeholder="Write here..."
                   name="item_{{row.pk}}_{{column.pk}}"
                   value="{% get_item_name row=row column=column %}"
-                  hx-post="{% url 'coverletters_hx_create_item_url' pk_column=column.pk pk_row=row.pk %}"
+                  hx-post="{% url 'coverletters_hx_get_or_create_item_url' pk_column=column.pk pk_row=row.pk %}"
                   hx-trigger="keyup changed delay:2s" hx-swap="outerHTML" hx-target="this">
               </td>
           {% endfor %}
@@ -56,9 +69,6 @@
       </button>
     {% endif %}
 
-    <button  class="w-100 btn btn-lg btn-outline-danger" type="button" name="button">
-      Download all
-    </button>
   </div>
 
 

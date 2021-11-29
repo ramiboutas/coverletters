@@ -40,11 +40,17 @@ class Row(models.Model):
     def __str__(self):
         return f"{self.id}"
 
+    def delete_url(self):
+        return reverse('coverletters_hx_delete_table_row_url', kwargs={'pk':self.pk, 'pk_parent':self.coverletter.pk})
+
 class Column(models.Model):
     coverletter = models.ForeignKey(CoverLetter, related_name='columns', on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.id}"
+
+    def delete_url(self):
+        return reverse('coverletters_hx_delete_table_column_url', kwargs={'pk':self.pk, 'pk_parent':self.coverletter.pk})
 
 
 class Hashtag(models.Model):
@@ -56,6 +62,8 @@ class Hashtag(models.Model):
 
     def save_url(self):
         return reverse('coverletters_hx_save_hashtag_url', kwargs={'pk':self.pk, 'pk_column':self.column.pk})
+
+
 
 
 

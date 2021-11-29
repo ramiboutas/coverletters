@@ -7,6 +7,9 @@ from django.views.decorators.http import require_POST
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.sessions.models import Session
+
 
 from .models import CoverLetter, Hashtag, Item, Row, Column
 
@@ -59,7 +62,6 @@ def hx_save_text_dynamic_view(request, pk=None):
     return HttpResponse(status=200)
 
 
-
 # htmx - table - add row
 MAX_NUMBER_OF_ROWS=50
 def hx_add_table_row_view(request, pk):
@@ -72,8 +74,6 @@ def hx_add_table_row_view(request, pk):
     else:
         return HttpResponse()
 
-
-
 # htmx - table - add column
 def hx_add_table_column_view(request, pk):
     object = get_object_or_404(CoverLetter, pk=pk)
@@ -81,6 +81,23 @@ def hx_add_table_column_view(request, pk):
     column.save()
     hashtag = Hashtag(column=column, name='#new')
     hashtag.save()
+    context = {'object': object}
+    return render(request, 'coverletters/partials/table.html', context)
+
+
+@require_POST
+def hx_delete_table_column_view(request, pk, pk_parent):
+    object = get_object_or_404(CoverLetter, pk=pk_parent)
+    column = get_object_or_404(Column, pk=pk, coverletter=object)
+    column.delete()
+    context = {'object': object}
+    return render(request, 'coverletters/partials/table.html', context)
+
+@require_POST
+def hx_delete_table_row_view(request, pk, pk_parent):
+    object = get_object_or_404(CoverLetter, pk=pk_parent)
+    row = get_object_or_404(Row, pk=pk, coverletter=object)
+    row.delete()
     context = {'object': object}
     return render(request, 'coverletters/partials/table.html', context)
 
@@ -98,28 +115,15 @@ def hx_save_hashtag_view(request, pk, pk_column):
 
 # htmx - save item
 @require_POST
-def hx_create_item_view(request, pk_row, pk_column ):
+def hx_get_or_create_item_view(request, pk_row, pk_column ):
     item_name = request.POST.get(f"item_{pk_row}_{pk_column}")
     row = get_object_or_404(Row, pk=pk_row)
     column = get_object_or_404(Column, pk=pk_column)
-    item = Item.objects.create(row=row, column=column, name=item_name)
+    try:
+        item = Item.objects.get(row=row, column=column)
+    except ObjectDoesNotExist:
+        item = Item.objects.create(row=row, column=column)
+    item.name=item_name
+    item.save()
     context = {'row': row, 'column': column, 'item': item }
     return render(request, 'coverletters/partials/item_form_input.html', context)
-
-
-# temporal view - get item
-# def hx_get_item_view(request, pk_parent, row_position):
-#     item_name = request.GET.get(f"item_{pk_parent}_{row_position}")
-#     hashtag = get_object_or_404(Hashtag, pk=pk_parent)
-#     item = Item(hashtag=hashtag, name=item_name, row_position=row_position)
-#     item.save()
-#     context = {'hashtag': hashtag, 'item': item , 'row_position': row_position}
-#     return render(request, 'coverletters/partials/item_form_input.html', context)
-
-
-# htmx - save item
-@require_POST
-def hx_save_item_view(request, pk_parent, pk):
-    # pk_parent -> hashtag.pk
-    # item -> item.pk
-    pass
