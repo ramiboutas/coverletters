@@ -2,11 +2,17 @@ from django.db import models
 from django.db.models.signals import post_save, pre_delete
 from django.urls import reverse, reverse_lazy
 from django.dispatch import receiver
+# from django.contrib.sessions.models import Session
+
+# from importlib import import_module
+# from django.conf import settings
+# SessionStore = import_module(settings.SESSION_ENGINE).SessionStore
 
 DEFAULT_HASHTAGS = ['#address', '#name', '#charge', '#company']
 DEFAULT_NUMBER_OF_ROWS = 3
 
 class CoverLetter(models.Model):
+    # session = models.ForeignKey(SessionStore, related_name='coverletters', on_delete=models.CASCADE)
     text = models.TextField()
     number_of_item_rows = models.SmallIntegerField(default=5)
     max_of_rows = models.SmallIntegerField(default=12) # maybe for premium -> 25, for free -> 5

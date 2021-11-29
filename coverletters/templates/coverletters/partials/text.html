@@ -5,8 +5,10 @@
   hx-swap="none">{{object.text}}</textarea>
 
 {% else %}
+
+<input type="hidden" name="sessionid" value="{{request.session.session_key}}">
 <textarea class="form-control text-muted" name="text" cols="40" rows="25" required="" id="id_text" spellcheck="false"
-  hx-post="{% url 'coverletters_hx_save_text_first_time_url' %}"
+  hx-post="{% url 'coverletters_hx_save_text_first_time_url'  %}"
   hx-trigger="load delay:200ms, ObjectCreatedEvent from:body"
   hx-swap="none">Hello #name, I like your
 </textarea>

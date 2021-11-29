@@ -46,6 +46,9 @@ class CoverLetterCreateView(CreateView):
 
 @require_POST
 def hx_save_text_first_time_view(request):
+    # I dont understand this...
+    sessionid = request.POST.get("sessionid")
+    request.session["sessionid"]=sessionid
     text = request.POST.get("text")
     object = CoverLetter(text=text)
     object.save()
