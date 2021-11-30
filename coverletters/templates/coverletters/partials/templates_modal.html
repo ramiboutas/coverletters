@@ -1,16 +1,21 @@
 <!-- Modal -->
+{% load coverletter_tags %}
 
 <div class="modal fade" id="templatesToDownloadModal" tabindex="-1" aria-labelledby="templatesToDownloadModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
-
       <div class="modal-header">
         <h5 class="modal-title" id="templatesToDownloadModalLabel">Modal title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-
       <div class="modal-body">
         <div class="container parent">
+
+          <ul>
+            {% for file in texfiles %}
+            <li> {{ file.name }} </li>
+            {% endfor %}
+          </ul>
 
           <div class="row">
               <div class="col-lg-3 col-md-6 col-sm-12">

@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import CoverLetterListView, CoverLetterDetailView, CoverLetterCreateView,CoverLetterUpdateView
+from .views import CoverLetterListView, CoverLetterCreateView,CoverLetterUpdateView
 from .views import hx_save_text_first_time_view, hx_save_text_dynamic_view
 from .views import hx_add_table_row_view, hx_add_table_column_view
 from .views import hx_delete_table_column_view, hx_delete_table_row_view

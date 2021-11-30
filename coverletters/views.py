@@ -21,6 +21,16 @@ class HTTPResponseHXRedirect(HttpResponseRedirect):
     status_code = 200
 
 
+class CoverLetterUpdateView(UpdateView):
+    model = CoverLetter
+    fields = ['text']
+
+    def get_object(self):
+        session, self.request = create_or_get_session_object(self.request)
+        obj = get_object_or_404(CoverLetter, pk=self.kwargs['pk'], session=session)
+        return obj
+
+
 class CoverLetterListView(ListView):
     model = CoverLetter
 
@@ -29,15 +39,6 @@ class CoverLetterListView(ListView):
         session, self.request = create_or_get_session_object(self.request)
         queryset = queryset.filter(session=session)
         return queryset
-
-
-class CoverLetterDetailView(DetailView):
-    model = CoverLetter
-
-class CoverLetterUpdateView(UpdateView):
-    model = CoverLetter
-    fields = ['text']
-
 
 class CoverLetterCreateView(CreateView):
     model = CoverLetter

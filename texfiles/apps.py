@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class TemplatefilesConfig(AppConfig):
+class TexfilesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'templatefiles'
+    name = 'texfiles'
