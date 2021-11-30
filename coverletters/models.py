@@ -1,18 +1,29 @@
+import uuid
+
 from django.db import models
 from django.db.models.signals import post_save, pre_delete
 from django.urls import reverse, reverse_lazy
 from django.dispatch import receiver
-# from django.contrib.sessions.models import Session
 
-# from importlib import import_module
-# from django.conf import settings
-# SessionStore = import_module(settings.SESSION_ENGINE).SessionStore
+from django.contrib.sessions.models import Session
+from django.contrib.sessions.backends.db import SessionStore
 
 DEFAULT_HASHTAGS = ['#address', '#name', '#charge', '#company']
 DEFAULT_NUMBER_OF_ROWS = 3
 
+# For projects that use the cached_db or db session engines, the django_session table can get quite large after a while.
+# https://github.com/mobolic/django-session-cleanup
+
+from django.contrib.sessions.base_session import AbstractBaseSession
+
+class CustomSession(AbstractBaseSession):
+    pass
+
+
+
 class CoverLetter(models.Model):
-    # session = models.ForeignKey(SessionStore, related_name='coverletters', on_delete=models.CASCADE)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    session = models.ForeignKey(Session, related_name='coverletters', on_delete=models.CASCADE)
     text = models.TextField()
     number_of_item_rows = models.SmallIntegerField(default=5)
     max_of_rows = models.SmallIntegerField(default=12) # maybe for premium -> 25, for free -> 5

@@ -9,7 +9,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.sessions.models import Session
-
+from django.contrib.sessions.backends.db import SessionStore
 
 from .models import CoverLetter, Hashtag, Item, Row, Column
 
@@ -23,6 +23,17 @@ class HTTPResponseHXRedirect(HttpResponseRedirect):
 class CoverLetterListView(ListView):
     model = CoverLetter
 
+    def get_queryset(self):
+        queryset = super(CoverLetterListView, self).get_queryset()
+        session_key = self.request.session.get('session_key')
+        sessionid = self.request.session.get('sessionid')
+        print(session_key)
+        print(sessionid)
+        # queryset = queryset.filter(sessionid=sessionid)
+        # print(sessionid)
+        # queryset.filter(sessionid=sessionid)
+        return queryset
+
 
 class CoverLetterDetailView(DetailView):
     model = CoverLetter
@@ -30,6 +41,7 @@ class CoverLetterDetailView(DetailView):
 class CoverLetterUpdateView(UpdateView):
     model = CoverLetter
     fields = ['text']
+
 
 class CoverLetterCreateView(CreateView):
     model = CoverLetter
@@ -46,11 +58,12 @@ class CoverLetterCreateView(CreateView):
 
 @require_POST
 def hx_save_text_first_time_view(request):
-    # I dont understand this...
-    sessionid = request.POST.get("sessionid")
-    request.session["sessionid"]=sessionid
+    session_store = SessionStore()
+    session_store.create()
+    session_key = session_store.session_key
+    session = Session.objects.get(pk=session_key)
     text = request.POST.get("text")
-    object = CoverLetter(text=text)
+    object = CoverLetter(text=text, session=session)
     object.save()
     # once the object is created, we redirect the user to the obj update url
     return HTTPResponseHXRedirect(redirect_to=object.get_update_url())

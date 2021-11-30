@@ -9,28 +9,28 @@ from .views import hx_get_or_create_item_view
 
 urlpatterns = [
     path('', CoverLetterListView.as_view(), name='coverletters_list'),
-    path('detail/<int:pk>/', CoverLetterDetailView.as_view(), name='coverletters_detail'),
-    path('update/<int:pk>/', CoverLetterUpdateView.as_view(), name='coverletters_update'),
     path('new/', CoverLetterCreateView.as_view(), name='coverletters_new'),
+    # path('detail/<int:pk>/', CoverLetterDetailView.as_view(), name='coverletters_detail'),
+    path('update/<uuid:pk>/', CoverLetterUpdateView.as_view(), name='coverletters_update'),
 
     # htmx - text - create and save (coverletter.save_text_dynamic_url)
     path('hx-text-save-create-object/', hx_save_text_first_time_view, name='coverletters_hx_save_text_first_time_url'),
-    path('hx-text-save/<int:pk>/', hx_save_text_dynamic_view, name='coverletters_hx_save_text_dynamic_url'),
+    path('hx-text-save/<uuid:pk>/', hx_save_text_dynamic_view, name='coverletters_hx_save_text_dynamic_url'),
 
     # htmx - table - row (coverletter.add_table_row_url)
-    path('hx-table-add-row/<int:pk>/', hx_add_table_row_view, name='coverletters_hx_add_table_row_url'),
+    path('hx-table-add-row/<uuid:pk>/', hx_add_table_row_view, name='coverletters_hx_add_table_row_url'),
 
     # htmx - table - column (coverletter.add_table_row_url)
-    path('hx-table-add-hashtag-column/<int:pk>/', hx_add_table_column_view, name='coverletters_hx_add_table_column_url'),
+    path('hx-table-add-hashtag-column/<uuid:pk>/', hx_add_table_column_view, name='coverletters_hx_add_table_column_url'),
 
     # htmx - table - save hashtag (hashtag.save_url)
     path('hx-table-save-hashtag/<int:pk>/<int:pk_column>/', hx_save_hashtag_view, name='coverletters_hx_save_hashtag_url'),
 
     # htmx - table - delete column (column.delete_url)
-    path('hx-table-delete-column/<int:pk>/<int:pk_parent>/', hx_delete_table_column_view, name='coverletters_hx_delete_table_column_url'),
+    path('hx-table-delete-column/<int:pk>/<uuid:pk_parent>/', hx_delete_table_column_view, name='coverletters_hx_delete_table_column_url'),
 
     # htmx - table - delete column (column.delete_url)
-    path('hx-table-delete-row/<int:pk>/<int:pk_parent>/', hx_delete_table_row_view, name='coverletters_hx_delete_table_row_url'),
+    path('hx-table-delete-row/<int:pk>/<uuid:pk_parent>/', hx_delete_table_row_view, name='coverletters_hx_delete_table_row_url'),
 
     # htmx - table - create item
     path('hx-table-create-item/<int:pk_row>/<int:pk_column>/', hx_get_or_create_item_view, name='coverletters_hx_get_or_create_item_url'),
