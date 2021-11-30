@@ -25,15 +25,14 @@ class CoverLetter(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     session = models.ForeignKey(Session, related_name='coverletters', on_delete=models.CASCADE)
     text = models.TextField()
-    number_of_item_rows = models.SmallIntegerField(default=5)
     max_of_rows = models.SmallIntegerField(default=12) # maybe for premium -> 25, for free -> 5
     max_of_columns = models.SmallIntegerField(default=10) # maybe for premium -> 10, for free -> 5
 
     def number_of_columns(self):
         return self.columns.count()
 
-    def list_of_rows(self):
-        return range(self.number_of_item_rows)
+    def number_of_rows(self):
+        return self.rows.count()
 
     def get_absolute_url(self):
         return reverse('coverletters_detail', kwargs={'pk':self.pk})
@@ -81,9 +80,6 @@ class Hashtag(models.Model):
         return reverse('coverletters_hx_save_hashtag_url', kwargs={'pk':self.pk, 'pk_column':self.column.pk})
 
 
-
-
-
 class Item(models.Model):
     column = models.ForeignKey(Column, related_name='items', on_delete=models.CASCADE)
     row = models.ForeignKey(Row, related_name='items', on_delete=models.CASCADE)
@@ -102,8 +98,8 @@ def create_rows(sender, instance, created, **kwargs):
     if created:
         objects = []
         for item in range(DEFAULT_NUMBER_OF_ROWS):
-            row = Row(coverletter=instance)
-            row.save()
+            objects.append(Row(coverletter=instance))
+        Row.objects.bulk_create(objects)
 
 
 @receiver(post_save, sender=CoverLetter)
@@ -115,27 +111,3 @@ def create_default_columns_and_hashtags(sender, instance, created, **kwargs):
             column.save()
             objects.append(Hashtag(column=column, name=hashtag))
         Hashtag.objects.bulk_create(objects)
-
-
-# not working! check on goole: Singal for multiple senders django
-# @receiver(post_save, sender=Row)
-# @receiver(post_save, sender=Column)
-# def create_default_items(sender, instance, created, **kwargs):
-#     item = Item(name="new item", row=Row(), column=Column())
-#     item.save()
-#     if created:
-#         if sender.__name__ == 'Row':
-#             item.row = instance
-#         else:
-#             # item = Item.objects.get(id=id)
-#             item.column = instance
-#         item.save()
-
-
-
-
-
-    # objects = []
-    # for item in range(DEFAULT_NUMBER_OF_ITEMS):
-    #     objects.append(Item(hashtag=instance, name=f"item {item}"))
-    # Item.objects.bulk_create(objects)

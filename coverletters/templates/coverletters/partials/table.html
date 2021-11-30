@@ -32,8 +32,6 @@
 
 
     <tbody id="table-body">
-        <input type="hidden" name="number_of_item_rows" value="{{ object.number_of_item_rows }}">
-
         {% for row in object.rows.all %}
         <tr>
           <td>
@@ -58,17 +56,17 @@
           {% endif %}
         </tr>
         {% endfor %}
-
     </tbody>
+
   </table>
+
   <div class="d-grid gap-3">
-    {% if object.number_of_item_rows < object.max_of_rows %}
+    {% if object.number_of_rows < object.max_of_rows %}
       <button class="w-100 btn btn-outline-secondary" type="button"
         hx-get="{{ object.add_table_row_url }}"
         hx-swap="beforeend" hx-target="#table-body">+
       </button>
     {% endif %}
-
   </div>
 
 
