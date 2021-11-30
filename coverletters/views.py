@@ -11,6 +11,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.sessions.models import Session
 from django.contrib.sessions.backends.db import SessionStore
 
+from utils.sessions import create_or_get_session_object
 from .models import CoverLetter, Hashtag, Item, Row, Column
 
 class HTTPResponseHXRedirect(HttpResponseRedirect):
@@ -25,13 +26,8 @@ class CoverLetterListView(ListView):
 
     def get_queryset(self):
         queryset = super(CoverLetterListView, self).get_queryset()
-        session_key = self.request.session.get('session_key')
-        sessionid = self.request.session.get('sessionid')
-        print(session_key)
-        print(sessionid)
-        # queryset = queryset.filter(sessionid=sessionid)
-        # print(sessionid)
-        # queryset.filter(sessionid=sessionid)
+        session, self.request = create_or_get_session_object(self.request)
+        queryset = queryset.filter(session=session)
         return queryset
 
 
@@ -58,12 +54,9 @@ class CoverLetterCreateView(CreateView):
 
 @require_POST
 def hx_save_text_first_time_view(request):
-    session_store = SessionStore()
-    session_store.create()
-    session_key = session_store.session_key
-    session = Session.objects.get(pk=session_key)
+    session_object, request = create_or_get_session_object(request)
     text = request.POST.get("text")
-    object = CoverLetter(text=text, session=session)
+    object = CoverLetter(text=text, session=session_object)
     object.save()
     # once the object is created, we redirect the user to the obj update url
     return HTTPResponseHXRedirect(redirect_to=object.get_update_url())
@@ -71,8 +64,9 @@ def hx_save_text_first_time_view(request):
 
 @require_POST
 def hx_save_text_dynamic_view(request, pk=None):
+    session_object, request = create_or_get_session_object(request)
     text = request.POST.get("text")
-    object = get_object_or_404(CoverLetter, pk=pk)
+    object = get_object_or_404(CoverLetter, pk=pk, session=session_object)
     object.text = text
     object.save()
     return HttpResponse(status=200)
@@ -81,7 +75,8 @@ def hx_save_text_dynamic_view(request, pk=None):
 # htmx - table - add row
 MAX_NUMBER_OF_ROWS=50
 def hx_add_table_row_view(request, pk):
-    object = get_object_or_404(CoverLetter, pk=pk)
+    session_object, request = create_or_get_session_object(request)
+    object = get_object_or_404(CoverLetter, pk=pk, session=session_object)
     rows_count = object.rows.count()
     if rows_count < MAX_NUMBER_OF_ROWS:
         row = Row.objects.create(coverletter=object)
@@ -92,7 +87,8 @@ def hx_add_table_row_view(request, pk):
 
 # htmx - table - add column
 def hx_add_table_column_view(request, pk):
-    object = get_object_or_404(CoverLetter, pk=pk)
+    session_object, request = create_or_get_session_object(request)
+    object = get_object_or_404(CoverLetter, pk=pk, session=session_object)
     column = Column(coverletter=object)
     column.save()
     hashtag = Hashtag(column=column, name='#new')
@@ -103,7 +99,8 @@ def hx_add_table_column_view(request, pk):
 
 @require_POST
 def hx_delete_table_column_view(request, pk, pk_parent):
-    object = get_object_or_404(CoverLetter, pk=pk_parent)
+    session_object, request = create_or_get_session_object(request)
+    object = get_object_or_404(CoverLetter, pk=pk_parent, session=session_object)
     column = get_object_or_404(Column, pk=pk, coverletter=object)
     column.delete()
     context = {'object': object}
@@ -111,7 +108,8 @@ def hx_delete_table_column_view(request, pk, pk_parent):
 
 @require_POST
 def hx_delete_table_row_view(request, pk, pk_parent):
-    object = get_object_or_404(CoverLetter, pk=pk_parent)
+    session_object, request = create_or_get_session_object(request)
+    object = get_object_or_404(CoverLetter, pk=pk_parent, session=session_object)
     row = get_object_or_404(Row, pk=pk, coverletter=object)
     row.delete()
     context = {'object': object}

@@ -5,13 +5,12 @@
 
   <form>
     {% csrf_token %}
-    <div class="row justify-content-md-center">
 
+    <div class="row justify-content-md-center">
       <div class="col-md-6 col-sm-12">
         <h4 class="text-center h4">Cover letter with #hashtags</h4>
         {% include "coverletters/partials/text.html" %}
       </div>
-
     </div>
 
     <h4 class="text-center h4 mt-5 mb-3">Fill out your table</h4>
