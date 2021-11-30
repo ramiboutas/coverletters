@@ -49,6 +49,8 @@ class CoverLetter(models.Model):
     def add_table_column_url(self):
         return reverse('coverletters_hx_add_table_column_url', kwargs={'pk':self.pk})
 
+    def download_all_rows_url(self):
+        return reverse('texfiles_download_all_rows_url', kwargs={'pk':self.pk})
 
 class Row(models.Model):
     coverletter = models.ForeignKey(CoverLetter, related_name='rows', on_delete=models.CASCADE)

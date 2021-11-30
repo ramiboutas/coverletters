@@ -1,7 +1,7 @@
 from django.urls import path
 
-from .views import download_all_view
+from .views import download_all_rows_view
 
 urlpatterns = [
-    path('all', download_all_view, name='texfiles_download_all_url')
+    path('all-rows/<uuid:pk>/', download_all_rows_view, name='texfiles_download_all_rows_url')
 ]

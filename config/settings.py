@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     # my apps
     'coverletters',
-    'texfiles',
+    'texfiles.apps.TexfilesConfig',
 
     # third-party apps
     'django_htmx',
@@ -63,7 +63,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR.joinpath('templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,7 +78,11 @@ TEMPLATES = [
     {
         'NAME': 'tex',
         'BACKEND': 'django_tex.engine.TeXEngine',
+        'DIRS': (BASE_DIR.joinpath('texfiles').joinpath('templates'),),
         'APP_DIRS': True,
+        'OPTIONS': {
+            'environment': 'texfiles.environment.my_environment',
+        }
     },
 ]
 
@@ -135,7 +139,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Media files
-MEDIA_ROOT = BASE_DIR.joinpath('media')
+MEDIA_ROOT = BASE_DIR.joinpath('texfiles').joinpath('templates')
 MEDIA_URL = '/media/'
 
 
