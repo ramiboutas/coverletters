@@ -78,13 +78,17 @@ TEMPLATES = [
     {
         'NAME': 'tex',
         'BACKEND': 'django_tex.engine.TeXEngine',
-        'DIRS': (BASE_DIR.joinpath('texfiles').joinpath('templates'),),
+        'DIRS': (BASE_DIR.joinpath('media'),),
         'APP_DIRS': True,
         'OPTIONS': {
             'environment': 'texfiles.environment.my_environment',
         }
     },
 ]
+
+# LATEX_INTERPRETER = 'pdflatex'
+# LATEX_GRAPHICSPATH = os.path.join(BASE_DIR, 'media/uploads')
+
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
@@ -139,7 +143,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Media files
-MEDIA_ROOT = BASE_DIR.joinpath('texfiles').joinpath('templates')
+MEDIA_ROOT = BASE_DIR.joinpath('media')
 MEDIA_URL = '/media/'
 
 

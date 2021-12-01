@@ -1,13 +1,12 @@
 {% load coverletter_tags %}
 {% if object %}
-  <table class="table">
-    <div id="table-messages"></div>
+  <table class="table table-hover ">
 
-    <thead>
+    <thead class="table-light">
       <tr>
         <th></th>
         {% for column in object.columns.all %}
-          <th scope="col">
+          <th scope="col" >
             <div class="input-group">
               <button type="button" class="btn btn-outline-secondary border-0" name="button"
                 hx-post="{{column.delete_url}}" hx-target="#table-related-stuff" hx-swap="innerHTML"
@@ -31,42 +30,52 @@
 
 
 
-    <tbody id="table-body">
+    <tbody id="table-body" >
         {% for row in object.rows.all %}
-        <tr>
-          <td>
-            <button type="button" class="btn btn-outline-secondary border-0" name="button"
-              hx-post="{{row.delete_url}}" hx-target="#table-related-stuff" hx-swap="innerHTML"
-              hx-confirm="Are you sure you wish to delete the row?">
-              <i class="bi bi-trash"></i>
-            </button>
-          </td>
-          {% for column in object.columns.all %}
-              <td>
-                  <input class="form-control border-0" type="text" placeholder="Write here..."
-                  name="item_{{row.pk}}_{{column.pk}}"
-                  value="{% get_item_name row=row column=column %}"
-                  hx-post="{% url 'coverletters_hx_get_or_create_item_url' pk_column=column.pk pk_row=row.pk %}"
-                  hx-trigger="keyup changed delay:2s" hx-swap="outerHTML" hx-target="this">
-              </td>
-          {% endfor %}
+          <tr>
+            <td>
+              <button type="button" class="btn btn-outline-secondary border-0" name="button"
+                hx-post="{{row.delete_url}}" hx-target="#table-related-stuff" hx-swap="innerHTML"
+                hx-confirm="Are you sure you wish to delete the row?">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+            {% for column in object.columns.all %}
+                <td>
+                    <input class="form-control border-0" type="text" placeholder="Write here..."
+                    name="item_{{row.pk}}_{{column.pk}}"
+                    value="{% get_item_name row=row column=column %}"
+                    hx-post="{% url 'coverletters_hx_get_or_create_item_url' pk_column=column.pk pk_row=row.pk %}"
+                    hx-trigger="keyup changed delay:2s" hx-swap="outerHTML" hx-target="this">
+                </td>
+            {% endfor %}
 
-          {% if object.number_of_hashtags < object.max_of_columns %}
-            <td class="text-center">...</td>
-          {% endif %}
-        </tr>
+            {% if object.number_of_columns < object.max_of_columns %}
+              <td class="text-center">...</td>
+            {% endif %}
+          </tr>
         {% endfor %}
+        
+        {% if object.number_of_rows < object.max_of_rows %}
+          <tr>
+            <td></td>
+            <td colspan="{{object.number_of_columns}}">
+              {% if object.number_of_rows < object.max_of_rows %}
+                <button class="w-100 btn btn-outline-secondary" type="button"
+                  hx-get="{{ object.add_table_row_url }}"
+                  hx-swap="outerHTML" hx-target="closest tr">+
+                </button>
+              {% endif %}
+            </td>
+            {% if object.number_of_columns < object.max_of_columns %}<td class="text-center">...</td>{% endif %}
+          </tr>
+        {% endif %}
     </tbody>
 
   </table>
 
   <div class="d-grid gap-3">
-    {% if object.number_of_rows < object.max_of_rows %}
-      <button class="w-100 btn btn-outline-secondary" type="button"
-        hx-get="{{ object.add_table_row_url }}"
-        hx-swap="beforeend" hx-target="#table-body">+
-      </button>
-    {% endif %}
+
   </div>
 
 

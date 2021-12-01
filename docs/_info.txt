@@ -1,0 +1,44 @@
+- Din5008-letter
+Author: C. Künzle
+Last Updated:2 years ago
+License: Other (as stated in the work)
+Abstract:
+Basic template for German letters according to the DIN 5008 standard
+It is building on scrlttr2, so everything should be pretty much self explaining.
+For contributing, see https://github.com/ckuenzle/din5008-letter. License: MIT
+https://www.overleaf.com/latex/templates/din5008-letter/vbkmrkvscjvp
+
+
+
+- Example letter using the newlfm LaTeX package
+Author: Tom at texblog.org
+Last Updated:2 years ago
+License: LaTeX Project Public License 1.3c
+Abstract:
+An example letter which uses the newlfm package template for layout and styling.
+See this article on texblog.org for more information on creating a letter with newlfm.
+https://www.overleaf.com/latex/templates/example-letter-using-the-newlfm-latex-package/tvbczzknntzk
+
+
+
+- Arthur Letter
+Author: Arthur Bernard
+Last Updated: 2 years ago
+License:Other (as stated in the work)
+Abstract:
+Customizable formal letter template with a header.
+It allow you to choose color theme, optional personal information (contact, picture, etc.) in header, and information with respect to:
+English conventions (address and date at right and recipient information at left);
+French conventions (address and date at left, and recipient information at right).
+If you use the letter template for a cover letter, then you can find a CV template which match with it, look for Arthur-CV template on Overleaf or on the following GitHub link.
+More details and source files are available on GitHub.
+https://www.overleaf.com/latex/templates/arthur-letter/qnqrqxpjqsjx
+https://github.com/ArthurBernard/Arthur-CV-LaTeX
+
+- Phuong Van Nguyen's Cover letter
+Author: Phuong Van Nguyen
+Last Updated: 3 years ago
+License: Creative Commons CC BY 4.0
+Abstract:
+Created with the Awesome CV Cover Letter
+https://www.overleaf.com/articles/phuong-van-nguyens-cover-letter/tbgqzwgqxxyc

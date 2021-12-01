@@ -16,8 +16,23 @@
           hx-trigger="keyup changed delay:2s" hx-swap="outerHTML" hx-target="this">
       </td>
   {% endfor %}
-
-  {% if object.number_of_hashtags < object.max_of_columns %}
+  {% if object.number_of_columns < object.max_of_columns %}
     <td class="text-center">...</td>
   {% endif %}
+</tr>
+<tr>
+  <td></td>
+  <td colspan="{{object.number_of_columns}}">
+    {% if object.number_of_rows < object.max_of_rows %}
+      <button class="w-100 btn btn-outline-secondary" type="button"
+        hx-get="{{ object.add_table_row_url }}"
+        hx-swap="outerHTML" hx-target="closest tr">+
+      </button>
+    {% else %}
+    <button class="w-100 btn btn-outline-danger" type="button" disabled>
+      Not possible to add more
+    </button>
+    {% endif %}
+  </td>
+  {% if object.number_of_columns < object.max_of_columns %}<td class="text-center">...</td>{% endif %}
 </tr>
