@@ -8,14 +8,14 @@
         {% for column in object.columns.all %}
           <th scope="col" >
             <div class="input-group">
+              <input class="form-control border-0" type="text"
+              name="hashtag_{{ column.hashtag.pk }}" value="{{ column.hashtag.name }}"
+              hx-post="{{ column.hashtag.save_url }}" hx-trigger="keyup changed delay:2s" hx-swap="outerHTML" hx-target="this">
               <button type="button" class="btn btn-outline-secondary border-0" name="button"
                 hx-post="{{column.delete_url}}" hx-target="#table-related-stuff" hx-swap="innerHTML"
                 hx-confirm="Are you sure you wish to delete the column {{column.hashtag.name}}?">
                 <i class="bi bi-trash"></i>
               </button>
-              <input class="form-control border-0" type="text"
-              name="hashtag_{{ column.hashtag.pk }}" value="{{ column.hashtag.name }}"
-              hx-post="{{ column.hashtag.save_url }}" hx-trigger="keyup changed delay:2s" hx-swap="outerHTML" hx-target="this">
             </div>
           </th>
         {% endfor %}
@@ -55,7 +55,7 @@
             {% endif %}
           </tr>
         {% endfor %}
-        
+
         {% if object.number_of_rows < object.max_of_rows %}
           <tr>
             <td></td>

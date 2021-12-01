@@ -34,6 +34,11 @@ class CoverLetter(models.Model):
     def number_of_rows(self):
         return self.rows.count()
 
+    def get_hashtags(self):
+        """ returns a queryset of hashtags """
+        
+
+
     def get_absolute_url(self):
         return reverse('coverletters_detail', kwargs={'pk':self.pk})
 

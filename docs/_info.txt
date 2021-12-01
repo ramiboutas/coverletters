@@ -42,3 +42,13 @@ License: Creative Commons CC BY 4.0
 Abstract:
 Created with the Awesome CV Cover Letter
 https://www.overleaf.com/articles/phuong-van-nguyens-cover-letter/tbgqzwgqxxyc
+
+
+
+- Deedy Cover Letter
+Author: Apurv Mishra
+Last Updated: 2 years ago
+License: Creative Commons CC BY 4.0
+Abstract:
+A cover letter template based on Deedy Resume. I have included some basic pointers for writing a cover letter in the source as comments. Hope it helps!
+https://www.overleaf.com/latex/templates/deedy-cover-letter/yhdwrhyvqjwy

@@ -5,7 +5,7 @@ from django_tex.core import compile_template_to_pdf
 from django.shortcuts import render
 from django.conf import settings
 from .models import TexFile
-
+from coverletters.models import CoverLetter
 
 def get_tex_template_name(file_obj):
     template_name_abs = Path(file_obj.file.path)
@@ -30,11 +30,21 @@ def get_single_pdf(file_obj, context):
 
 
 def download_all_rows_view(request, pk):
+    coverletter = CoverLetter.objects.get(pk=pk)
+    row = coverletter.rows.first()
+
     texfile_pk = int(request.POST.get("texfileselected_pk"))
     texfile_obj = TexFile.objects.get(pk=texfile_pk)
     template_name = get_tex_template_name(texfile_obj)
 
-    context = {'text': 'Bar'}
+    text = request.POST.get("text")
+    text = '\r\n'.join(line for line in text.splitlines() if line)
+    # text = text
+    for item, column in zip(row.items.all(), coverletter.columns.all()):
+        text = text.replace(column.hashtag.name, item.name)
+    print(row)
+    print(text)
+    context = {'text': text}
     pdf = get_single_pdf(texfile_obj, context)
     print(type(pdf))
     return render_to_pdf(request, template_name, context, filename='test.pdf')
