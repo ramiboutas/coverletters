@@ -1,6 +1,8 @@
 {% load coverletter_tags %}
-{% if object %}
-  <table class="table table-hover ">
+
+<div    {% if object.number_of_columns < 7 %}   class="container" {% else %} class="container-fluid" {% endif %}>
+
+  <table class="table table-borderless table-hover ">
 
     <thead class="table-light">
       <tr>
@@ -73,11 +75,4 @@
     </tbody>
 
   </table>
-
-  <div class="d-grid gap-3">
-
   </div>
-
-
-
-{% endif %}

@@ -24,9 +24,26 @@ class CustomSession(AbstractBaseSession):
 class CoverLetter(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     session = models.ForeignKey(Session, related_name='coverletters', on_delete=models.CASCADE)
-    text = models.TextField()
-    max_of_rows = models.SmallIntegerField(default=12) # maybe for premium -> 25, for free -> 5
-    max_of_columns = models.SmallIntegerField(default=10) # maybe for premium -> 10, for free -> 5
+
+    candidate_name = models.CharField(max_length=50, blank=True, null=True)
+    candidate_position = models.CharField(max_length=50, blank=True, null=True)
+    candidate_email = models.EmailField(blank=True, null=True)
+    candidate_phone = models.CharField(max_length=15, blank=True, null=True)
+    candidate_location = models.CharField(max_length=25, blank=True, null=True)
+    candidate_website = models.URLField(max_length=100, blank=True, null=True)
+
+    company_recruiter = models.CharField(max_length=50, blank=True, null=True)
+    company_name = models.CharField(max_length=50, blank=True, null=True)
+    company_street_no = models.CharField(max_length=50, blank=True, null=True)
+    company_zip_code = models.CharField(max_length=50, blank=True, null=True)
+    company_city = models.CharField(max_length=50, blank=True, null=True)
+
+    location_date = models.CharField(max_length=50, blank=True, null=True)
+
+    text = models.TextField() #body text
+
+    max_of_rows = models.SmallIntegerField(default=12)
+    max_of_columns = models.SmallIntegerField(default=10)
 
     def number_of_columns(self):
         return self.columns.count()
@@ -36,7 +53,7 @@ class CoverLetter(models.Model):
 
     def get_hashtags(self):
         """ returns a queryset of hashtags """
-        
+
 
 
     def get_absolute_url(self):
