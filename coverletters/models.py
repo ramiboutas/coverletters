@@ -75,6 +75,8 @@ class CoverLetter(models.Model):
     def save_applying_position_dynamic_url(self):
         return reverse('coverletters_hx_save_applying_position_dynamic_url', kwargs={'pk':self.pk})
 
+    def save_location_date_dynamic_url(self):
+        return reverse('coverletters_hx_save_location_date_dynamic_url', kwargs={'pk':self.pk})
 
     def add_table_row_url(self):
         return reverse('coverletters_hx_add_table_row_url', kwargs={'pk':self.pk})

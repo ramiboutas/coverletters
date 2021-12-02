@@ -3,21 +3,25 @@
 <div class="spinner-grow text-secondary" role="status" style="width: 3rem; height: 3rem; z-index: 20;"></div>
 </div>
 
-
 <div class="container invisible d-none"
 hx-post="{% url 'coverletters_hx_create_object_url'  %}"
 hx-trigger="load delay:100ms, ObjectCreatedEvent from:body"
 hx-swap="none">
 
-<textarea  class="form-control text-muted" name="company_text" required="" spellcheck="false">
+<input type="hidden" name="sessionid" value="{{request.session.session_key}}">
+
+<textarea name="company_text">
 #recluiter_name
 #company_name
 #street_and_number
 #zipcode_city
 </textarea>
 
-<input type="hidden" name="sessionid" value="{{request.session.session_key}}">
-<textarea class="form-control text-muted" name="text" cols="40" rows="25" required="" id="id_text" spellcheck="false">
+<input type="text" name="location_date" value="{% now 'j F Y' %}" maxlength="50">
+
+<input name="applying_position"  value="Motivation letter for the job application as #job_position">
+
+<textarea  name="text">
 Dear #recluiter_name,
 
 My name is _________ and

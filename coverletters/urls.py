@@ -4,6 +4,7 @@ from .views import hx_create_object_view, hx_save_text_dynamic_view
 from .views import hx_save_company_text_dynamic_view
 from .views import hx_save_candidate_info_dynamic_view
 from .views import hx_save_applying_position_dynamic_view
+from .views import hx_save_location_date_dynamic_view
 from .views import hx_add_table_row_view, hx_add_table_column_view
 from .views import hx_delete_table_column_view, hx_delete_table_row_view
 from .views import hx_save_hashtag_view
@@ -33,6 +34,7 @@ urlpatterns = [
 
     path('hx-candidate-info-save/<uuid:pk>/', hx_save_candidate_info_dynamic_view, name='coverletters_hx_save_candidate_info_dynamic_url'),
 
+    path('hx-location-date-save/<uuid:pk>/', hx_save_location_date_dynamic_view, name='coverletters_hx_save_location_date_dynamic_url'),
 
     # htmx - table - row (coverletter.add_table_row_url)
     path('hx-table-add-row/<uuid:pk>/', hx_add_table_row_view, name='coverletters_hx_add_table_row_url'),

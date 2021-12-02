@@ -1,5 +1,5 @@
 
 <div class="border-bottom border-2">
 <input hx-post="{{ object.save_applying_position_dynamic_url }}" hx-trigger="keyup changed delay:1s" hx-swap="none" maxlength="200"
-class="form-control border-0 fs-5"  type="text" name="applying_position"  value="Motivation letter for the job application as #job_position">
+class="form-control border-0 fs-5" spellcheck="false" type="text" name="applying_position" {% if object.applying_position %}value="{{object.applying_position}}"{% endif %}>
 </div>
