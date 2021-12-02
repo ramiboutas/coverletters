@@ -1,0 +1,30 @@
+
+- progress bar while processing a task (Youtube video)
+
+pip install celery
+pip install redis
+pip install celery-progress
+
+
+config/setting.py
+- install apps += 'django_celery_results' (to save progress -> db table)
+- install apps += 'celery_progress'
+- CELERY_<settings>
+
+
+myapp/tasks.py
+
+def go_to_sleep(self, duration):
+    progress_recorder = ProgressRecorder(self)
+    for i in range(10):
+        sleep(duration)
+        progress_recorder.set_progress(i+1, 10, f'On iteration {i}')
+    return "done"
+
+
+myapp/views.py
+
+
+def index(request):
+    task = go_to_sleep(5) # this task will be performed in the background
+    return HttpResponse()

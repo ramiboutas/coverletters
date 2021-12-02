@@ -32,11 +32,13 @@ class CoverLetter(models.Model):
     candidate_location = models.CharField(max_length=25, blank=True, null=True)
     candidate_website = models.URLField(max_length=100, blank=True, null=True)
 
-    company_recruiter = models.CharField(max_length=50, blank=True, null=True)
-    company_name = models.CharField(max_length=50, blank=True, null=True)
-    company_street_no = models.CharField(max_length=50, blank=True, null=True)
-    company_zip_code = models.CharField(max_length=50, blank=True, null=True)
-    company_city = models.CharField(max_length=50, blank=True, null=True)
+    # company_recruiter = models.CharField(max_length=50, blank=True, null=True)
+    # company_name = models.CharField(max_length=50, blank=True, null=True)
+    # company_street_no = models.CharField(max_length=50, blank=True, null=True)
+    # company_zip_code = models.CharField(max_length=50, blank=True, null=True)
+    # company_city = models.CharField(max_length=50, blank=True, null=True)
+
+    company_text = models.TextField() #body text
 
     location_date = models.CharField(max_length=50, blank=True, null=True)
 
@@ -44,17 +46,13 @@ class CoverLetter(models.Model):
 
     max_of_rows = models.SmallIntegerField(default=12)
     max_of_columns = models.SmallIntegerField(default=10)
+    created_on = models.DateField(auto_now=True)
 
     def number_of_columns(self):
         return self.columns.count()
 
     def number_of_rows(self):
         return self.rows.count()
-
-    def get_hashtags(self):
-        """ returns a queryset of hashtags """
-
-
 
     def get_absolute_url(self):
         return reverse('coverletters_detail', kwargs={'pk':self.pk})
@@ -64,6 +62,13 @@ class CoverLetter(models.Model):
 
     def save_text_dynamic_url(self):
         return reverse('coverletters_hx_save_text_dynamic_url', kwargs={'pk':self.pk})
+
+    def save_company_text_dynamic_url(self):
+        return reverse('coverletters_hx_save_company_text_dynamic_url', kwargs={'pk':self.pk})
+
+    def save_candidate_info_dynamic_url(self):
+        return reverse('coverletters_hx_save_candidate_info_dynamic_url', kwargs={'pk':self.pk})
+
 
     def add_table_row_url(self):
         return reverse('coverletters_hx_add_table_row_url', kwargs={'pk':self.pk})

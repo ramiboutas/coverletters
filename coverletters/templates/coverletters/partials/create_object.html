@@ -1,0 +1,23 @@
+
+<div class="d-flex justify-content-center h-50 border">
+<div class="spinner-grow text-secondary" role="status" style="width: 3rem; height: 3rem; z-index: 20;"></div>
+</div>
+
+
+<div class="container invisible d-none"
+hx-post="{% url 'coverletters_hx_create_object_url'  %}"
+hx-trigger="load delay:100ms, ObjectCreatedEvent from:body"
+hx-swap="none">
+
+<textarea  class="form-control text-muted" name="company_text" required="" spellcheck="false">
+#recluiter
+#company_name
+#street_no
+#zipcode_city
+</textarea>
+
+<input type="hidden" name="sessionid" value="{{request.session.session_key}}">
+<textarea class="form-control text-muted" name="text" cols="40" rows="25" required="" id="id_text" spellcheck="false">
+Hello #name, I like your
+</textarea>
+</div>

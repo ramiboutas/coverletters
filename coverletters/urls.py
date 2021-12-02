@@ -1,6 +1,8 @@
 from django.urls import path, include
 from .views import CoverLetterListView, CoverLetterCreateView,CoverLetterUpdateView
-from .views import hx_save_text_first_time_view, hx_save_text_dynamic_view
+from .views import hx_create_object_view, hx_save_text_dynamic_view
+from .views import hx_save_company_text_dynamic_view
+from .views import hx_save_candidate_info_dynamic_view
 from .views import hx_add_table_row_view, hx_add_table_column_view
 from .views import hx_delete_table_column_view, hx_delete_table_row_view
 from .views import hx_save_hashtag_view
@@ -16,9 +18,17 @@ urlpatterns = [
     # path('detail/<int:pk>/', CoverLetterDetailView.as_view(), name='coverletters_detail'),
     path('update/<uuid:pk>/', CoverLetterUpdateView.as_view(), name='coverletters_update'),
 
-    # htmx - text - create and save (coverletter.save_text_dynamic_url)
-    path('hx-text-save-create-object/', hx_save_text_first_time_view, name='coverletters_hx_save_text_first_time_url'),
+    # htmx - object (coverletter) - create
+    path('hx-text-create-object/', hx_create_object_view, name='coverletters_hx_create_object_url'),
+
+    # htmx - text - save (coverletter.save_text_dynamic_url)
     path('hx-text-save/<uuid:pk>/', hx_save_text_dynamic_view, name='coverletters_hx_save_text_dynamic_url'),
+
+    # htmx - company_text -  save (coverletter.save_company_text_dynamic_url)
+    path('hx-company-text-save/<uuid:pk>/', hx_save_company_text_dynamic_view, name='coverletters_hx_save_company_text_dynamic_url'),
+
+    path('hx-candidate-info-save/<uuid:pk>/', hx_save_candidate_info_dynamic_view, name='coverletters_hx_save_candidate_info_dynamic_url'),
+
 
     # htmx - table - row (coverletter.add_table_row_url)
     path('hx-table-add-row/<uuid:pk>/', hx_add_table_row_view, name='coverletters_hx_add_table_row_url'),

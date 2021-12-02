@@ -1,0 +1,51 @@
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text border-0" id="basic-addon1"><i class="bi bi-person-circle"></i></span>
+  </div>
+  <input hx-post="{{ object.save_candidate_info_dynamic_url }}" hx-trigger="keyup changed delay:1s" hx-swap="none"
+  class="form-control border-0" placeholder="Your name"  type="text" name="candidate_name" {% if object.candidate_name %} value="{{object.candidate_name}}" {% endif %} maxlength="50">
+
+</div>
+
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text border-0" id="basic-addon1"><i class="bi bi-building"></i></span>
+  </div>
+  <input hx-post="{{ object.save_candidate_info_dynamic_url }}" hx-trigger="keyup changed delay:1s" hx-swap="none"
+  class="form-control border-0" placeholder="Your job position"   type="text" name="candidate_position" {% if object.candidate_position %} value="{{object.candidate_position}}" {% endif %} maxlength="50">
+</div>
+
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text border-0" id="basic-addon1">@ </span>
+  </div>
+  <input hx-post="{{ object.save_candidate_info_dynamic_url }}" hx-trigger="keyup changed delay:1s" hx-swap="none"
+  class="form-control border-0" placeholder="Your email"   type="email" name="candidate_email" {% if object.candidate_email %} value="{{object.candidate_email}}" {% endif %} maxlength="100">
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text border-0" id="basic-addon1"><i class="bi bi-telephone"></i></span>
+  </div>
+  <input hx-post="{{ object.save_candidate_info_dynamic_url }}" hx-trigger="keyup changed delay:1s" hx-swap="none"
+  class="form-control border-0" placeholder="Your phone number"  type="text" name="candidate_phone" {% if object.candidate_phone %} value="{{object.candidate_phone}}" {% endif %} maxlength="15">
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text border-0" id="basic-addon1"><i class="bi bi-geo-alt"></i></span>
+  </div>
+  <input hx-post="{{ object.save_candidate_info_dynamic_url }}" hx-trigger="keyup changed delay:1s" hx-swap="none"
+  class="form-control border-0" placeholder="Your city, country" type="text" name="candidate_location" {% if object.candidate_location %} value="{{object.candidate_location}}" {% endif %} maxlength="25">
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text border-0" id="basic-addon1"><i class="bi bi-globe"></i></span>
+  </div>
+  <input hx-post="{{ object.save_candidate_info_dynamic_url }}" hx-trigger="keyup changed delay:1s" hx-swap="none"
+  class="form-control border-0" placeholder="www.example.com" type="url" name="candidate_website" {% if object.candidate_website %} value="{{object.candidate_website}}" {% endif %} maxlength="100">
+</div>

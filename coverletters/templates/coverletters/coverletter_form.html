@@ -5,40 +5,54 @@
 
   <form method="post" action="{{ object.download_all_rows_url }}" >
     {% csrf_token %}
-    <div class="container">
-      <div class="row justify-content-md-center">
-        <div class="col-md-8 col-sm-12">
+    {% if object %}
+        <div class="container border border-secondary my-5">
+              <div class="row justify-content-md-center mt-5">
 
-          <div class="row">
-            <h4 class="text-center h4">Canditate info</h4>
-            <div class="col">
-              {% include "coverletters/partials/header_candidate_info.html" %}
-            </div>
+                <div class="col-md-6 col-sm-12">
+                  {% include "coverletters/partials/company_text.html" %}
+                </div>
 
-            <div class="col">
-              {% include "coverletters/partials/recruiter_info.html" %}
-            </div>
+                <div class="col-md-4 col-sm-12">
+                  {% include "coverletters/partials/candidate_info.html" %}
+                </div>
+              </div>
 
-          </div>
+              <div class="row my-5">
+                <div class="offset-1 col-md-6 col-sm-12">
+                  {% include "coverletters/partials/location_date.html" %}
+                </div>
+              </div>
 
-          <h4 class="text-center h4">Cover letter with #hashtags</h4>
-          {% include "coverletters/partials/text.html" %}
+              <div class="row justify-content-md-center my-5">
+                <div class="col-md-10 col-sm-12">
+                  {% include "coverletters/partials/applying_position.html" %}
+                </div>
+              </div>
+
+
+              <div class="row justify-content-md-center my-5">
+                <div class="col-md-10 col-sm-12">
+                  {% include "coverletters/partials/text.html" %}
+                </div>
+              </div>
         </div>
-      </div>
-  </div>
-  {% if object %}
-    <h4 class="text-center h4 mt-5 mb-3">Fill out your table</h4>
 
-      <div id="table-related-stuff">
-        {% include "coverletters/partials/table.html" %}
-      </div>
+      <h4 class="text-center h4 mt-5 mb-3">Fill out your table</h4>
 
-      <button  class="w-100 mt-4 btn btn-lg btn-outline-primary" type="button"  data-bs-toggle="modal" data-bs-target="#templatesToDownloadModal">
-         Download
-      </button>
-      {% include "coverletters/partials/templates_modal.html" %}
+        <div id="table-related-stuff">
+          {% include "coverletters/partials/table.html" %}
+        </div>
 
-    {% endif %}
+        <button  class="w-100 mt-4 btn btn-lg btn-outline-primary" type="button"
+        data-bs-toggle="modal" data-bs-target="#templatesToDownloadModal">Download</button>
+        {% include "coverletters/partials/modal_select_templates.html" %}
+
+      {% else %}
+
+        {% include "coverletters/partials/create_object.html" %}
+
+      {% endif %}
   </form>
 
 

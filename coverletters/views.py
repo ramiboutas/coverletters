@@ -35,8 +35,8 @@ class HTTPResponseHXRedirect(HttpResponseRedirect):
 
 class CoverLetterUpdateView(UpdateView):
     model = CoverLetter
-    fields = ['text']
-
+    fields = '__all__'
+    # exclude = ['candidate_name','candidate_position','candidate_email', 'candidate_phone','candidate_location', 'candidate_website']
     def get_object(self):
         session, self.request = create_or_get_session_object(self.request)
         obj = get_object_or_404(CoverLetter, pk=self.kwargs['pk'], session=session)
@@ -54,7 +54,8 @@ class CoverLetterListView(ListView):
 
 class CoverLetterCreateView(CreateView):
     model = CoverLetter
-    fields = ['text']
+    fields = '__all__'
+    # exclude = ['candidate_name','candidate_position','candidate_email', 'candidate_phone','candidate_location', 'candidate_website']
     def form_valid(self, form):
         # as the user goes to the create view,
         # we create the object directly with the predefined text in the textarea
@@ -63,24 +64,56 @@ class CoverLetterCreateView(CreateView):
         return response
 
 
-# htmx - saving text
-
+# htmx - coverletter - create object
 @require_POST
-def hx_save_text_first_time_view(request):
+def hx_create_object_view(request):
     session_object, request = create_or_get_session_object(request)
     text = request.POST.get("text")
-    object = CoverLetter(text=text, session=session_object)
+    company_text = request.POST.get("company_text")
+    print(company_text)
+    object = CoverLetter(text=text, company_text=company_text, session=session_object)
     object.save()
     # once the object is created, we redirect the user to the obj update url
     return HTTPResponseHXRedirect(redirect_to=object.get_update_url())
 
-
+# htmx - (body) text - save
 @require_POST
 def hx_save_text_dynamic_view(request, pk=None):
     session_object, request = create_or_get_session_object(request)
-    text = request.POST.get("text")
     object = get_object_or_404(CoverLetter, pk=pk, session=session_object)
+    text = request.POST.get("text")
     object.text = text
+    object.save()
+    return HttpResponse(status=200)
+
+# htmx - company text - save
+@require_POST
+def hx_save_company_text_dynamic_view(request, pk=None):
+    session_object, request = create_or_get_session_object(request)
+    object = get_object_or_404(CoverLetter, pk=pk, session=session_object)
+    company_text = request.POST.get("company_text")
+    object.company_text = company_text
+    object.save()
+    return HttpResponse(status=200)
+
+
+# htmx - candidate info - save
+@require_POST
+def hx_save_candidate_info_dynamic_view(request, pk=None):
+    session_object, request = create_or_get_session_object(request)
+    object = get_object_or_404(CoverLetter, pk=pk, session=session_object)
+    candidate_name = request.POST.get("candidate_name")
+    candidate_position = request.POST.get("candidate_position")
+    candidate_email = request.POST.get("candidate_email")
+    candidate_phone = request.POST.get("candidate_phone")
+    candidate_location = request.POST.get("candidate_location")
+    candidate_website = request.POST.get("candidate_website")
+    object.candidate_name = candidate_name
+    object.candidate_position = candidate_position
+    object.candidate_email = candidate_email
+    object.candidate_phone = candidate_phone
+    object.candidate_location = candidate_location
+    object.candidate_website = candidate_website
     object.save()
     return HttpResponse(status=200)
 
@@ -109,7 +142,7 @@ def hx_add_table_column_view(request, pk):
     context = {'object': object}
     return render(request, 'coverletters/partials/table.html', context)
 
-
+# htmx -  table - delete column
 @require_POST
 def hx_delete_table_column_view(request, pk, pk_parent):
     session_object, request = create_or_get_session_object(request)
@@ -119,6 +152,7 @@ def hx_delete_table_column_view(request, pk, pk_parent):
     context = {'object': object}
     return render(request, 'coverletters/partials/table.html', context)
 
+# htmx - table - delete row
 @require_POST
 def hx_delete_table_row_view(request, pk, pk_parent):
     session_object, request = create_or_get_session_object(request)
@@ -129,7 +163,7 @@ def hx_delete_table_row_view(request, pk, pk_parent):
     return render(request, 'coverletters/partials/table.html', context)
 
 
-# htmx - save hashtag
+# htmx - table - save hashtag
 @require_POST
 def hx_save_hashtag_view(request, pk, pk_column):
     name = request.POST.get(f"hashtag_{pk}")
@@ -137,10 +171,10 @@ def hx_save_hashtag_view(request, pk, pk_column):
     hashtag = get_object_or_404(Hashtag, column__pk=pk_column, pk=pk)
     hashtag.name = name
     hashtag.save()
-    return render(request, 'coverletters/partials/hashtag_form_input.html', {'hashtag': hashtag})
+    return render(request, 'coverletters/partials/table_hashtag_form_input.html', {'hashtag': hashtag})
 
 
-# htmx - save item
+# htmx - table - save item
 @require_POST
 def hx_get_or_create_item_view(request, pk_row, pk_column ):
     item_name = request.POST.get(f"item_{pk_row}_{pk_column}")
@@ -152,5 +186,6 @@ def hx_get_or_create_item_view(request, pk_row, pk_column ):
         item = Item.objects.create(row=row, column=column)
     item.name=item_name
     item.save()
-    context = {'row': row, 'column': column, 'item': item }
-    return render(request, 'coverletters/partials/item_form_input.html', context)
+    return HttpResponse(status=200)
+    # context = {'row': row, 'column': column, 'item': item }
+    # return render(request, 'coverletters/partials/table_item_form_input.html', context)
