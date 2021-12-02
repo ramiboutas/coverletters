@@ -1,3 +1,5 @@
+<div class="my-1">
+
 
 <div class="input-group mb-3">
   <div class="input-group-prepend">
@@ -48,4 +50,5 @@
   </div>
   <input hx-post="{{ object.save_candidate_info_dynamic_url }}" hx-trigger="keyup changed delay:1s" hx-swap="none"
   class="form-control border-0" placeholder="www.example.com" type="url" name="candidate_website" {% if object.candidate_website %} value="{{object.candidate_website}}" {% endif %} maxlength="100">
+</div>
 </div>

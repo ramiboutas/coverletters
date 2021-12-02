@@ -10,7 +10,7 @@
         {% for column in object.columns.all %}
           <th scope="col" >
             <div class="input-group">
-              <input class="form-control border-0" type="text"
+              <input class="form-control border-0" type="text" autocomplete="off"
               name="hashtag_{{ column.hashtag.pk }}" value="{{ column.hashtag.name }}"
               hx-post="{{ column.hashtag.save_url }}" hx-trigger="keyup changed delay:2s" hx-swap="outerHTML" hx-target="this">
               <button type="button" class="btn btn-outline-secondary border-0" name="button"

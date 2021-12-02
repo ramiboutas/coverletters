@@ -10,14 +10,17 @@ hx-trigger="load delay:100ms, ObjectCreatedEvent from:body"
 hx-swap="none">
 
 <textarea  class="form-control text-muted" name="company_text" required="" spellcheck="false">
-#recluiter
+#recluiter_name
 #company_name
-#street_no
+#street_and_number
 #zipcode_city
 </textarea>
 
 <input type="hidden" name="sessionid" value="{{request.session.session_key}}">
 <textarea class="form-control text-muted" name="text" cols="40" rows="25" required="" id="id_text" spellcheck="false">
-Hello #name, I like your
+Dear #recluiter_name,
+
+My name is _________ and
+
 </textarea>
 </div>

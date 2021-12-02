@@ -87,12 +87,22 @@ def hx_save_text_dynamic_view(request, pk=None):
     return HttpResponse(status=200)
 
 # htmx - company text - save
-@require_POST
+
 def hx_save_company_text_dynamic_view(request, pk=None):
     session_object, request = create_or_get_session_object(request)
     object = get_object_or_404(CoverLetter, pk=pk, session=session_object)
     company_text = request.POST.get("company_text")
     object.company_text = company_text
+    object.save()
+    return HttpResponse(status=200)
+
+# htmx - applying position - save
+@require_POST
+def hx_save_applying_position_dynamic_view(request, pk=None):
+    session_object, request = create_or_get_session_object(request)
+    object = get_object_or_404(CoverLetter, pk=pk, session=session_object)
+    applying_position = request.POST.get("applying_position")
+    object.applying_position = applying_position
     object.save()
     return HttpResponse(status=200)
 
