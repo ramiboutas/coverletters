@@ -1,8 +1,10 @@
-# from django.forms import ModelForm
-#
-# from .models import CoverLetter
-#
-# class CoverLetterForm(ModelForm):
-#      class Meta:
-#          model = Article
-#          fields = ['body', ]
+from django.forms import ModelForm
+
+from .models import CoverLetter
+
+
+
+class TemporalCoverLetterForm(ModelForm):
+    class Meta:
+        model = CoverLetter
+        fields = '__all__'

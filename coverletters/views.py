@@ -14,6 +14,18 @@ from django.contrib.sessions.backends.db import SessionStore
 from utils.sessions import create_or_get_session_object
 from .models import CoverLetter, Hashtag, Item, Row, Column
 
+
+from .forms import TemporalCoverLetterForm
+
+from django.views.generic.edit import FormView
+
+class TemporalCoverLetterFormView(FormView):
+    template_name = 'coverletters/temporal_form_page.html'
+    form_class = TemporalCoverLetterForm
+    success_url = '/thanks/'
+
+
+
 class HTTPResponseHXRedirect(HttpResponseRedirect):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

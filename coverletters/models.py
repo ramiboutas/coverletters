@@ -27,7 +27,7 @@ class CoverLetter(models.Model):
 
     candidate_name = models.CharField(max_length=50, blank=True, null=True)
     candidate_position = models.CharField(max_length=50, blank=True, null=True)
-    candidate_email = models.EmailField(blank=True, null=True)
+    candidate_email = models.EmailField(max_length=100, blank=True, null=True)
     candidate_phone = models.CharField(max_length=15, blank=True, null=True)
     candidate_location = models.CharField(max_length=25, blank=True, null=True)
     candidate_website = models.URLField(max_length=100, blank=True, null=True)

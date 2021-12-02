@@ -6,8 +6,11 @@ from .views import hx_delete_table_column_view, hx_delete_table_row_view
 from .views import hx_save_hashtag_view
 from .views import hx_get_or_create_item_view
 
+from .views import TemporalCoverLetterFormView
 
 urlpatterns = [
+    path('form', TemporalCoverLetterFormView.as_view(), name='coverletters_temporal_form'),
+
     path('', CoverLetterListView.as_view(), name='coverletters_list'),
     path('new/', CoverLetterCreateView.as_view(), name='coverletters_new'),
     # path('detail/<int:pk>/', CoverLetterDetailView.as_view(), name='coverletters_detail'),

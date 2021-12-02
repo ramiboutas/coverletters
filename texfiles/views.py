@@ -39,14 +39,13 @@ def download_all_rows_view(request, pk):
 
     text = request.POST.get("text")
     text = '\r\n'.join(line for line in text.splitlines() if line)
-    # text = text
+
     for item, column in zip(row.items.all(), coverletter.columns.all()):
         text = text.replace(column.hashtag.name, item.name)
-    print(row)
-    print(text)
+
     context = {'text': text}
     pdf = get_single_pdf(texfile_obj, context)
-    print(type(pdf))
+
     return render_to_pdf(request, template_name, context, filename='test.pdf')
 
 
