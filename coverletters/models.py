@@ -9,19 +9,7 @@ from django.contrib.sessions.models import Session
 from django.contrib.sessions.backends.db import SessionStore
 
 DEFAULT_HASHTAGS = ['#recluiter_name', '#company_name', '#street_and_number', '#zipcode_city', '#job_position']
-
-
 DEFAULT_NUMBER_OF_ROWS = 3
-
-# For projects that use the cached_db or db session engines, the django_session table can get quite large after a while.
-# https://github.com/mobolic/django-session-cleanup
-
-from django.contrib.sessions.base_session import AbstractBaseSession
-
-class CustomSession(AbstractBaseSession):
-    pass
-
-
 
 class CoverLetter(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -33,12 +21,6 @@ class CoverLetter(models.Model):
     candidate_phone = models.CharField(max_length=15, blank=True, null=True)
     candidate_location = models.CharField(max_length=25, blank=True, null=True)
     candidate_website = models.URLField(max_length=100, blank=True, null=True)
-
-    # company_recruiter = models.CharField(max_length=50, blank=True, null=True)
-    # company_name = models.CharField(max_length=50, blank=True, null=True)
-    # company_street_no = models.CharField(max_length=50, blank=True, null=True)
-    # company_zip_code = models.CharField(max_length=50, blank=True, null=True)
-    # company_city = models.CharField(max_length=50, blank=True, null=True)
 
     company_text = models.TextField() #body text
 
@@ -91,7 +73,7 @@ class Row(models.Model):
     coverletter = models.ForeignKey(CoverLetter, related_name='rows', on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.id}"
+        return f"{self.id} {self.position}"
 
     def delete_url(self):
         return reverse('coverletters_hx_delete_table_row_url', kwargs={'pk':self.pk, 'pk_parent':self.coverletter.pk})
@@ -121,7 +103,6 @@ class Item(models.Model):
     column = models.ForeignKey(Column, related_name='items', on_delete=models.CASCADE)
     row = models.ForeignKey(Row, related_name='items', on_delete=models.CASCADE)
     name = models.CharField(max_length=128)
-    row_position = models.SmallIntegerField(null=True)
 
     def __str__(self):
         return self.name
@@ -135,6 +116,7 @@ def create_rows(sender, instance, created, **kwargs):
     if created:
         objects = []
         for item in range(DEFAULT_NUMBER_OF_ROWS):
+             # Row.objects.create(coverletter=instance)
             objects.append(Row(coverletter=instance))
         Row.objects.bulk_create(objects)
 

@@ -1,6 +1,9 @@
 patterns:
 https://drive.google.com/drive/folders/1WbsQKeeEgqdYfkUIFS3mP4LzBBsZsZuk
 
+cls files:
+/home/rami/texmf/tex/latex/local$
+
 - Din5008-letter
 Author: C. Künzle
 Last Updated:2 years ago

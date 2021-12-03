@@ -6,7 +6,7 @@
 
     <thead class="table-light">
       <tr>
-        <th></th>
+        <th>Applications</th>
         {% for column in object.columns.all %}
           <th scope="col" >
             <div class="input-group">
@@ -36,12 +36,13 @@
     <tbody id="table-body" >
         {% for row in object.rows.all %}
           <tr>
-            <td>
-              <button type="button" class="btn btn-outline-secondary border-0" name="button"
-                hx-post="{{row.delete_url}}" hx-target="#table-related-stuff" hx-swap="innerHTML"
-                hx-confirm="Are you sure you wish to delete the row?">
-                <i class="bi bi-trash"></i>
-              </button>
+            <td class="text-center">
+                  {{ forloop.counter }}
+                  <button type="button" class="btn btn-outline-secondary border-0" name="button"
+                    hx-post="{{row.delete_url}}" hx-target="#table-related-stuff" hx-swap="innerHTML"
+                    hx-confirm="Are you sure you wish to delete the application {{ forloop.counter }}?">
+                    <i class="bi bi-trash"></i>
+                  </button>
             </td>
             {% for column in object.columns.all %}
                 <td>
@@ -59,20 +60,21 @@
           </tr>
         {% endfor %}
 
-        {% if object.number_of_rows < object.max_of_rows %}
           <tr>
-            <td></td>
-            <td colspan="{{object.number_of_columns}}">
+            <td>
               {% if object.number_of_rows < object.max_of_rows %}
-                <button class="w-100 btn btn-outline-secondary" type="button"
-                  hx-get="{{ object.add_table_row_url }}"
-                  hx-swap="outerHTML" hx-target="closest tr">+
-                </button>
+              <button class="w-100 btn btn-outline-secondary" type="button"
+                hx-get="{{ object.add_table_row_url }}"
+                hx-swap="outerHTML" hx-target="closest tr">+
+              </button>
               {% endif %}
+            </td>
+            <td colspan="{{object.number_of_columns}}">
+              <button  class="btn btn-outline-primary w-100" type="button"
+              data-bs-toggle="modal" data-bs-target="#templatesToDownloadModal">Download all</button>
             </td>
             {% if object.number_of_columns < object.max_of_columns %}<td class="text-center">...</td>{% endif %}
           </tr>
-        {% endif %}
     </tbody>
 
   </table>

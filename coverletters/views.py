@@ -137,16 +137,17 @@ def hx_save_location_date_dynamic_view(request, pk=None):
 
 
 # htmx - table - add row
-MAX_NUMBER_OF_ROWS=50
+MAX_NUMBER_OF_ROWS=50 # in case the default from the db does not work
 def hx_add_table_row_view(request, pk):
     session_object, request = create_or_get_session_object(request)
     object = get_object_or_404(CoverLetter, pk=pk, session=session_object)
     rows_count = object.rows.count()
     if rows_count < MAX_NUMBER_OF_ROWS:
         row = Row.objects.create(coverletter=object)
-        context = {'object': object, 'row': row}
+        context = {'object': object, 'row': row, 'current_row_number': rows_count+1}
         return render(request, 'coverletters/partials/table_new_row.html', context)
     else:
+        # message danger
         return HttpResponse()
 
 # htmx - table - add column
