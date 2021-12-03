@@ -86,7 +86,7 @@ TEMPLATES = [
     },
 ]
 
-# LATEX_INTERPRETER = 'pdflatex'
+LATEX_INTERPRETER = 'pdflatex'
 # LATEX_GRAPHICSPATH = os.path.join(BASE_DIR, 'media/uploads')
 # LATEX_INTERPRETER_OPTIONS = '-interaction=nonstopmode'
 
