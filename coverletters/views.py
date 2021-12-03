@@ -14,16 +14,15 @@ from django.contrib.sessions.backends.db import SessionStore
 from utils.sessions import create_or_get_session_object
 from .models import CoverLetter, Hashtag, Item, Row, Column
 
-
 from .forms import TemporalCoverLetterForm
 
 from django.views.generic.edit import FormView
+
 
 class TemporalCoverLetterFormView(FormView):
     template_name = 'coverletters/temporal_form_page.html'
     form_class = TemporalCoverLetterForm
     success_url = '/thanks/'
-
 
 
 class HTTPResponseHXRedirect(HttpResponseRedirect):
@@ -70,8 +69,9 @@ def hx_create_object_view(request):
     session_object, request = create_or_get_session_object(request)
     text = request.POST.get("text")
     company_text = request.POST.get("company_text")
-    print(company_text)
-    object = CoverLetter(text=text, company_text=company_text, session=session_object)
+    location_date = request.POST.get("location_date")
+    applying_position = request.POST.get("applying_position")
+    object = CoverLetter(session=session_object, text=text, company_text=company_text, location_date=location_date, applying_position=applying_position)
     object.save()
     # once the object is created, we redirect the user to the obj update url
     return HTTPResponseHXRedirect(redirect_to=object.get_update_url())
@@ -87,12 +87,22 @@ def hx_save_text_dynamic_view(request, pk=None):
     return HttpResponse(status=200)
 
 # htmx - company text - save
-@require_POST
+
 def hx_save_company_text_dynamic_view(request, pk=None):
     session_object, request = create_or_get_session_object(request)
     object = get_object_or_404(CoverLetter, pk=pk, session=session_object)
     company_text = request.POST.get("company_text")
     object.company_text = company_text
+    object.save()
+    return HttpResponse(status=200)
+
+# htmx - applying position - save
+@require_POST
+def hx_save_applying_position_dynamic_view(request, pk=None):
+    session_object, request = create_or_get_session_object(request)
+    object = get_object_or_404(CoverLetter, pk=pk, session=session_object)
+    applying_position = request.POST.get("applying_position")
+    object.applying_position = applying_position
     object.save()
     return HttpResponse(status=200)
 
@@ -114,6 +124,14 @@ def hx_save_candidate_info_dynamic_view(request, pk=None):
     object.candidate_phone = candidate_phone
     object.candidate_location = candidate_location
     object.candidate_website = candidate_website
+    object.save()
+    return HttpResponse(status=200)
+
+def hx_save_location_date_dynamic_view(request, pk=None):
+    session_object, request = create_or_get_session_object(request)
+    object = get_object_or_404(CoverLetter, pk=pk, session=session_object)
+    location_date = request.POST.get("location_date")
+    object.location_date = location_date
     object.save()
     return HttpResponse(status=200)
 

@@ -1,2 +1,2 @@
-<input class="form-control border-0" type="text" name="hashtag_{{hashtag.pk}}" value="{{ hashtag }}"
+<input class="form-control border-0" type="text" name="hashtag_{{hashtag.pk}}" value="{{ hashtag }}" spellcheck="false"
 hx-post="{{ hashtag.save_url }}" hx-trigger="keyup changed delay:2s" hx-swap="outerHTML" hx-target="this">

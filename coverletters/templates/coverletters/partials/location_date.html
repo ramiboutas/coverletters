@@ -1,4 +1,4 @@
 
 
-<input hx-post="{{ object.save_candidate_info_dynamic_url }}" hx-trigger="keyup changed delay:1s" hx-swap="none"
-class="form-control border-0"  type="text" name="location_date" value="{{object.created_on}}" maxlength="50">
+<input hx-post="{{ object.save_location_date_dynamic_url }}" hx-trigger="keyup changed delay:1s" hx-swap="none"
+class="form-control border-0"  type="text" name="location_date" {% if object.location_date %}value="{{object.location_date}}"{% endif %} maxlength="50" spellcheck="false">

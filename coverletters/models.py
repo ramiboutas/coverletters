@@ -8,7 +8,9 @@ from django.dispatch import receiver
 from django.contrib.sessions.models import Session
 from django.contrib.sessions.backends.db import SessionStore
 
-DEFAULT_HASHTAGS = ['#address', '#name', '#charge', '#company']
+DEFAULT_HASHTAGS = ['#recluiter_name', '#company_name', '#street_and_number', '#zipcode_city', '#job_position']
+
+
 DEFAULT_NUMBER_OF_ROWS = 3
 
 # For projects that use the cached_db or db session engines, the django_session table can get quite large after a while.
@@ -41,6 +43,7 @@ class CoverLetter(models.Model):
     company_text = models.TextField() #body text
 
     location_date = models.CharField(max_length=50, blank=True, null=True)
+    applying_position = models.CharField(max_length=200, blank=True, null=True)
 
     text = models.TextField() #body text
 
@@ -69,6 +72,11 @@ class CoverLetter(models.Model):
     def save_candidate_info_dynamic_url(self):
         return reverse('coverletters_hx_save_candidate_info_dynamic_url', kwargs={'pk':self.pk})
 
+    def save_applying_position_dynamic_url(self):
+        return reverse('coverletters_hx_save_applying_position_dynamic_url', kwargs={'pk':self.pk})
+
+    def save_location_date_dynamic_url(self):
+        return reverse('coverletters_hx_save_location_date_dynamic_url', kwargs={'pk':self.pk})
 
     def add_table_row_url(self):
         return reverse('coverletters_hx_add_table_row_url', kwargs={'pk':self.pk})
