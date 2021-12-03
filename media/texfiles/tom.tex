@@ -1,0 +1,49 @@
+%\title{Example letter using the newlfm LaTeX package}
+%
+% See http://texblog.org/2013/11/11/latexs-alternative-letter-class-newlfm/
+% and http://www.ctan.org/tex-archive/macros/latex/contrib/newlfm
+% for more information.
+%
+\documentclass[12pt,stdletter,orderfromtodate,sigleft]{newlfm}
+
+\usepackage{etoolbox}
+
+%% Patch from https://tex.stackexchange.com/a/395529/226 to address newlfm bug
+\makeatletter
+\patchcmd{\@zfancyhead}{\fancy@reset}{\f@nch@reset}{}{}
+\patchcmd{\@set@em@up}{\f@ncyolh}{\f@nch@olh}{}{}
+\patchcmd{\@set@em@up}{\f@ncyolh}{\f@nch@olh}{}{}
+\patchcmd{\@set@em@up}{\f@ncyorh}{\f@nch@orh}{}{}
+\makeatother
+
+\usepackage{blindtext, xfrac}
+ 
+\newlfmP{dateskipbefore=50pt}
+\newlfmP{sigsize=50pt}
+\newlfmP{sigskipbefore=50pt}
+ 
+\newlfmP{Headlinewd=0pt,Footlinewd=0pt}
+ 
+\namefrom{Sherlock Holmes}
+\addrfrom{%
+    221B Baker Street\\
+    London, UK
+}
+ 
+\addrto{%
+    Basil of Baker Street\\
+    221$\sfrac{1}{2}$ Baker Street\\
+    London, UK
+}
+ 
+\dateset{January 6, 1914}
+ 
+\greetto{To Whom It May Concern,}
+ 
+\closeline{Sincerely,}
+ 
+\begin{document}
+\begin{newlfm}
+\blindtext
+\end{newlfm}
+\end{document}
