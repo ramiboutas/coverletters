@@ -87,6 +87,8 @@ TEMPLATES = [
 ]
 
 LATEX_INTERPRETER = 'pdflatex'
+# pdflatex, latex, xelatex, lualatex
+
 # LATEX_GRAPHICSPATH = os.path.join(BASE_DIR, 'media/uploads')
 # LATEX_INTERPRETER_OPTIONS = '-interaction=nonstopmode'
 
@@ -141,6 +143,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
 
 # Media files
 MEDIA_ROOT = BASE_DIR.joinpath('media')

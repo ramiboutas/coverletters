@@ -4,12 +4,13 @@ from django.db import models
 from django.db.models.signals import post_save, pre_delete
 from django.urls import reverse, reverse_lazy
 from django.dispatch import receiver
-
 from django.contrib.sessions.models import Session
 from django.contrib.sessions.backends.db import SessionStore
 
+
 DEFAULT_HASHTAGS = ['#recluiter_name', '#company_name', '#street_and_number', '#zipcode_city', '#job_position']
 DEFAULT_NUMBER_OF_ROWS = 3
+
 
 class CoverLetter(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -17,10 +18,10 @@ class CoverLetter(models.Model):
 
     candidate_name = models.CharField(max_length=50, blank=True, null=True)
     candidate_position = models.CharField(max_length=50, blank=True, null=True)
-    candidate_email = models.EmailField(max_length=100, blank=True, null=True)
+    candidate_email = models.CharField(max_length=100, blank=True, null=True)
     candidate_phone = models.CharField(max_length=15, blank=True, null=True)
     candidate_location = models.CharField(max_length=25, blank=True, null=True)
-    candidate_website = models.URLField(max_length=100, blank=True, null=True)
+    candidate_website = models.CharField(max_length=100, blank=True, null=True)
 
     company_text = models.TextField() #body text
 
@@ -73,7 +74,7 @@ class Row(models.Model):
     coverletter = models.ForeignKey(CoverLetter, related_name='rows', on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.id} {self.position}"
+        return f"{self.id}"
 
     def delete_url(self):
         return reverse('coverletters_hx_delete_table_row_url', kwargs={'pk':self.pk, 'pk_parent':self.coverletter.pk})

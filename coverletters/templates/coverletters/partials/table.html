@@ -39,8 +39,7 @@
             <td class="text-center">
                   {{ forloop.counter }}
                   <button type="button" class="btn btn-outline-secondary border-0" name="button"
-                    hx-post="{{row.delete_url}}" hx-target="#table-related-stuff" hx-swap="innerHTML"
-                    hx-confirm="Are you sure you wish to delete the application {{ forloop.counter }}?">
+                    hx-post="{{row.delete_url}}" hx-target="#table-related-stuff" hx-swap="innerHTML">
                     <i class="bi bi-trash"></i>
                   </button>
             </td>

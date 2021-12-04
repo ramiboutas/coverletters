@@ -1,4 +1,5 @@
 <!doctype html>
+{% load static %}
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -28,10 +29,18 @@
       [type=radio]:checked + img {
       outline: 5px solid #1266F1;
       }
+      /* background image */
+      body {
+            /* background-image: url('{% static "img/zug_spitze.jpg" %}'); */
+            /* background-image: url('https://images.unsplash.com/photo-1531346878377-a5be20888e57?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8'); */
+            /* background: linear-gradient(#EFE1CE, #A0DAA9); */
+            opacity: 0.9;
+
+          }
     </style>
   </head>
-  <body>
-  
+  <body >
+
       {% block content %}
       {% endblock %}
     <!-- Optional JavaScript; choose one of the two! -->

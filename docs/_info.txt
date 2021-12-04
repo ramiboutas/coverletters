@@ -2,7 +2,13 @@ patterns:
 https://drive.google.com/drive/folders/1WbsQKeeEgqdYfkUIFS3mP4LzBBsZsZuk
 
 cls files:
-/home/rami/texmf/tex/latex/local$
+/home/rami/texmf/tex/latex/local
+
+
+- letter
+
+Tom article: https://texblog.org/2007/08/15/writing-a-letter-in-latex/
+
 
 - Din5008-letter
 Author: C. Künzle
