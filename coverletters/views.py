@@ -15,8 +15,8 @@ from utils.sessions import create_or_get_session_object
 from .models import CoverLetter, Hashtag, Item, Row, Column
 
 from .forms import TemporalCoverLetterForm
-
 from django.views.generic.edit import FormView
+
 
 
 class TemporalCoverLetterFormView(FormView):

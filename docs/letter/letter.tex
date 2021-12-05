@@ -1,12 +1,39 @@
 \documentclass{letter}
-\signature{Your name}
-\address{Street \\ City \\ Country}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+
+\renewcommand{\today}{ {{- location_date -}} }
+
+\signature{ {{- candidate_name -}} }
+
+\address{
+{{- candidate_name | latex_escape -}}
+\\ {{- candidate_position | latex_escape -}}
+\\ {{- candidate_location | latex_escape -}}
+\\ {{- candidate_phone | latex_escape -}}
+\\ {{- candidate_email | latex_escape-}}
+\\ {{- candidate_website | latex_escape -}} }
+
 \begin{document}
-\begin{letter}{Company name \\ Street\\ City\\ Country}
-\opening{Dear Sir or Madam:}
-\dots
-\closing{Yours Faithfully,}
-\ps{P.S. Here goes your ps.}
-\encl{Enclosures.}
+\begin{letter}{ {{- company_text | latex_escape | linebreaks -}} }
+
+\textbf{ {{- applying_position | latex_escape -}} }
+
+{% for paragraph in text_paragraphs %}
+
+  {% if loop.first %}
+    \opening{ {{- paragraph | latex_escape -}} }
+  {% endif %}
+
+  {% if not loop.first and loop.index < loop.length - 1 %}
+    {{- paragraph | latex_escape -}}
+  {% endif %}
+
+  {% if loop.index == loop.length - 1 %}
+  \vspace{1cm}
+    \closing{ {{- paragraph | latex_escape -}} }
+  {% endif %}
+
+{% endfor %}
+
 \end{letter}
 \end{document}

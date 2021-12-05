@@ -3,7 +3,7 @@
 
 {% block content %}
 
-  <form method="post" action="{{ object.download_all_rows_url }}">
+  <form method="post"  action="{{ object.prepare_the_download_url }}" >
     {% csrf_token %}
     {% if object %}
         <div class="container border border-secondary my-5 ">

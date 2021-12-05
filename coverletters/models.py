@@ -32,6 +32,7 @@ class CoverLetter(models.Model):
 
     max_of_rows = models.SmallIntegerField(default=12)
     max_of_columns = models.SmallIntegerField(default=10)
+    zip_file = models.FileField(upload_to='zipfiles/%Y/%m/%d', blank=True, null=True)
     created_on = models.DateField(auto_now=True)
 
     def number_of_columns(self):
@@ -67,8 +68,12 @@ class CoverLetter(models.Model):
     def add_table_column_url(self):
         return reverse('coverletters_hx_add_table_column_url', kwargs={'pk':self.pk})
 
-    def download_all_rows_url(self):
-        return reverse('texfiles_download_all_rows_url', kwargs={'pk':self.pk})
+    def prepare_the_download_url(self):
+        return reverse('texfiles_prepare_the_download_url', kwargs={'pk':self.pk})
+
+    def download_the_zip_file_url(self):
+        return reverse('texfiles_download_the_zip_file_url', kwargs={'pk':self.pk})
+
 
 class Row(models.Model):
     coverletter = models.ForeignKey(CoverLetter, related_name='rows', on_delete=models.CASCADE)
