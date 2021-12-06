@@ -1,24 +1,40 @@
+from django_htmx.http import trigger_client_event
+
+
 from django.views.decorators.http import require_POST
-from django.shortcuts import render
+from django.shortcuts import render,  get_object_or_404
+from utils.sessions import create_or_get_session_object
+from django.http import HttpResponse
+from django.http import FileResponse
 
 from .tasks import process_download
-
+from coverletters.models import CoverLetter
 
 
 
 @require_POST
 def prepare_the_download_view(request, pk):
+    session_object, request = create_or_get_session_object(request)
+    object = get_object_or_404(CoverLetter, pk=pk, session=session_object)
     result = process_download.delay(request.POST, pk)
-    context={'task_id': result.task_id}
-    print(result)
+    context={'task_id': result.task_id, 'object': object}
     return render(request, 'texfiles/processing_download.html', context)
 
 
-
 def download_the_zip_file_view(request, pk):
-    pass
+    session_object, request = create_or_get_session_object(request)
+    object = get_object_or_404(CoverLetter, pk=pk, session=session_object)
+    # response = HttpResponse(object.zip_file, content_type='application/force-download')
+    # response['Content-Disposition'] = 'attachment; filename="{}"'.format('All_coverletters.zip')
+
+    response = FileResponse(open(object.zip_file.path, 'rb'))
+    trigger_client_event(response, 'ZipFileDownloaded', { },)
+    return response
 
 
+
+def hx_get_buy_me_a_coffee_partial_view(request):
+    return render(request, 'texfiles/buy_me_a_coffee_snippet.html')
 
 
 
