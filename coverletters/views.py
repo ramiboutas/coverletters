@@ -14,15 +14,6 @@ from django.contrib.sessions.backends.db import SessionStore
 from utils.sessions import create_or_get_session_object
 from .models import CoverLetter, Hashtag, Item, Row, Column
 
-from .forms import TemporalCoverLetterForm
-from django.views.generic.edit import FormView
-
-
-
-class TemporalCoverLetterFormView(FormView):
-    template_name = 'coverletters/temporal_form_page.html'
-    form_class = TemporalCoverLetterForm
-    success_url = '/thanks/'
 
 
 class HTTPResponseHXRedirect(HttpResponseRedirect):
@@ -33,6 +24,7 @@ class HTTPResponseHXRedirect(HttpResponseRedirect):
 
 
 class CoverLetterUpdateView(UpdateView):
+    template_name = 'coverletter_form.html'
     model = CoverLetter
     fields = '__all__'
     # exclude = ['candidate_name','candidate_position','candidate_email', 'candidate_phone','candidate_location', 'candidate_website']
@@ -43,6 +35,7 @@ class CoverLetterUpdateView(UpdateView):
 
 
 class CoverLetterListView(ListView):
+    template_name = 'coverletter_list.html'
     model = CoverLetter
 
     def get_queryset(self):
@@ -52,6 +45,7 @@ class CoverLetterListView(ListView):
         return queryset
 
 class CoverLetterCreateView(CreateView):
+    template_name = 'coverletter_form.html'
     model = CoverLetter
     fields = '__all__'
     # exclude = ['candidate_name','candidate_position','candidate_email', 'candidate_phone','candidate_location', 'candidate_website']
@@ -145,7 +139,7 @@ def hx_add_table_row_view(request, pk):
     if rows_count < MAX_NUMBER_OF_ROWS:
         row = Row.objects.create(coverletter=object)
         context = {'object': object, 'row': row, 'current_row_number': rows_count+1}
-        return render(request, 'coverletters/partials/table_new_row.html', context)
+        return render(request, 'partials/table_new_row.html', context)
     else:
         # message danger
         return HttpResponse()
@@ -159,7 +153,7 @@ def hx_add_table_column_view(request, pk):
     hashtag = Hashtag(column=column, name='#new')
     hashtag.save()
     context = {'object': object}
-    return render(request, 'coverletters/partials/table.html', context)
+    return render(request, 'partials/table.html', context)
 
 # htmx -  table - delete column
 @require_POST
@@ -169,7 +163,7 @@ def hx_delete_table_column_view(request, pk, pk_parent):
     column = get_object_or_404(Column, pk=pk, coverletter=object)
     column.delete()
     context = {'object': object}
-    return render(request, 'coverletters/partials/table.html', context)
+    return render(request, 'partials/table.html', context)
 
 # htmx - table - delete row
 @require_POST
@@ -179,7 +173,7 @@ def hx_delete_table_row_view(request, pk, pk_parent):
     row = get_object_or_404(Row, pk=pk, coverletter=object)
     row.delete()
     context = {'object': object}
-    return render(request, 'coverletters/partials/table.html', context)
+    return render(request, 'partials/table.html', context)
 
 
 # htmx - table - save hashtag
@@ -190,7 +184,7 @@ def hx_save_hashtag_view(request, pk, pk_column):
     hashtag = get_object_or_404(Hashtag, column__pk=pk_column, pk=pk)
     hashtag.name = name
     hashtag.save()
-    return render(request, 'coverletters/partials/table_hashtag_form_input.html', {'hashtag': hashtag})
+    return render(request, 'partials/table_hashtag_form_input.html', {'hashtag': hashtag})
 
 
 # htmx - table - save item
@@ -207,4 +201,4 @@ def hx_get_or_create_item_view(request, pk_row, pk_column ):
     item.save()
     return HttpResponse(status=200)
     # context = {'row': row, 'column': column, 'item': item }
-    # return render(request, 'coverletters/partials/table_item_form_input.html', context)
+    # return render(request, 'partials/table_item_form_input.html', context)

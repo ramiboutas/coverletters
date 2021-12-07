@@ -20,8 +20,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('coverletters.urls')),
-    path('texfiles/', include('texfiles.urls')),
+    path('', include('pages.urls')),
+    path('cl/', include('coverletters.urls')),
+    path('templates/', include('texfiles.urls')),
     re_path(r'^celery-progress/', include('celery_progress.urls')),
 ]
 

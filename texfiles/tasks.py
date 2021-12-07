@@ -88,7 +88,7 @@ def process_download(self, POST_dict, pk):
         context = {**changing_context, **no_changing_context}
         pdf = compile_template_to_pdf(template_name, context)
         files.append((filename, pdf))
-        progress_recorder.set_progress(index, len(filenames), f'Application {index} processed')
+        progress_recorder.set_progress(index, len(filenames))
 
 
     full_zip_in_memory = generate_zip(files)

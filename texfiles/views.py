@@ -18,7 +18,7 @@ def prepare_the_download_view(request, pk):
     object = get_object_or_404(CoverLetter, pk=pk, session=session_object)
     result = process_download.delay(request.POST, pk)
     context={'task_id': result.task_id, 'object': object}
-    return render(request, 'texfiles/processing_download.html', context)
+    return render(request, 'processing_download.html', context)
 
 
 def download_the_zip_file_view(request, pk):
@@ -32,9 +32,6 @@ def download_the_zip_file_view(request, pk):
     return response
 
 
-
-def hx_get_buy_me_a_coffee_partial_view(request):
-    return render(request, 'texfiles/buy_me_a_coffee_snippet.html')
 
 
 

@@ -1,0 +1,11 @@
+{% load i18n %}
+<div class="container mt-5">
+  <footer class="py-3 my-4">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="{% url 'landing_page_url' %}" class="nav-link px-2 text-muted">{% trans "Home" %}</a></li>
+      <li class="nav-item"><a href="{% url 'privacy_policy_url' %}" class="nav-link px-2 text-muted">{% trans "Privacy Policy" %}</a></li>
+      <li class="nav-item"><a href="{% url 'terms_of_service_url' %}" class="nav-link px-2 text-muted">{% trans "Terms of Service" %}</a></li>
+    </ul>
+    <p class="text-center text-muted">{{ request.get_host }}</p>
+  </footer>
+</div>

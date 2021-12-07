@@ -10,30 +10,30 @@
               <div class="row justify-content-md-center mt-5">
 
                 <div class="col-md-6 col-sm-12">
-                  {% include "coverletters/partials/company_text.html" %}
+                  {% include "partials/company_text.html" %}
                 </div>
 
                 <div class="col-md-4 col-sm-12">
-                  {% include "coverletters/partials/candidate_info.html" %}
+                  {% include "partials/candidate_info.html" %}
                 </div>
               </div>
 
               <div class="row my-5">
                 <div class="offset-md-1 col-md-6 col-sm-12">
-                  {% include "coverletters/partials/location_date.html" %}
+                  {% include "partials/location_date.html" %}
                 </div>
               </div>
 
               <div class="row justify-content-md-center my-5">
                 <div class="col-md-10 col-sm-12">
-                  {% include "coverletters/partials/applying_position.html" %}
+                  {% include "partials/applying_position.html" %}
                 </div>
               </div>
 
 
               <div class="row justify-content-md-center my-5">
                 <div class="col-md-10 col-sm-12">
-                  {% include "coverletters/partials/text.html" %}
+                  {% include "partials/text.html" %}
                 </div>
               </div>
         </div>
@@ -41,14 +41,14 @@
       <h4 class="text-center h4 mt-5 mb-3">Fill out your table</h4>
 
         <div id="table-related-stuff">
-          {% include "coverletters/partials/table.html" %}
+          {% include "partials/table.html" %}
         </div>
 
-        {% include "coverletters/partials/modal_select_templates.html" %}
+        {% include "partials/modal_select_templates.html" %}
 
       {% else %}
 
-        {% include "coverletters/partials/create_object.html" %}
+        {% include "partials/create_object.html" %}
 
       {% endif %}
   </form>

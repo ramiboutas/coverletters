@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+
+<div class="container my-5">
+
+  <h1 class="text-center my-2">{% trans "Preparing the Download" %}</h1>
+  <div class="row text-center">
+    <div class='progress-wrapper'>
+      <div id='progress-bar' class='progress-bar progress-bar-primary'>
+        &nbsp;</div>
+        <div  id="progress-bar-message"></div>
+    </div>
+  </div>
+
+
+  <div class="row text-center my-5">
+    <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="ramiboutas" data-color="#FFDD00" data-emoji=""  data-font="Lato" data-text="{% trans 'Buy me a coffee' %}" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
+    <h5 class="text-center text-muted my-2">{% trans "Consider supporting the creator of this site" %}</h5>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script src="{% static 'celery_progress/celery_progress.js' %}"></script>
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function () {
+  var progressUrl = "{% url 'celery_progress:task_status' task_id %}";
+  CeleryProgressBar.initProgressBar(progressUrl, {
+      onSuccess: customSuccess,
+      onError: customError,
+  });;
+});
+
+function customSuccess(progressBarElement, progressBarMessageElement) {
+    progressBarElement.innerHTML = (
+     '<a  class="btn btn-primary text-center btn-lg my-5"  href="{{ object.download_the_zip_file_url }}"> Download your coverletters <i class="bi bi-download"></i> </a>')
+    progressBarElement.style.backgroundColor = '#fff';
+}
+function customError(progressBarElement, progressBarMessageElement) {
+    progressBarElement.innerHTML = (
+     '<p>there was an error, try again </p>'
+    )
+    progressBarElement.style.backgroundColor = '#fff';
+}
+</script>
+
+
+{% endblock %}

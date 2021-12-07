@@ -40,10 +40,11 @@
     </style>
   </head>
   <body >
+      {% include "_header.html" %}
 
-      {% block content %}
-      {% endblock %}
+      {% block content %}{% endblock %}
 
+      {% include "_footer.html" %}
       {% block scripts %}
       {% endblock %}
 
