@@ -48,11 +48,13 @@ INSTALLED_APPS = [
     'django_celery_results',
     'celery_progress',
     'rosetta',
+    'session_cleanup',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -175,3 +177,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # celery
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
 CELERY_RESULT_BACKEND = 'django-db'
+
+
+# session cleanup
+SESSION_COOKIE_AGE = 604800 # 1 week
+
+from session_cleanup.settings import weekly_schedule
+CELERYBEAT_SCHEDULE = {
+    'session_cleanup': weekly_schedule
+}

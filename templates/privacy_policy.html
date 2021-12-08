@@ -1,10 +1,20 @@
 {% extends "base.html" %}
 {% load i18n %}
 
+{% block title %}{% trans "Privacy Policy" %} # {% endblock %}
+
 
 {% block content %}
 
 
 <a href="https://stackabuse.com/privacy-policy/">https://stackabuse.com/privacy-policy/</a>
+
+<div class="container">
+
+<h1 class="display-4 text-muted text-center my-4" >{% trans "Privacy Policy" %}</h1>
+<p class="display-6 fs-6 text-center my-4" >{% trans "Last update:" %} {% trans "12th December 2021" %}</p>
+<h2 class="display-6 fs-3 my-4">{% trans "The Site" %}</h2>
+
+</div>
 
 {% endblock %}

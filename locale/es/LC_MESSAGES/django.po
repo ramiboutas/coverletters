@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-08 15:18+0100\n"
-"PO-Revision-Date: 2021-12-08 13:58+0000\n"
+"POT-Creation-Date: 2021-12-08 22:30+0100\n"
+"PO-Revision-Date: 2021-12-08 21:32+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,78 +19,229 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
-#: config/settings.py:147
+#: config/settings.py:149
 msgid "English"
 msgstr "Inglés"
 
-#: config/settings.py:148
+#: config/settings.py:150
 msgid "Spanish"
-msgstr ""
+msgstr "Español"
+
+#: coverletters/models.py:13
+msgid "#recluiter_name"
+msgstr "#reclutador_nombre"
+
+#: coverletters/models.py:13
+msgid "#company_name"
+msgstr "#empresa_nombre"
+
+#: coverletters/models.py:13
+msgid "#street_and_number"
+msgstr "#calle_y_numero"
+
+#: coverletters/models.py:13
+msgid "#zipcode_city"
+msgstr "#cp_ciudad"
+
+#: coverletters/models.py:13
+#, fuzzy
+#| msgid "Your job position"
+msgid "#job_position"
+msgstr "Tu puesto de trabajo"
+
+#: coverletters/views.py:162
+msgid "#new"
+msgstr "#nuevo"
 
 #: templates/_footer.html:27
 msgid "Home"
 msgstr "Inicio"
 
-#: templates/_footer.html:28
+#: templates/_footer.html:28 templates/privacy_policy.html:4
+#: templates/privacy_policy.html:14
 msgid "Privacy Policy"
-msgstr ""
+msgstr "Política de privacidad"
 
-#: templates/_footer.html:29
+#: templates/_footer.html:29 templates/terms_of_service.html:4
 msgid "Terms of Service"
-msgstr ""
+msgstr "Términos de Servicio"
 
 #: templates/_header.html:17
-msgid "My coverletters"
+#| msgid "My coverletters"
+msgid "My cover letters"
 msgstr "Mis cartas de motivación"
 
 #: templates/_header.html:18
 msgid "Create new"
 msgstr "Crear"
 
-#: templates/coverletter_list.html:16
+#: templates/coverletter_form.html:4
+#, fuzzy
+#| msgid "My coverletters"
+msgid "My coverletter"
+msgstr "Mis cartas de motivación"
+
+#: templates/coverletter_form.html:12
+msgid "Generalize your cover letter with #hashtags"
+msgstr "Generaliza tu carta de motivación con #hashtags"
+
+#: templates/coverletter_form.html:44
+msgid "Personalize every application by filling out the table"
+msgstr "Personaliza cada aplicación rellenando la tabla"
+
+#: templates/coverletter_list.html:4
+msgid "My coverletters"
+msgstr "Mis cartas de motivación"
+
+#: templates/coverletter_list.html:18
 msgid "Open"
 msgstr "Abrir"
 
-#: templates/coverletter_list.html:19
+#: templates/coverletter_list.html:21
 msgid "Are you sure to delete this coverletter?"
-msgstr ""
+msgstr "¿Estás seguro de borrar esta carta de motivación?"
 
-#: templates/coverletter_list.html:19
+#: templates/coverletter_list.html:21
 #: venv/lib/python3.8/site-packages/django/forms/formsets.py:417
 msgid "Delete"
 msgstr "Borrar"
 
-#: templates/coverletter_list.html:26
+#: templates/coverletter_list.html:28
 msgid "You do not have any coverletters in this session, "
-msgstr "No tienes ningúna carta de motivación en esta sesisión,"
+msgstr "No tienes ningúna carta de motivación en esta sesión,"
 
-#: templates/coverletter_list.html:26
+#: templates/coverletter_list.html:28
 msgid "create one"
 msgstr "crea una"
 
+#: templates/landing_page.html:5
+msgid "Multiple coverletters in minutes"
+msgstr "Múltiples cartas de motivación en minutos"
+
+#: templates/partials/candidate_info.html:9
+msgid "Your full name"
+msgstr "Tu nombre completo"
+
+#: templates/partials/candidate_info.html:19
+msgid "Your job position"
+msgstr "Tu puesto de trabajo"
+
+#: templates/partials/candidate_info.html:28
+msgid "Your email"
+msgstr "Tu email"
+
+#: templates/partials/candidate_info.html:36
+msgid "Your phone number"
+msgstr "Tu número de teléfono"
+
+#: templates/partials/candidate_info.html:44
+msgid "Your city, country"
+msgstr "Tu ciudad, país"
+
+#: templates/partials/candidate_info.html:52
+msgid "Your website (optional)"
+msgstr "Tu sitio web (opcional)"
+
+#: templates/partials/create_object.html:14
+msgid ""
+"\n"
+"#recluiter_name\n"
+"#company_name\n"
+"#street_and_number\n"
+"#zipcode_city\n"
+msgstr ""
+"\n"
+"#reclutador_nombre\n"
+"#empresa_nombre\n"
+"#calle_y_numero\n"
+"#cp_ciudad\n"
+
+#: templates/partials/create_object.html:24
+msgid "Motivation letter for the job application as #job_position"
+msgstr ""
+
+#: templates/partials/create_object.html:27
+msgid ""
+"\n"
+"Dear #recluiter_name,\n"
+"\n"
+"As a highly skilled ________ with __ years of experience, I am writing to express my intereste in the #job_position at your company. My experience aligns well, as I have worked in __________ for several years with a prominent retailer, and I know I would make a valuable addition to your team.\"\n"
+"\n"
+msgstr ""
+
+#: templates/partials/modal_select_templates.html:9
+#, fuzzy
+#| msgid "Select template to download"
+msgid "Select your template"
+msgstr "Seleccionar plantilla para la descarga"
+
+#: templates/partials/modal_select_templates.html:24
+msgid "Credits"
+msgstr "Créditos"
+
+#: templates/partials/modal_select_templates.html:32
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: templates/partials/modal_select_templates.html:33
+#, fuzzy
+#| msgid "Select template to download"
+msgid "Proceed to download"
+msgstr "Seleccionar plantilla para la descarga"
+
 #: templates/partials/table.html:9
 msgid "Applications"
-msgstr ""
+msgstr "Aplicaciones"
 
 #: templates/partials/table.html:19
 msgid "Are you sure you wish to delete this column?"
-msgstr ""
+msgstr "¿Quieres realmente borrar estar columna?"
 
-#: templates/partials/table.html:73
+#: templates/partials/table.html:48 templates/partials/table_new_row.html:13
+msgid "Write here..."
+msgstr "Escribe aquí..."
+
+#: templates/partials/table.html:73 templates/partials/table_new_row.html:35
 msgid "Select template to download"
 msgstr "Seleccionar plantilla para la descarga"
+
+#: templates/privacy_policy.html:15
+msgid "Last update:"
+msgstr "Última actualización:"
+
+#: templates/privacy_policy.html:15
+msgid "12th December 2021"
+msgstr "12 de diciembre del 2021"
+
+#: templates/privacy_policy.html:16
+msgid "The Site"
+msgstr "El Sitio Web"
+
+#: templates/processing_download.html:5
+msgid "Download"
+msgstr "Descarga"
 
 #: templates/processing_download.html:10
 msgid "Preparing the Download"
 msgstr "Preparando la descarga"
 
 #: templates/processing_download.html:21
+msgid "Consider supporting the creator of this site"
+msgstr "Considera la posibilidad de apoyar al creador de este sitio"
+
+#: templates/processing_download.html:22
 msgid "Buy me a coffee"
 msgstr "Invítame a un café"
 
-#: templates/processing_download.html:22
-msgid "Consider supporting the creator of this site"
-msgstr ""
+#: templates/processing_download.html:46
+#, fuzzy
+#| msgid "My coverletters"
+msgid "Download your coverletters"
+msgstr "Mis cartas de motivación"
+
+#: templates/processing_download.html:51
+msgid "There was an error, try again"
+msgstr "Ha habido un error, inténtalo de nuevo"
 
 #: venv/lib/python3.8/site-packages/click/_termui_impl.py:496
 #, python-brace-format
@@ -105,8 +256,8 @@ msgstr ""
 #: venv/lib/python3.8/site-packages/click/_unicodefun.py:20
 msgid ""
 "Click will abort further execution because Python was configured to use "
-"ASCII as encoding for the environment. Consult https://click.palletsprojects."
-"com/unicode-support/ for mitigation steps."
+"ASCII as encoding for the environment. Consult "
+"https://click.palletsprojects.com/unicode-support/ for mitigation steps."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/click/_unicodefun.py:56
@@ -460,8 +611,8 @@ msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/core/validators.py:269
 msgid ""
-"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
-"hyphens."
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or"
+" hyphens."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/core/validators.py:278
@@ -647,15 +798,15 @@ msgstr ""
 #: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1288
 #, python-format
 msgid ""
-"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
-"uuuuuu]][TZ] format."
+"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD "
+"HH:MM[:ss[.uuuuuu]][TZ] format."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1292
 #, python-format
 msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
-"[TZ]) but it is an invalid date/time."
+"“%(value)s” value has the correct format (YYYY-MM-DD "
+"HH:MM[:ss[.uuuuuu]][TZ]) but it is an invalid date/time."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1296
@@ -674,8 +825,8 @@ msgstr ""
 #: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1585
 #, python-format
 msgid ""
-"“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
-"uuuuuu] format."
+"“%(value)s” value has an invalid format. It must be in [DD] "
+"[[HH:]MM:]ss[.uuuuuu] format."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1588
@@ -834,7 +985,8 @@ msgid "Many-to-many relationship"
 msgstr ""
 
 #. Translators: If found as last label character, these punctuation
-#. characters will prevent the default label_suffix to be appended to the label
+#. characters will prevent the default label_suffix to be appended to the
+#. label
 #: venv/lib/python3.8/site-packages/django/forms/boundfield.py:150
 msgid ":?.!"
 msgstr ""
@@ -884,7 +1036,8 @@ msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/forms/fields.py:553
 #, python-format
-msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid ""
+"Ensure this filename has at most %(max)d character (it has %(length)d)."
 msgid_plural ""
 "Ensure this filename has at most %(max)d characters (it has %(length)d)."
 msgstr[0] ""
@@ -987,7 +1140,8 @@ msgid "The inline value did not match the parent instance."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/forms/models.py:1193
-msgid "Select a valid choice. That choice is not one of the available choices."
+msgid ""
+"Select a valid choice. That choice is not one of the available choices."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/forms/models.py:1311
@@ -1447,11 +1601,11 @@ msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/views/csrf.py:124
 msgid ""
-"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
-"including the “Referrer-Policy: no-referrer” header, please remove them. The "
-"CSRF protection requires the “Referer” header to do strict referer checking. "
-"If you’re concerned about privacy, use alternatives like <a rel=\"noreferrer"
-"\" …> for links to third-party sites."
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or"
+" including the “Referrer-Policy: no-referrer” header, please remove them. "
+"The CSRF protection requires the “Referer” header to do strict referer "
+"checking. If you’re concerned about privacy, use alternatives like <a "
+"rel=\"noreferrer\" …> for links to third-party sites."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/views/csrf.py:132
@@ -1502,8 +1656,8 @@ msgstr ""
 #: venv/lib/python3.8/site-packages/django/views/generic/dates.py:594
 #, python-format
 msgid ""
-"Future %(verbose_name_plural)s not available because %(class_name)s."
-"allow_future is False."
+"Future %(verbose_name_plural)s not available because "
+"%(class_name)s.allow_future is False."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/views/generic/dates.py:628
@@ -1559,10 +1713,10 @@ msgstr ""
 #: venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:222
 #, python-format
 msgid ""
-"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
-"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
-"\">DEBUG=True</a> is in your settings file and you have not configured any "
-"URLs."
+"You are seeing this page because <a "
+"href=\"https://docs.djangoproject.com/en/%(version)s/ref/settings/#debug\" "
+"target=\"_blank\" rel=\"noopener\">DEBUG=True</a> is in your settings file "
+"and you have not configured any URLs."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:230
@@ -1677,8 +1831,8 @@ msgstr ""
 #: venv/lib/python3.8/site-packages/django_celery_results/models.py:65
 #: venv/lib/python3.8/site-packages/django_celery_results/models.py:198
 msgid ""
-"The data returned by the task.  Use content_encoding and content_type fields "
-"to read."
+"The data returned by the task.  Use content_encoding and content_type fields"
+" to read."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django_celery_results/models.py:69

@@ -2,9 +2,9 @@
 {% load static %}
 {% load i18n %}
 
+{% block title %}{% trans "Download" %} # {% endblock %}
+
 {% block content %}
-
-
 <div class="container my-5">
 
   <h1 class="text-center my-2">{% trans "Preparing the Download" %}</h1>
@@ -43,12 +43,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function customSuccess(progressBarElement, progressBarMessageElement) {
     progressBarElement.innerHTML = (
-     '<a  class="btn btn-primary text-center btn-lg my-5"  href="{{ object.download_the_zip_file_url }}"> Download your coverletters <i class="bi bi-download"></i> </a>')
+     '<a  class="btn btn-primary text-center btn-lg my-5"  href="{{ object.download_the_zip_file_url }}"> {% trans "Download your coverletters" %} <i class="bi bi-download"></i> </a>')
     progressBarElement.style.backgroundColor = '#fff';
 }
 function customError(progressBarElement, progressBarMessageElement) {
     progressBarElement.innerHTML = (
-     '<p>there was an error, try again </p>'
+     '<p>{% trans "There was an error, try again" %} </p>'
     )
     progressBarElement.style.backgroundColor = '#fff';
 }

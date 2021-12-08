@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load coverletter_tags %}
 <tr>
   <td class="text-center">
@@ -9,7 +10,7 @@
   </td>
   {% for column in object.columns.all %}
       <td>
-          <input class="form-control border-0" type="text" placeholder="Write here..."
+          <input class="form-control border-0" type="text" placeholder="{% trans 'Write here...' %}"
           name="item_{{row.pk}}_{{column.pk}}" spellcheck="false"
           value="{% get_item_name row=row column=column %}"
           hx-post="{% url 'coverletters_hx_get_or_create_item_url' pk_column=column.pk pk_row=row.pk %}"
@@ -31,7 +32,7 @@
   </td>
   <td colspan="{{object.number_of_columns}}">
     <button  class="btn btn-outline-primary w-100" type="button"
-    data-bs-toggle="modal" data-bs-target="#templatesToDownloadModal">Download all</button>
+    data-bs-toggle="modal" data-bs-target="#templatesToDownloadModal">{% trans "Select template to download" %}</button>
   </td>
   {% if object.number_of_columns < object.max_of_columns %}<td class="text-center">...</td>{% endif %}
 </tr>

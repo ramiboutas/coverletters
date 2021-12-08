@@ -6,11 +6,12 @@ from django.urls import reverse, reverse_lazy
 from django.dispatch import receiver
 from django.contrib.sessions.models import Session
 from django.contrib.sessions.backends.db import SessionStore
+from django.utils.translation import gettext_lazy as _
 
 from texfiles.models import TexFile
 
-DEFAULT_HASHTAGS = ['#recluiter_name', '#company_name', '#street_and_number', '#zipcode_city', '#job_position']
-DEFAULT_NUMBER_OF_ROWS = 3
+DEFAULT_HASHTAGS = [_('#recluiter_name'), _('#company_name'), _('#street_and_number'), _('#zipcode_city'), _('#job_position')]
+DEFAULT_NUMBER_OF_ROWS = 10
 
 
 class CoverLetter(models.Model):
@@ -31,7 +32,7 @@ class CoverLetter(models.Model):
 
     text = models.TextField() #body text
 
-    max_of_rows = models.SmallIntegerField(default=12)
+    max_of_rows = models.SmallIntegerField(default=50)
     max_of_columns = models.SmallIntegerField(default=10)
     zip_file = models.FileField(upload_to='zipfiles/%Y/%m/%d', blank=True, null=True)
     created_on = models.DateField(auto_now=True)

@@ -10,6 +10,7 @@ from django.views.generic.list import ListView
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.sessions.models import Session
 from django.contrib.sessions.backends.db import SessionStore
+from django.utils.translation import gettext_lazy as _
 
 from utils.sessions import create_or_get_session_object
 from .models import CoverLetter, Hashtag, Item, Row, Column
@@ -150,7 +151,7 @@ def hx_add_table_row_view(request, pk):
         return render(request, 'partials/table_new_row.html', context)
     else:
         # message danger
-        return HttpResponse()
+        return HTTPResponseHXRedirect(redirect_to=object.get_update_url())
 
 # htmx - table - add column
 def hx_add_table_column_view(request, pk):
@@ -158,7 +159,7 @@ def hx_add_table_column_view(request, pk):
     object = get_object_or_404(CoverLetter, pk=pk, session=session_object)
     column = Column(coverletter=object)
     column.save()
-    hashtag = Hashtag(column=column, name='#new')
+    hashtag = Hashtag(column=column, name=_('#new'))
     hashtag.save()
     context = {'object': object}
     return render(request, 'partials/table.html', context)
@@ -208,5 +209,3 @@ def hx_get_or_create_item_view(request, pk_row, pk_column ):
     item.name=item_name
     item.save()
     return HttpResponse(status=200)
-    # context = {'row': row, 'column': column, 'item': item }
-    # return render(request, 'partials/table_item_form_input.html', context)

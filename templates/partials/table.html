@@ -45,7 +45,7 @@
             </td>
             {% for column in object.columns.all %}
                 <td>
-                    <input class="form-control border-0" type="text" placeholder="Write here..."
+                    <input class="form-control border-0" type="text" placeholder="{% trans 'Write here...' %}"
                     name="item_{{row.pk}}_{{column.pk}}" spellcheck="false"
                     value="{% get_item_name row=row column=column %}"
                     hx-post="{% url 'coverletters_hx_get_or_create_item_url' pk_column=column.pk pk_row=row.pk %}"

@@ -1,11 +1,12 @@
 <!-- Modal -->
+{% load i18n %}
 {% load coverletter_tags %}
 
 <div class="modal fade" id="templatesToDownloadModal" tabindex="-1" aria-labelledby="templatesToDownloadModalLabel" aria-hidden="true">
   <div class="modal-dialog  modal-fullscreen ">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="templatesToDownloadModalLabel">Select your template</h5>
+        <h5 class="modal-title" id="templatesToDownloadModalLabel">{% trans "Select your template" %}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -20,19 +21,16 @@
                       <img  class="card-img-top"  class="img-fluid" src="{{ file.image.url }}">
                     </label>
                     <p class="card-text text-center my-2">{{ file.name }}</p>
-                    <p class="card-text text-center"><small class="text-muted">Credits: <a href="{{ file.credits_url }}">{{ file.credits }}</a> </small></p>
+                    <p class="card-text text-center"><small class="text-muted">{% trans "Credits" %}: <a href="{{ file.credits_url }}">{{ file.credits }}</a> </small></p>
                   </div>
                 </div>
             {% endfor %}
-
           </div>
 
 
-
           <div class="modal-footer my-5 ">
-
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-primary">Proceed to download</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cancel" %}</button>
+            <button type="submit" class="btn btn-primary">{% trans "Proceed to download" %}</button>
           </div>
 
         </div>
