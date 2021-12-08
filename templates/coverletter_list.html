@@ -5,17 +5,17 @@
 
 
 {% for object in object_list %}
-  <div id="object" class="container my-5">
+  <div id="object_{{object.pk}}" class="container my-5">
       <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
         <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-          <h1 class="display-4 fw-bold lh-1">{{ object.candidate_name }}, {{ object.candidate_position }}</h1>
-          <p class="lead">{{ object.text|truncatewords:64 }}</p>
-
+          <h1 class="display-6 fw-bold lh-1">{% if object.candidate_name %}{{ object.candidate_name }}{% endif %}</h1>
+          <p class="lead">{{ object.text|truncatewords:100 }}</p>
+          <small><i>{{ object.pk }}</i></small>
         </div>
         <div class="col-lg-4 offset-lg-1 p-0">
             <a type="button" href="{{ object.get_update_url }}" class="btn btn-outline-primary btn-lg px-4 me-md-2 fw-bold">{% trans "Open" %}</a>
             <a type="button" class="btn btn-outline-danger btn-lg px-4" hx-post="{{ object.get_delete_url }}"
-            hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' hx-target="#object" hx-swap="outerHTML"
+            hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' hx-target="#object_{{object.pk}}" hx-swap="outerHTML"
             hx-confirm="{% trans 'Are you sure to delete this coverletter?' %}"  >{% trans "Delete" %}</a>
         </div>
       </div>
@@ -23,7 +23,7 @@
 {% empty %}
 <div class="container my-5">
   <div class="d-flex  justify-content-center">
-    <p class="fs-2 display-6"  >{% trans "You did not create any coverletter, " %} <a href="{% url 'coverletters_new' %}">{% trans "create one" %}</a></p>
+    <p class="fs-2 display-6"  >{% trans "You do not have any coverletters in this session, " %} <a href="{% url 'coverletters_new' %}">{% trans "create one" %}</a></p>
 
   </div>
 </div>

@@ -2,9 +2,31 @@
 <div class="container mt-5">
   <footer class="py-3 my-4">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><a href="{% url 'landing_page_url' %}" class="nav-link px-2 text-muted">{% trans "Home" %}</a></li>
-      <li class="nav-item"><a href="{% url 'privacy_policy_url' %}" class="nav-link px-2 text-muted">{% trans "Privacy Policy" %}</a></li>
-      <li class="nav-item"><a href="{% url 'terms_of_service_url' %}" class="nav-link px-2 text-muted">{% trans "Terms of Service" %}</a></li>
+      <li class="nav-item dropdown mx-5">
+        <form class="form-inline" action="{% url 'set_language' %}" method="post">
+          {% csrf_token %}
+          <input name="next" type="hidden" value="{{ redirect_to }}">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"><i class="bi bi-globe"></i></span>
+            </div>
+
+            <select onchange="this.form.submit()" name="language" class="form-control">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}selected{% endif %}>
+                    {{ language.name_local }} ({{ language.code }})
+                    </option>
+                {% endfor %}
+            </select>
+            </div>
+        </form>
+      </li>
+      <li class="nav-item mx-5"><a href="{% url 'landing_page_url' %}" class="nav-link px-2 text-muted">{% trans "Home" %}</a></li>
+      <li class="nav-item mx-5"><a href="{% url 'privacy_policy_url' %}" class="nav-link px-2 text-muted">{% trans "Privacy Policy" %}</a></li>
+      <li class="nav-item mx-5"><a href="{% url 'terms_of_service_url' %}" class="nav-link px-2 text-muted">{% trans "Terms of Service" %}</a></li>
     </ul>
     <p class="text-center text-muted">{{ request.get_host }}</p>
   </footer>

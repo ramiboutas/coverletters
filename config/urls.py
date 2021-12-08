@@ -20,10 +20,14 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('i18n/', include('django.conf.urls.i18n')),
     path('', include('pages.urls')),
     path('cl/', include('coverletters.urls')),
     path('templates/', include('texfiles.urls')),
     re_path(r'^celery-progress/', include('celery_progress.urls')),
+    re_path(r'^rosetta/', include('rosetta.urls')),
 ]
+
+
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
