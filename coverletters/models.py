@@ -7,6 +7,7 @@ from django.dispatch import receiver
 from django.contrib.sessions.models import Session
 from django.contrib.sessions.backends.db import SessionStore
 
+from texfiles.models import TexFile
 
 DEFAULT_HASHTAGS = ['#recluiter_name', '#company_name', '#street_and_number', '#zipcode_city', '#job_position']
 DEFAULT_NUMBER_OF_ROWS = 3
@@ -46,6 +47,9 @@ class CoverLetter(models.Model):
 
     def get_update_url(self):
         return reverse('coverletters_update', kwargs={'pk':self.pk})
+
+    def get_delete_url(self):
+        return reverse('coverletters_delete', kwargs={'pk':self.pk})
 
     def save_text_dynamic_url(self):
         return reverse('coverletters_hx_save_text_dynamic_url', kwargs={'pk':self.pk})

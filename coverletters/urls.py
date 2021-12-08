@@ -1,6 +1,8 @@
 from django.urls import path, include
 from .views import CoverLetterListView, CoverLetterCreateView,CoverLetterUpdateView
-from .views import hx_create_object_view, hx_save_text_dynamic_view
+from .views import hx_create_object_view
+from .views import hx_delete_object_view 
+from .views import hx_save_text_dynamic_view
 from .views import hx_save_company_text_dynamic_view
 from .views import hx_save_candidate_info_dynamic_view
 from .views import hx_save_applying_position_dynamic_view
@@ -16,7 +18,10 @@ urlpatterns = [
     path('my-coverletters/', CoverLetterListView.as_view(), name='coverletters_list'),
     path('new/', CoverLetterCreateView.as_view(), name='coverletters_new'),
     # path('detail/<int:pk>/', CoverLetterDetailView.as_view(), name='coverletters_detail'),
-    path('temporal-coverletter/<uuid:pk>/', CoverLetterUpdateView.as_view(), name='coverletters_update'),
+    path('coverletter/<uuid:pk>/', CoverLetterUpdateView.as_view(), name='coverletters_update'),
+
+    # htmx - object (coverletter) - delete
+    path('hx-delete-coverletter/<uuid:pk>/', hx_delete_object_view, name='coverletters_delete'),
 
     # htmx - object (coverletter) - create
     path('hx-text-create-object/', hx_create_object_view, name='coverletters_hx_create_object_url'),

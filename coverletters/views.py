@@ -56,6 +56,14 @@ class CoverLetterCreateView(CreateView):
         trigger_client_event(response, 'ObjectCreatedEvent', { },)
         return response
 
+# htmx - coverletter - delete object
+@require_POST
+def hx_delete_object_view(request, pk):
+    session_object, request = create_or_get_session_object(request)
+    object = get_object_or_404(CoverLetter, pk=pk, session=session_object)
+    object.delete()
+    return HttpResponse(status=200)
+
 
 # htmx - coverletter - create object
 @require_POST

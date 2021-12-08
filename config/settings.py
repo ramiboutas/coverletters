@@ -88,7 +88,7 @@ TEMPLATES = [
     },
 ]
 
-LATEX_INTERPRETER = 'pdflatex'
+# LATEX_INTERPRETER = 'pdflatex'
 # pdflatex, latex, xelatex, lualatex
 
 # LATEX_GRAPHICSPATH = os.path.join(BASE_DIR, 'media/uploads')

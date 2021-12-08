@@ -27,7 +27,7 @@ def download_the_zip_file_view(request, pk):
     # response = HttpResponse(object.zip_file, content_type='application/force-download')
     # response['Content-Disposition'] = 'attachment; filename="{}"'.format('All_coverletters.zip')
 
-    response = FileResponse(open(object.zip_file.path, 'rb'))
+    response = FileResponse.set_headers(open(object.zip_file.path, 'rb'))
     trigger_client_event(response, 'ZipFileDownloaded', { },)
     return response
 

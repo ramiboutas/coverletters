@@ -1,12 +1,12 @@
 {% load coverletter_tags %}
-
+{% load i18n %}
 <div    {% if object.number_of_columns < 7 %}   class="container" {% else %} class="container-fluid" {% endif %}>
 
   <table class="table table-borderless table-hover ">
 
     <thead class="table-light">
       <tr>
-        <th>Applications</th>
+        <th>{% trans "Applications" %}</th>
         {% for column in object.columns.all %}
           <th scope="col" >
             <div class="input-group">
@@ -16,7 +16,7 @@
               hx-swap="outerHTML" hx-target="this" spellcheck="false">
               <button type="button" class="btn btn-outline-secondary border-0" name="button"
                 hx-post="{{column.delete_url}}" hx-target="#table-related-stuff" hx-swap="innerHTML"
-                hx-confirm="Are you sure you wish to delete the column {{column.hashtag.name}}?">
+                hx-confirm="{% trans 'Are you sure you wish to delete this column?' %}" >
                 <i class="bi bi-trash"></i>
               </button>
             </div>
@@ -70,7 +70,7 @@
             </td>
             <td colspan="{{object.number_of_columns}}">
               <button  class="btn btn-outline-primary w-100" type="button"
-              data-bs-toggle="modal" data-bs-target="#templatesToDownloadModal">Download all</button>
+              data-bs-toggle="modal" data-bs-target="#templatesToDownloadModal">{% trans "Select template to download" %}</button>
             </td>
             {% if object.number_of_columns < object.max_of_columns %}<td class="text-center">...</td>{% endif %}
           </tr>
