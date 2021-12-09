@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-(*u^vfs46i44hee9c(9g!6doe&%66l7j($vyz0665b$-&bm#jb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['motivationletters.online', 'cartasdemotivacion.com']
+ALLOWED_HOSTS = ['207.154.205.99', 'motivationletters.online', 'cartasdemotivacion.com']
 
 # Application definition
 
