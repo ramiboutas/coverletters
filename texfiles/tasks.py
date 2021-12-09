@@ -70,7 +70,7 @@ def process_download(self, POST_dict, pk):
         try:
             filenames.append(f"{index+1}_Application_{row.items.all()[1].name}_{row.items.all()[2].name}/coverletter.pdf")
         except:
-            filenames.append(f"{index+1}_Application_xxxx_yyyy/coverletter.pdf")
+            filenames.append(f"{index+1}_Application/coverletter.pdf")
 
     for index, (row, filename) in enumerate(zip(rows, filenames)):
         text = POST_dict.get("text")

@@ -34,10 +34,12 @@
       }
     </style>
   </head>
-  <body >
+  <body>
       {% include "_header.html" %}
 
-      {% block content %}{% endblock %}
+      <main>
+        {% block content %}{% endblock %}
+      </main>
 
       {% include "_footer.html" %}
       {% block scripts %}
