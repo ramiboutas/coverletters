@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-(*u^vfs46i44hee9c(9g!6doe&%66l7j($vyz0665b$-&bm#jb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['207.154.205.99', 'motivationletters.online', 'cartasdemotivacion.com']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -185,3 +185,17 @@ from session_cleanup.settings import weekly_schedule
 CELERYBEAT_SCHEDULE = {
     'session_cleanup': weekly_schedule
 }
+
+PRODUCTION = True
+
+if PRODUCTION:
+    ALLOWED_HOSTS += ['207.154.205.99', 'motivationletters.online', 'cartasdemotivacion.com']
+
+    # https
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_HSTS_SECONDS = 31536000 # usual: 31536000 (1 year)
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_PRELOAD = True
