@@ -19,10 +19,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(*u^vfs46i44hee9c(9g!6doe&%66l7j($vyz0665b$-&bm#jb'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = str(os.environ.get('DEBUG')) == '1'
+PRODUCTION = str(os.environ.get('PRODUCTION')) == '1'
+
 
 ALLOWED_HOSTS = []
 
@@ -186,13 +186,12 @@ CELERYBEAT_SCHEDULE = {
     'session_cleanup': weekly_schedule
 }
 
-PRODUCTION = True
 
 if PRODUCTION:
     ALLOWED_HOSTS += ['95.90.195.163', 'anschreiben24.com', 'www.anschreiben24.com', 'cartasdemotivacion.com', 'www.cartasdemotivacion.com', 'www.coverletters.online', 'coverletters.online', 'www.motivationletters.online', 'motivationletters.online']
     # https
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    SECURE_HSTS_SECONDS = 3600 #31536000 # usual: 31536000 (1 year)
+    SECURE_HSTS_SECONDS = 31536000 #31536000 # usual: 31536000 (1 year)
     SECURE_HSTS_INCLUDE_SUBDOMAINS = False
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
