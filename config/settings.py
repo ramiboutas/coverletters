@@ -189,7 +189,7 @@ CELERYBEAT_SCHEDULE = {
 PRODUCTION = True
 
 if PRODUCTION:
-    ALLOWED_HOSTS += ['207.154.205.99', 'motivationletters.online', 'cartasdemotivacion.com']
+    ALLOWED_HOSTS += ['anschreiben24.com', 'www.anschreiben24.com', 'motivationletters.online', 'cartasdemotivacion.com']
 
     # https
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
