@@ -186,11 +186,10 @@ CELERYBEAT_SCHEDULE = {
     'session_cleanup': weekly_schedule
 }
 
-PRODUCTION = False
+PRODUCTION = True
 
 if PRODUCTION:
-    ALLOWED_HOSTS += ['127.0.0.1', 'anschreiben24.com', 'www.anschreiben24.com', 'motivationletters.online', 'cartasdemotivacion.com']
-
+    ALLOWED_HOSTS += ['95.90.195.163', 'anschreiben24.com', 'www.anschreiben24.com', 'motivationletters.online', 'cartasdemotivacion.com']
     # https
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SECURE_HSTS_SECONDS = 3600 #31536000 # usual: 31536000 (1 year)
