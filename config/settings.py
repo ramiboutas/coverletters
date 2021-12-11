@@ -161,7 +161,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
-
+STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles')) # for production
 
 # Media files
 MEDIA_ROOT = BASE_DIR.joinpath('media')
