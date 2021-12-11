@@ -159,9 +159,9 @@ LOCALE_PATHS = (
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / "static_dev",
 ]
-STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles')) # for production
+STATIC_ROOT = str(BASE_DIR.joinpath('static')) # for production
 
 # Media files
 MEDIA_ROOT = BASE_DIR.joinpath('media')
