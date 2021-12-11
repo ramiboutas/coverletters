@@ -103,6 +103,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# Migrating data from SQlite to PostgreSQL | Django
+# https://www.youtube.com/watch?v=BGEEzjGadYI
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
