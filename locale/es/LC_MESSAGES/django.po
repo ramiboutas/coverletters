@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-08 22:30+0100\n"
-"PO-Revision-Date: 2021-12-08 21:32+0000\n"
+"POT-Creation-Date: 2021-12-12 20:44+0000\n"
+"PO-Revision-Date: 2021-12-12 20:54+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,11 +19,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
-#: config/settings.py:149
+#: config/settings.py:151
 msgid "English"
 msgstr "Inglés"
 
-#: config/settings.py:150
+#: config/settings.py:152
 msgid "Spanish"
 msgstr "Español"
 
@@ -44,10 +44,9 @@ msgid "#zipcode_city"
 msgstr "#cp_ciudad"
 
 #: coverletters/models.py:13
-#, fuzzy
 #| msgid "Your job position"
 msgid "#job_position"
-msgstr "Tu puesto de trabajo"
+msgstr "#puesto_de_trabajo"
 
 #: coverletters/views.py:162
 msgid "#new"
@@ -58,7 +57,7 @@ msgid "Home"
 msgstr "Inicio"
 
 #: templates/_footer.html:28 templates/privacy_policy.html:4
-#: templates/privacy_policy.html:14
+#: templates/privacy_policy.html:13
 msgid "Privacy Policy"
 msgstr "Política de privacidad"
 
@@ -66,8 +65,7 @@ msgstr "Política de privacidad"
 msgid "Terms of Service"
 msgstr "Términos de Servicio"
 
-#: templates/_header.html:17
-#| msgid "My coverletters"
+#: templates/_header.html:17 templates/privacy_policy.html:29
 msgid "My cover letters"
 msgstr "Mis cartas de motivación"
 
@@ -76,7 +74,6 @@ msgid "Create new"
 msgstr "Crear"
 
 #: templates/coverletter_form.html:4
-#, fuzzy
 #| msgid "My coverletters"
 msgid "My coverletter"
 msgstr "Mis cartas de motivación"
@@ -118,6 +115,32 @@ msgstr "crea una"
 msgid "Multiple coverletters in minutes"
 msgstr "Múltiples cartas de motivación en minutos"
 
+#: templates/landing_page.html:13
+#| msgid "Multiple coverletters in minutes"
+msgid "Create multiple cover letters"
+msgstr "Crea multiples cartas de motivación "
+
+#: templates/landing_page.html:14
+msgid "This will save hours"
+msgstr "Esto te ahorrará horas"
+
+#: templates/landing_page.html:16
+#| msgid "Multiple coverletters in minutes"
+msgid "Download multiple cover letters in minutes"
+msgstr "Descarga multiples cartas de presentación en minutos"
+
+#: templates/landing_page.html:17
+msgid "No registration required"
+msgstr "Sin necesitad de registrarse"
+
+#: templates/landing_page.html:18
+msgid "Totally free"
+msgstr "Totalmente gratis"
+
+#: templates/landing_page.html:20
+msgid "Start now"
+msgstr "Empieza ahora"
+
 #: templates/partials/candidate_info.html:9
 msgid "Your full name"
 msgstr "Tu nombre completo"
@@ -157,23 +180,64 @@ msgstr ""
 "#cp_ciudad\n"
 
 #: templates/partials/create_object.html:24
-msgid "Motivation letter for the job application as #job_position"
-msgstr ""
+msgid "Cover letter. Application for #job_position"
+msgstr "Carta de motivación. Aplicación para #puesto_de_trabajo"
 
 #: templates/partials/create_object.html:27
 msgid ""
 "\n"
 "Dear #recluiter_name,\n"
 "\n"
-"As a highly skilled ________ with __ years of experience, I am writing to express my intereste in the #job_position at your company. My experience aligns well, as I have worked in __________ for several years with a prominent retailer, and I know I would make a valuable addition to your team.\"\n"
+"As a highly skilled (my job position) with X years of experience, I am writing to express my interest in the #job_position at your company. My experience aligns well, as I have worked in (mention field) for several years with a prominent retailer, and I know I would make a valuable addition to your team.\n"
+"\n"
+"After my long experience, I have advanced knowledge in (mention important tasks in your field here separated by commas). Moreover, while my previous position afforded me a well-rounded skill set which can are detailed in my curriculum Vitae and summarized below:\n"
+"\n"
+"- (Your best skill)\n"
+"- (Your second best skill)\n"
+"- (Your third best skill)\n"
+"- (Your fourth best skill)\n"
+"\n"
+"In addition to my experience, I have a solid educational foundation and a passion for furthering projects that build loyalty and, in turn, grow revenue for your organization. I would much appreciate the opportunity to contribute to your ongoing growth and continued success.\n"
+"\n"
+"(white or delete anything you may consider)\n"
+"\n"
+"Please review my attached application for additional details regarding my expertise and my achievements. Do not hesitate to contact me if you have any questions about my experience or any concern about myself. I would be glad to meet you and discuss this position in detail.\n"
+"\n"
+"Thank you for your consideration.\n"
+"\n"
+"\n"
+"\n"
+"Sincerely,\n"
+"(Your name)\n"
 "\n"
 msgstr ""
+"\n"
+"Estimado #reclutador_nombre,\n"
+"\n"
+"Como persona altamente cualificada (tu puesto de trabajo) con X años de experiencia, le escribo para expresar mi interés en el #puesto_de_trabajo de su empresa. Mi experiencia se ajusta bien, ya que he trabajado en (mencionar campo) durante varios años con un destacado minorista, y sé que sería una valiosa adición a su equipo.\n"
+"\n"
+"Tras mi larga experiencia, tengo conocimientos avanzados en (mencione aquí las tareas importantes de su campo separadas por comas). Además, si bien mi anterior puesto me proporcionó un conjunto de habilidades muy completo que pueden detallarse en mi currículum vitae y resumirse a continuación:\n"
+"\n"
+"- (Tu  mejor habilidad)\n"
+"- (Tu segunda mejor habilidad)\n"
+"- (Tu tercera mejor habilidad)\n"
+"- (Tu cuarta mejor habilidad)\n"
+"\n"
+"Además de mi experiencia, tengo una sólida base educativa y una pasión por impulsar proyectos que fidelicen y, a su vez, hagan crecer los ingresos de su organización. Apreciaría mucho la oportunidad de contribuir a su crecimiento y éxito continuos.\n"
+"\n"
+"(añade o borra lo que considere)\n"
+"\n"
+"Por favor, revise mi solicitud adjunta para obtener detalles adicionales sobre mi experiencia y mis logros. No dude en ponerse en contacto conmigo si tiene alguna pregunta sobre mi experiencia o alguna inquietud sobre mi persona. Estaré encantado de reunirme con usted y discutir este puesto en detalle.\n"
+"\n"
+"Gracias por su consideración.\n"
+"\n"
+"Saludos cordiales,\n"
+"(Tu nombre)\n"
 
 #: templates/partials/modal_select_templates.html:9
-#, fuzzy
 #| msgid "Select template to download"
 msgid "Select your template"
-msgstr "Seleccionar plantilla para la descarga"
+msgstr "Seleccionar tu plantilla"
 
 #: templates/partials/modal_select_templates.html:24
 msgid "Credits"
@@ -184,10 +248,9 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: templates/partials/modal_select_templates.html:33
-#, fuzzy
 #| msgid "Select template to download"
 msgid "Proceed to download"
-msgstr "Seleccionar plantilla para la descarga"
+msgstr "Proceder para la descarga"
 
 #: templates/partials/table.html:9
 msgid "Applications"
@@ -205,17 +268,61 @@ msgstr "Escribe aquí..."
 msgid "Select template to download"
 msgstr "Seleccionar plantilla para la descarga"
 
-#: templates/privacy_policy.html:15
+#: templates/privacy_policy.html:14
 msgid "Last update:"
 msgstr "Última actualización:"
 
-#: templates/privacy_policy.html:15
+#: templates/privacy_policy.html:14
 msgid "12th December 2021"
 msgstr "12 de diciembre del 2021"
 
-#: templates/privacy_policy.html:16
-msgid "The Site"
-msgstr "El Sitio Web"
+#: templates/privacy_policy.html:17
+#| msgid "Terms of Service"
+msgid "The Site and Service"
+msgstr "El  Sitio Web y Servicio"
+
+#: templates/privacy_policy.html:18
+msgid ""
+"(\"we\", \"us\", or \"our\") informs you of its policies regarding the "
+"collection, use and disclosure of Personal Information we may receive from "
+"users or visitors of the Site. Additionally, we refer in this page "
+"\"Service\" as the service for generating automated cover letters."
+msgstr ""
+
+#: templates/privacy_policy.html:20
+msgid ""
+"We use your Personal Information only for providing and improving the Site. "
+"By using the Site, you agree to the collection and use of information in "
+"accordance with this policy."
+msgstr ""
+
+#: templates/privacy_policy.html:22
+msgid "Information Collection and Use"
+msgstr ""
+
+#: templates/privacy_policy.html:23
+msgid ""
+"While using our Site, you may have to provide us with certain personally "
+"identifiable information that can be used to contact you if you get in touch"
+" with us and it can also be used to generate your cover letters if you want "
+"to use our Service. Personally identifiable information may include, but is "
+"not limited to your name and email address (\"Personal Information\")."
+msgstr ""
+
+#: templates/privacy_policy.html:25
+msgid ""
+"All the information that you may introduce in our web forms in our Service "
+"is secured and it is attached to your session. This means that your "
+"information can be just accessed from your internet browser you started the "
+"Service and it will not be public."
+msgstr ""
+
+#: templates/privacy_policy.html:27
+msgid ""
+"This information will automatically be deleted from our Site in 7 days and "
+"it will not be longer accessible. If you wish to delete your information "
+"earlier or change it, visit the following link:"
+msgstr ""
 
 #: templates/processing_download.html:5
 msgid "Download"
@@ -234,10 +341,9 @@ msgid "Buy me a coffee"
 msgstr "Invítame a un café"
 
 #: templates/processing_download.html:46
-#, fuzzy
 #| msgid "My coverletters"
 msgid "Download your coverletters"
-msgstr "Mis cartas de motivación"
+msgstr "Descarga tus cartas de motivación"
 
 #: templates/processing_download.html:51
 msgid "There was an error, try again"
@@ -591,66 +697,65 @@ msgid "Enter a valid value."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/core/validators.py:93
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:675
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:664
 msgid "Enter a valid URL."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/core/validators.py:150
+#: venv/lib/python3.8/site-packages/django/core/validators.py:147
 msgid "Enter a valid integer."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/core/validators.py:161
+#: venv/lib/python3.8/site-packages/django/core/validators.py:158
 msgid "Enter a valid email address."
 msgstr ""
 
 #. Translators: "letters" means latin letters: a-z and A-Z.
-#: venv/lib/python3.8/site-packages/django/core/validators.py:262
+#: venv/lib/python3.8/site-packages/django/core/validators.py:259
 msgid ""
 "Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/core/validators.py:269
+#: venv/lib/python3.8/site-packages/django/core/validators.py:266
 msgid ""
 "Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or"
 " hyphens."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/core/validators.py:278
-#: venv/lib/python3.8/site-packages/django/core/validators.py:288
-#: venv/lib/python3.8/site-packages/django/core/validators.py:311
+#: venv/lib/python3.8/site-packages/django/core/validators.py:275
+#: venv/lib/python3.8/site-packages/django/core/validators.py:295
 msgid "Enter a valid IPv4 address."
 msgstr ""
 
+#: venv/lib/python3.8/site-packages/django/core/validators.py:280
 #: venv/lib/python3.8/site-packages/django/core/validators.py:296
-#: venv/lib/python3.8/site-packages/django/core/validators.py:312
 msgid "Enter a valid IPv6 address."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/core/validators.py:306
-#: venv/lib/python3.8/site-packages/django/core/validators.py:310
+#: venv/lib/python3.8/site-packages/django/core/validators.py:290
+#: venv/lib/python3.8/site-packages/django/core/validators.py:294
 msgid "Enter a valid IPv4 or IPv6 address."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/core/validators.py:340
+#: venv/lib/python3.8/site-packages/django/core/validators.py:324
 msgid "Enter only digits separated by commas."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/core/validators.py:346
+#: venv/lib/python3.8/site-packages/django/core/validators.py:330
 #, python-format
 msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/core/validators.py:379
+#: venv/lib/python3.8/site-packages/django/core/validators.py:363
 #, python-format
 msgid "Ensure this value is less than or equal to %(limit_value)s."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/core/validators.py:388
+#: venv/lib/python3.8/site-packages/django/core/validators.py:372
 #, python-format
 msgid "Ensure this value is greater than or equal to %(limit_value)s."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/core/validators.py:398
+#: venv/lib/python3.8/site-packages/django/core/validators.py:382
 #, python-format
 msgid ""
 "Ensure this value has at least %(limit_value)d character (it has "
@@ -661,7 +766,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.8/site-packages/django/core/validators.py:413
+#: venv/lib/python3.8/site-packages/django/core/validators.py:397
 #, python-format
 msgid ""
 "Ensure this value has at most %(limit_value)d character (it has "
@@ -672,27 +777,27 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.8/site-packages/django/core/validators.py:432
+#: venv/lib/python3.8/site-packages/django/core/validators.py:416
 #: venv/lib/python3.8/site-packages/django/forms/fields.py:292
 #: venv/lib/python3.8/site-packages/django/forms/fields.py:327
 msgid "Enter a number."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/core/validators.py:434
+#: venv/lib/python3.8/site-packages/django/core/validators.py:418
 #, python-format
 msgid "Ensure that there are no more than %(max)s digit in total."
 msgid_plural "Ensure that there are no more than %(max)s digits in total."
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.8/site-packages/django/core/validators.py:439
+#: venv/lib/python3.8/site-packages/django/core/validators.py:423
 #, python-format
 msgid "Ensure that there are no more than %(max)s decimal place."
 msgid_plural "Ensure that there are no more than %(max)s decimal places."
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.8/site-packages/django/core/validators.py:444
+#: venv/lib/python3.8/site-packages/django/core/validators.py:428
 #, python-format
 msgid ""
 "Ensure that there are no more than %(max)s digit before the decimal point."
@@ -701,14 +806,14 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.8/site-packages/django/core/validators.py:506
+#: venv/lib/python3.8/site-packages/django/core/validators.py:490
 #, python-format
 msgid ""
 "File extension “%(extension)s” is not allowed. Allowed extensions are: "
 "%(allowed_extensions)s."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/core/validators.py:559
+#: venv/lib/python3.8/site-packages/django/core/validators.py:543
 msgid "Null characters are not allowed."
 msgstr ""
 
@@ -941,11 +1046,11 @@ msgstr ""
 msgid "Universally unique identifier"
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/db/models/fields/files.py:226
+#: venv/lib/python3.8/site-packages/django/db/models/fields/files.py:225
 msgid "File"
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/db/models/fields/files.py:375
+#: venv/lib/python3.8/site-packages/django/db/models/fields/files.py:373
 msgid "Image"
 msgstr ""
 
@@ -999,42 +1104,42 @@ msgstr ""
 msgid "Enter a whole number."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:402
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:1143
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:391
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:1132
 msgid "Enter a valid date."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:426
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:1144
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:415
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:1133
 msgid "Enter a valid time."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:454
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:443
 msgid "Enter a valid date/time."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:488
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:477
 msgid "Enter a valid duration."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:489
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:478
 #, python-brace-format
 msgid "The number of days must be between {min_days} and {max_days}."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:549
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:538
 msgid "No file was submitted. Check the encoding type on the form."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:550
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:539
 msgid "No file was submitted."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:551
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:540
 msgid "The submitted file is empty."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:553
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:542
 #, python-format
 msgid ""
 "Ensure this filename has at most %(max)d character (it has %(length)d)."
@@ -1043,38 +1148,38 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:556
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:545
 msgid "Please either submit a file or check the clear checkbox, not both."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:617
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:606
 msgid ""
 "Upload a valid image. The file you uploaded was either not an image or a "
 "corrupted image."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:779
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:869
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:768
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:858
 #: venv/lib/python3.8/site-packages/django/forms/models.py:1309
 #, python-format
 msgid "Select a valid choice. %(value)s is not one of the available choices."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:870
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:985
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:859
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:974
 #: venv/lib/python3.8/site-packages/django/forms/models.py:1308
 msgid "Enter a list of values."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:986
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:975
 msgid "Enter a complete value."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:1202
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:1191
 msgid "Enter a valid UUID."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/forms/fields.py:1232
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:1221
 msgid "Enter a valid JSON."
 msgstr ""
 
@@ -1518,18 +1623,18 @@ msgstr ""
 msgid "This is not a valid IPv6 address."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/utils/text.py:71
+#: venv/lib/python3.8/site-packages/django/utils/text.py:70
 #, python-format
 msgctxt "String to return when truncating text"
 msgid "%(truncated_text)s…"
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/django/utils/text.py:240
+#: venv/lib/python3.8/site-packages/django/utils/text.py:236
 msgid "or"
 msgstr ""
 
 #. Translators: This string is used as a separator between list elements
-#: venv/lib/python3.8/site-packages/django/utils/text.py:259
+#: venv/lib/python3.8/site-packages/django/utils/text.py:255
 #: venv/lib/python3.8/site-packages/django/utils/timesince.py:94
 msgid ", "
 msgstr ""
@@ -1837,10 +1942,9 @@ msgstr ""
 
 #: venv/lib/python3.8/site-packages/django_celery_results/models.py:69
 #: venv/lib/python3.8/site-packages/django_celery_results/models.py:177
-#, fuzzy
 #| msgid "Create new"
 msgid "Created DateTime"
-msgstr "Crear"
+msgstr "Creado "
 
 #: venv/lib/python3.8/site-packages/django_celery_results/models.py:70
 msgid "Datetime field when the task result was created in UTC"
@@ -1937,6 +2041,5 @@ msgstr ""
 msgid "Unable to connect to qpid with SASL mechanism %s"
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/shortuuid/django_fields.py:8
-msgid "A short UUID field."
-msgstr ""
+#~ msgid "The Site"
+#~ msgstr "El Sitio Web"

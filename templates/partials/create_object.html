@@ -21,13 +21,33 @@ hx-swap="none">
 
 <input type="text" name="location_date" value="{% now 'j. F Y' %}" maxlength="50">
 
-<input name="applying_position"  value="{% trans 'Motivation letter for the job application as #job_position' %}">
+<input name="applying_position"  value="{% trans 'Cover letter. Application for #job_position' %}">
 
 <textarea  name="text">
 {% blocktrans %}
 Dear #recluiter_name,
 
-As a highly skilled ________ with __ years of experience, I am writing to express my intereste in the #job_position at your company. My experience aligns well, as I have worked in __________ for several years with a prominent retailer, and I know I would make a valuable addition to your team."
+As a highly skilled (my job position) with X years of experience, I am writing to express my interest in the #job_position at your company. My experience aligns well, as I have worked in (mention field) for several years with a prominent retailer, and I know I would make a valuable addition to your team.
+
+After my long experience, I have advanced knowledge in (mention important tasks in your field here separated by commas). Moreover, while my previous position afforded me a well-rounded skill set which can are detailed in my curriculum Vitae and summarized below:
+
+- (Your best skill)
+- (Your second best skill)
+- (Your third best skill)
+- (Your fourth best skill)
+
+In addition to my experience, I have a solid educational foundation and a passion for furthering projects that build loyalty and, in turn, grow revenue for your organization. I would much appreciate the opportunity to contribute to your ongoing growth and continued success.
+
+(white or delete anything you may consider)
+
+Please review my attached application for additional details regarding my expertise and my achievements. Do not hesitate to contact me if you have any questions about my experience or any concern about myself. I would be glad to meet you and discuss this position in detail.
+
+Thank you for your consideration.
+
+
+
+Sincerely,
+(Your name)
 
 {% endblocktrans %}
 
