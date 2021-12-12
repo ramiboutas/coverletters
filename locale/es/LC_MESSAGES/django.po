@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-12 20:44+0000\n"
-"PO-Revision-Date: 2021-12-12 20:54+0000\n"
+"PO-Revision-Date: 2021-12-12 21:02+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -127,7 +127,7 @@ msgstr "Esto te ahorrará horas"
 #: templates/landing_page.html:16
 #| msgid "Multiple coverletters in minutes"
 msgid "Download multiple cover letters in minutes"
-msgstr "Descarga multiples cartas de presentación en minutos"
+msgstr "Descarga tus cartas de motivación en minutos"
 
 #: templates/landing_page.html:17
 msgid "No registration required"
