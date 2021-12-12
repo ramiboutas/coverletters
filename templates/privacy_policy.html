@@ -9,13 +9,25 @@
 
 <a href="https://stackabuse.com/privacy-policy/">https://stackabuse.com/privacy-policy/</a>
 
-<div class="container">
+<div class="container ">
+  <h1 class="display-4 text-muted text-center my-4" >{% trans "Privacy Policy" %}</h1>
+  <p class="display-6 fs-6 text-center my-4" >{% trans "Last update:" %} {% trans "12th December 2021" %}</p>
 
-<h1 class="display-4 text-muted text-center my-4" >{% trans "Privacy Policy" %}</h1>
-<p class="display-6 fs-6 text-center my-4" >{% trans "Last update:" %} {% trans "12th December 2021" %}</p>
-<h2 class="display-6 fs-3 my-4">{% trans "The Site" %}</h2>
-<p>{% trans "string to translate" %}</p>
-<p> <a href="#">{{ request.get_host }}</a> {% trans "informs you of its policies regarding the collection, use and disclosure of Personal Information we receive from users of the Site." %}</p>
+
+<h2 class="display-6 fs-3 my-4">{% trans "The Site and Service" %}</h2>
+<p> <a href="#">{{ request.get_host }}</a> {% trans '("we", "us", or "our") informs you of its policies regarding the collection, use and disclosure of Personal Information we may receive from users or visitors of the Site. Additionally, we refer in this page "Service" as the service for generating automated cover letters.' %}</p>
+
+<p> {% trans 'We use your Personal Information only for providing and improving the Site. By using the Site, you agree to the collection and use of information in accordance with this policy.' %} </p>
+
+<h2 class="display-6 fs-3 my-4">{% trans "Information Collection and Use" %}</h2>
+<p> {% trans 'While using our Site, you may have to provide us with certain personally identifiable information that can be used to contact you if you get in touch with us and it can also be used to generate your cover letters if you want to use our Service. Personally identifiable information may include, but is not limited to your name and email address ("Personal Information").' %} </p>
+
+<p> {% trans 'All the information that you may introduce in our web forms in our Service is secured and it is attached to your session. This means that your information can be just accessed from your internet browser you started the Service and it will not be public.' %} </p>
+
+<p>{% trans 'This information will automatically be deleted from our Site in 7 days and it will not be longer accessible. If you wish to delete your information earlier or change it, visit the following link:' %}</p>
+<ul>
+  <li> <a href="{% url 'coverletters_list' %}"> {% trans "My cover letters" %} ({{request.get_host}}{% url 'coverletters_list' %})</a>  </li>
+</ul>
 
 </div>
 
