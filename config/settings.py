@@ -76,7 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'texfiles.context_processors.files',
+                'utils.context_processors.coverletters',
             ],
         },
     },
@@ -188,6 +188,12 @@ from session_cleanup.settings import weekly_schedule
 CELERYBEAT_SCHEDULE = {
     'session_cleanup': weekly_schedule
 }
+
+
+SITE_NAME = _('Cover letters')
+META_KEYWORDS = _('coverletters, coverletter, motivationletters, motivationletter, career, job search, career shifting')
+META_DESCRIPTION = _('In this site you can create up to 50 personalized cover letters within 10 Minutes without needing to register and for free')
+
 
 
 if PRODUCTION or not DEBUG:
