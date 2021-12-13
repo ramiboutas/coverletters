@@ -105,12 +105,35 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Migrating data from SQlite to PostgreSQL | Django
 # https://www.youtube.com/watch?v=BGEEzjGadYI
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+USE_SQLITE3_DB = str(os.environ.get('USE_SQLITE3_DB')) == '1'
+
+POSTGRES_DB = os.environ.get('POSTGRES_DB')
+POSTGRES_PASSWORD = os.environ.get('POSTGRES_PASSWORD')
+POSTGRES_USER = os.environ.get('POSTGRES_USER')
+POSTGRES_HOST = os.environ.get('POSTGRES_HOST')
+POSTGRES_PORT = os.environ.get('POSTGRES_PORT')
+POSTGRES_TESTS_DB = os.environ.get('POSTGRES_TESTS_DB')
+
+if USE_SQLITE3_DB:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',}}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': POSTGRES_DB,
+            'USER': POSTGRES_USER,
+            'PASSWORD': POSTGRES_PASSWORD,
+            'HOST': POSTGRES_HOST,
+            'PORT': POSTGRES_PORT,
+            'TEST': {
+             'NAME': 'test_db',
+             },
+        }
     }
-}
 
 
 # Password validation
