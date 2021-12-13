@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-12 20:44+0000\n"
-"PO-Revision-Date: 2021-12-12 21:02+0000\n"
+"POT-Creation-Date: 2021-12-13 21:06+0000\n"
+"PO-Revision-Date: 2021-12-13 21:07+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -26,6 +26,27 @@ msgstr "Inglés"
 #: config/settings.py:152
 msgid "Spanish"
 msgstr "Español"
+
+#: config/settings.py:193
+#| msgid "My cover letters"
+msgid "Cover letters"
+msgstr "Cartas de motivación"
+
+#: config/settings.py:194
+msgid ""
+"coverletters, coverletter, motivationletters, motivationletter, career, job "
+"search, career shifting"
+msgstr ""
+"cartas de presentación, cartas de motivación, carta de motivación, carrera, "
+"búsqueda de empleo, cambio de carrera"
+
+#: config/settings.py:195
+msgid ""
+"In this site you can create up to 50 personalized cover letters within 10 "
+"Minutes without needing to register and for free"
+msgstr ""
+"En este sitio puedes crear hasta 50 cartas de presentación personalizadas en"
+" 10 minutos sin necesidad de registrarte y de forma gratuita"
 
 #: coverletters/models.py:13
 msgid "#recluiter_name"
@@ -44,7 +65,6 @@ msgid "#zipcode_city"
 msgstr "#cp_ciudad"
 
 #: coverletters/models.py:13
-#| msgid "Your job position"
 msgid "#job_position"
 msgstr "#puesto_de_trabajo"
 
@@ -74,7 +94,6 @@ msgid "Create new"
 msgstr "Crear"
 
 #: templates/coverletter_form.html:4
-#| msgid "My coverletters"
 msgid "My coverletter"
 msgstr "Mis cartas de motivación"
 
@@ -116,16 +135,15 @@ msgid "Multiple coverletters in minutes"
 msgstr "Múltiples cartas de motivación en minutos"
 
 #: templates/landing_page.html:13
-#| msgid "Multiple coverletters in minutes"
 msgid "Create multiple cover letters"
 msgstr "Crea multiples cartas de motivación "
 
 #: templates/landing_page.html:14
-msgid "This will save hours"
+#| msgid "This will save hours"
+msgid "This will save you hours"
 msgstr "Esto te ahorrará horas"
 
 #: templates/landing_page.html:16
-#| msgid "Multiple coverletters in minutes"
 msgid "Download multiple cover letters in minutes"
 msgstr "Descarga tus cartas de motivación en minutos"
 
@@ -235,7 +253,6 @@ msgstr ""
 "(Tu nombre)\n"
 
 #: templates/partials/modal_select_templates.html:9
-#| msgid "Select template to download"
 msgid "Select your template"
 msgstr "Seleccionar tu plantilla"
 
@@ -248,7 +265,6 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: templates/partials/modal_select_templates.html:33
-#| msgid "Select template to download"
 msgid "Proceed to download"
 msgstr "Proceder para la descarga"
 
@@ -277,7 +293,6 @@ msgid "12th December 2021"
 msgstr "12 de diciembre del 2021"
 
 #: templates/privacy_policy.html:17
-#| msgid "Terms of Service"
 msgid "The Site and Service"
 msgstr "El  Sitio Web y Servicio"
 
@@ -341,7 +356,6 @@ msgid "Buy me a coffee"
 msgstr "Invítame a un café"
 
 #: templates/processing_download.html:46
-#| msgid "My coverletters"
 msgid "Download your coverletters"
 msgstr "Descarga tus cartas de motivación"
 
@@ -1942,7 +1956,6 @@ msgstr ""
 
 #: venv/lib/python3.8/site-packages/django_celery_results/models.py:69
 #: venv/lib/python3.8/site-packages/django_celery_results/models.py:177
-#| msgid "Create new"
 msgid "Created DateTime"
 msgstr "Creado "
 
