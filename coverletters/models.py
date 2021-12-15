@@ -1,7 +1,8 @@
 import uuid
+import os
 
 from django.db import models
-from django.db.models.signals import post_save, pre_delete
+from django.db.models.signals import post_save, post_delete
 from django.urls import reverse, reverse_lazy
 from django.dispatch import receiver
 from django.contrib.sessions.models import Session
@@ -9,6 +10,7 @@ from django.contrib.sessions.backends.db import SessionStore
 from django.utils.translation import gettext_lazy as _
 
 from texfiles.models import TexFile
+from utils.files import delete_path_file
 
 DEFAULT_HASHTAGS = [_('#recluiter_name'), _('#company_name'), _('#street_and_number'), _('#zipcode_city'), _('#job_position')]
 DEFAULT_NUMBER_OF_ROWS = 10
@@ -141,3 +143,9 @@ def create_default_columns_and_hashtags(sender, instance, created, **kwargs):
             column.save()
             objects.append(Hashtag(column=column, name=hashtag))
         Hashtag.objects.bulk_create(objects)
+
+
+@receiver(post_delete, sender=CoverLetter)
+def delete_zip_file(sender, instance, **kwargs):
+    if instance.zip_file:
+        delete_path_file(instance.zip_file.path)

@@ -21,7 +21,16 @@
                       <img  class="card-img-top"  class="img-fluid" src="{{ file.image.url }}">
                     </label>
                     <p class="card-text text-center my-2">{{ file.name }}</p>
-                    <p class="card-text text-center"><small class="text-muted">{% trans "Credits" %}: <a href="{{ file.credits_url }}">{{ file.credits }}</a> </small></p>
+                    <ul class="list-group  border-0">
+                      <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                        {% trans "Credits" %}
+                        <span class=""><a href="{{ file.credits_url }}">{{ file.credits }}</a></span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                        {% trans "Downloads" %}
+                        <span class="badge bg-primary rounded-pill">{{ file.downloads }}</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
             {% endfor %}

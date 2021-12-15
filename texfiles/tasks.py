@@ -50,7 +50,7 @@ def process_download(self, POST_dict, pk):
     texfile_obj = TexFile.objects.get(pk=texfile_pk)
     settings.LATEX_INTERPRETER = texfile_obj.interpreter
     template_name = get_tex_template_name(texfile_obj)
-
+    
 
     # getting the data that does not changes
     candidate_name = POST_dict.get("candidate_name").strip()
