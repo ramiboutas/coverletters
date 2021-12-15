@@ -19,6 +19,7 @@ DEFAULT_NUMBER_OF_ROWS = 10
 class CoverLetter(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     session = models.ForeignKey(Session, related_name='coverletters', on_delete=models.CASCADE)
+    tex_file = models.OneToOneField(TexFile, blank=True, null=True, on_delete=models.SET_NULL)
 
     candidate_name = models.CharField(max_length=50, blank=True, null=True)
     candidate_position = models.CharField(max_length=50, blank=True, null=True)
@@ -38,6 +39,9 @@ class CoverLetter(models.Model):
     max_of_columns = models.SmallIntegerField(default=10)
     zip_file = models.FileField(upload_to='zipfiles/%Y/%m/%d', blank=True, null=True)
     created_on = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.pk} {self.candidate_name}'
 
     def number_of_columns(self):
         return self.columns.count()

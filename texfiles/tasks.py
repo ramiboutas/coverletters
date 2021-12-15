@@ -50,7 +50,7 @@ def process_download(self, POST_dict, pk):
     texfile_obj = TexFile.objects.get(pk=texfile_pk)
     settings.LATEX_INTERPRETER = texfile_obj.interpreter
     template_name = get_tex_template_name(texfile_obj)
-    
+
 
     # getting the data that does not changes
     candidate_name = POST_dict.get("candidate_name").strip()
@@ -95,5 +95,6 @@ def process_download(self, POST_dict, pk):
     full_zip_in_memory = generate_zip(files)
     zip_file = ContentFile(full_zip_in_memory, f'{object.pk}.zip')
     object.zip_file = zip_file
+    object.tex_file = texfile_obj
     object.save()
     return "100%"

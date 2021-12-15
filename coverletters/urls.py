@@ -1,7 +1,8 @@
 from django.urls import path, include
+
 from .views import CoverLetterListView, CoverLetterCreateView,CoverLetterUpdateView
 from .views import hx_create_object_view
-from .views import hx_delete_object_view 
+from .views import hx_delete_object_view
 from .views import hx_save_text_dynamic_view
 from .views import hx_save_company_text_dynamic_view
 from .views import hx_save_candidate_info_dynamic_view
