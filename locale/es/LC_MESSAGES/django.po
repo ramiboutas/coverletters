@@ -3,14 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: config/urls.py:34
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-15 15:04+0000\n"
-"PO-Revision-Date: 2021-12-15 14:55+0000\n"
+"POT-Creation-Date: 2021-12-15 21:49+0000\n"
+"PO-Revision-Date: 2021-12-15 21:51+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -20,19 +19,19 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
-#: config/settings.py:174
+#: config/settings.py:175
 msgid "English"
 msgstr "Inglés"
 
-#: config/settings.py:175
+#: config/settings.py:176
 msgid "Spanish"
 msgstr "Español"
 
-#: config/settings.py:216
+#: config/settings.py:217
 msgid "Cover letters"
 msgstr "Cartas de motivación"
 
-#: config/settings.py:217
+#: config/settings.py:218
 msgid ""
 "coverletters, coverletter, motivationletters, motivationletter, career, job "
 "search, career shifting"
@@ -40,35 +39,28 @@ msgstr ""
 "cartas de presentación, cartas de motivación, carta de motivación, carrera, "
 "búsqueda de empleo, cambio de carrera"
 
-#: config/settings.py:218
+#: config/settings.py:219
 msgid ""
 "In this site you can create up to 50 personalized cover letters within 10 "
 "Minutes without needing to register and for free"
 msgstr ""
-"En este sitio puedes crear hasta 50 cartas de presentación personalizadas en "
-"10 minutos sin necesidad de registrarte y de forma gratuita"
-
-#: config/urls.py:35
-#, fuzzy
-#| msgid "coverletter"
-msgid "coverletters/"
-msgstr "carta-de-motivacion"
-
-#: config/urls.py:36
-msgid "templates/"
-msgstr ""
+"En este sitio puedes crear hasta 50 cartas de presentación personalizadas en"
+" 10 minutos sin necesidad de registrarte y de forma gratuita"
 
 #: coverletters/models.py:15
-msgid "#recluiter_name"
-msgstr "#reclutador_nombre"
+#| msgid "#recluiter_name"
+msgid "#recluiter"
+msgstr "#reclutador"
 
 #: coverletters/models.py:15
-msgid "#company_name"
-msgstr "#empresa_nombre"
+#| msgid "#company_name"
+msgid "#company"
+msgstr "#empresa"
 
 #: coverletters/models.py:15
-msgid "#street_and_number"
-msgstr "#calle_y_numero"
+#| msgid "#street_and_number"
+msgid "#street_number"
+msgstr "#calle_numero"
 
 #: coverletters/models.py:15
 msgid "#zipcode_city"
@@ -76,15 +68,7 @@ msgstr "#cp_ciudad"
 
 #: coverletters/models.py:15
 msgid "#job_position"
-msgstr "#puesto_de_trabajo"
-
-#: coverletters/urls.py:20
-msgid "my-coverletters/"
-msgstr "mis-cartas-de-motivacion/"
-
-#: coverletters/urls.py:23
-msgid "coverletter"
-msgstr "carta-de-motivacion"
+msgstr "#puesto_trabajo"
 
 #: coverletters/views.py:162
 msgid "#new"
@@ -103,11 +87,11 @@ msgstr "Política de privacidad"
 msgid "Terms of Service"
 msgstr "Términos de Servicio"
 
-#: templates/_header.html:17 templates/privacy_policy.html:29
+#: templates/_header.html:38 templates/privacy_policy.html:29
 msgid "My cover letters"
 msgstr "Mis cartas de motivación"
 
-#: templates/_header.html:18
+#: templates/_header.html:39
 msgid "Create new"
 msgstr "Crear"
 
@@ -201,17 +185,23 @@ msgid "Your website (optional)"
 msgstr "Tu sitio web (opcional)"
 
 #: templates/partials/create_object.html:14
+#| msgid ""
+#| "\n"
+#| "#recluiter_name\n"
+#| "#company_name\n"
+#| "#street_and_number\n"
+#| "#zipcode_city\n"
 msgid ""
 "\n"
-"#recluiter_name\n"
-"#company_name\n"
-"#street_and_number\n"
+"#recluiter\n"
+"#company\n"
+"#street_number\n"
 "#zipcode_city\n"
 msgstr ""
 "\n"
-"#reclutador_nombre\n"
-"#empresa_nombre\n"
-"#calle_y_numero\n"
+"#reclutador\n"
+"#empresa\n"
+"#calle_numero\n"
 "#cp_ciudad\n"
 
 #: templates/partials/create_object.html:24
@@ -219,37 +209,50 @@ msgid "Cover letter. Application for #job_position"
 msgstr "Carta de motivación. Aplicación para #puesto_de_trabajo"
 
 #: templates/partials/create_object.html:27
+#| msgid ""
+#| "\n"
+#| "Dear #recluiter_name,\n"
+#| "\n"
+#| "As a highly skilled (my job position) with X years of experience, I am writing to express my interest in the #job_position at your company. My experience aligns well, as I have worked in (mention field) for several years with a prominent retailer, and I know I would make a valuable addition to your team.\n"
+#| "\n"
+#| "After my long experience, I have advanced knowledge in (mention important tasks in your field here separated by commas). Moreover, while my previous position afforded me a well-rounded skill set which can are detailed in my curriculum Vitae and summarized below:\n"
+#| "\n"
+#| "- (Your best skill)\n"
+#| "- (Your second best skill)\n"
+#| "- (Your third best skill)\n"
+#| "- (Your fourth best skill)\n"
+#| "\n"
+#| "In addition to my experience, I have a solid educational foundation and a passion for furthering projects that build loyalty and, in turn, grow revenue for your organization. I would much appreciate the opportunity to contribute to your ongoing growth and continued success.\n"
+#| "\n"
+#| "(white or delete anything you may consider)\n"
+#| "\n"
+#| "Please review my attached application for additional details regarding my expertise and my achievements. Do not hesitate to contact me if you have any questions about my experience or any concern about myself. I would be glad to meet you and discuss this position in detail.\n"
+#| "\n"
+#| "Thank you for your consideration.\n"
+#| "\n"
+#| "\n"
+#| "\n"
+#| "Sincerely,\n"
+#| "(Your name)\n"
+#| "\n"
 msgid ""
 "\n"
-"Dear #recluiter_name,\n"
+"Dear #recluiter,\n"
 "\n"
-"As a highly skilled (my job position) with X years of experience, I am "
-"writing to express my interest in the #job_position at your company. My "
-"experience aligns well, as I have worked in (mention field) for several "
-"years with a prominent retailer, and I know I would make a valuable addition "
-"to your team.\n"
+"As a highly skilled (my job position) with X years of experience, I am writing to express my interest in the #job_position at your company. My experience aligns well, as I have worked in (mention field) for several years with a prominent retailer, and I know I would make a valuable addition to your team.\n"
 "\n"
-"After my long experience, I have advanced knowledge in (mention important "
-"tasks in your field here separated by commas). Moreover, while my previous "
-"position afforded me a well-rounded skill set which can are detailed in my "
-"curriculum Vitae and summarized below:\n"
+"After my long experience, I have advanced knowledge in (mention important tasks in your field here separated by commas). Moreover, while my previous position afforded me a well-rounded skill set which can are detailed in my curriculum Vitae and summarized below:\n"
 "\n"
 "- (Your best skill)\n"
 "- (Your second best skill)\n"
 "- (Your third best skill)\n"
 "- (Your fourth best skill)\n"
 "\n"
-"In addition to my experience, I have a solid educational foundation and a "
-"passion for furthering projects that build loyalty and, in turn, grow "
-"revenue for your organization. I would much appreciate the opportunity to "
-"contribute to your ongoing growth and continued success.\n"
+"In addition to my experience, I have a solid educational foundation and a passion for furthering projects that build loyalty and, in turn, grow revenue for your organization. I would much appreciate the opportunity to contribute to your ongoing growth and continued success.\n"
 "\n"
 "(white or delete anything you may consider)\n"
 "\n"
-"Please review my attached application for additional details regarding my "
-"expertise and my achievements. Do not hesitate to contact me if you have any "
-"questions about my experience or any concern about myself. I would be glad "
-"to meet you and discuss this position in detail.\n"
+"Please review my attached application for additional details regarding my expertise and my achievements. Do not hesitate to contact me if you have any questions about my experience or any concern about myself. I would be glad to meet you and discuss this position in detail.\n"
 "\n"
 "Thank you for your consideration.\n"
 "\n"
@@ -260,59 +263,45 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Estimado #reclutador_nombre,\n"
+"Estimado #reclutador,\n"
 "\n"
-"Como persona altamente cualificada (tu puesto de trabajo) con X años de "
-"experiencia, le escribo para expresar mi interés en el #puesto_de_trabajo de "
-"su empresa. Mi experiencia se ajusta bien, ya que he trabajado en (mencionar "
-"campo) durante varios años con un destacado minorista, y sé que sería una "
-"valiosa adición a su equipo.\n"
+"Como persona altamente cualificada (tu puesto de trabajo) con X años de experiencia, le escribo para expresar mi interés en el #puesto_de_trabajo de su empresa. Mi experiencia se ajusta bien, ya que he trabajado en (mencionar campo) durante varios años con un destacado minorista, y sé que sería una valiosa adición a su equipo.\n"
 "\n"
-"Tras mi larga experiencia, tengo conocimientos avanzados en (mencione aquí "
-"las tareas importantes de su campo separadas por comas). Además, si bien mi "
-"anterior puesto me proporcionó un conjunto de habilidades muy completo que "
-"pueden detallarse en mi currículum vitae y resumirse a continuación:\n"
+"Tras mi larga experiencia, tengo conocimientos avanzados en (mencione aquí las tareas importantes de su campo separadas por comas). Además, si bien mi anterior puesto me proporcionó un conjunto de habilidades muy completo que pueden detallarse en mi currículum vitae y resumirse a continuación:\n"
 "\n"
 "- (Tu  mejor habilidad)\n"
 "- (Tu segunda mejor habilidad)\n"
 "- (Tu tercera mejor habilidad)\n"
 "- (Tu cuarta mejor habilidad)\n"
 "\n"
-"Además de mi experiencia, tengo una sólida base educativa y una pasión por "
-"impulsar proyectos que fidelicen y, a su vez, hagan crecer los ingresos de "
-"su organización. Apreciaría mucho la oportunidad de contribuir a su "
-"crecimiento y éxito continuos.\n"
+"Además de mi experiencia, tengo una sólida base educativa y una pasión por impulsar proyectos que fidelicen y, a su vez, hagan crecer los ingresos de su organización. Apreciaría mucho la oportunidad de contribuir a su crecimiento y éxito continuos.\n"
 "\n"
 "(añade o borra lo que considere)\n"
 "\n"
-"Por favor, revise mi solicitud adjunta para obtener detalles adicionales "
-"sobre mi experiencia y mis logros. No dude en ponerse en contacto conmigo si "
-"tiene alguna pregunta sobre mi experiencia o alguna inquietud sobre mi "
-"persona. Estaré encantado de reunirme con usted y discutir este puesto en "
-"detalle.\n"
+"Por favor, revise mi solicitud adjunta para obtener detalles adicionales sobre mi experiencia y mis logros. No dude en ponerse en contacto conmigo si tiene alguna pregunta sobre mi experiencia o alguna inquietud sobre mi persona. Estaré encantado de reunirme con usted y discutir este puesto en detalle.\n"
 "\n"
 "Gracias por su consideración.\n"
 "\n"
 "Saludos cordiales,\n"
 "(Tu nombre)\n"
 
-#: templates/partials/modal_select_templates.html:9
+#: templates/partials/modal_select_templates.html:10
 msgid "Select your template"
 msgstr "Seleccionar tu plantilla"
 
-#: templates/partials/modal_select_templates.html:26
+#: templates/partials/modal_select_templates.html:27
 msgid "Credits"
 msgstr "Créditos"
 
-#: templates/partials/modal_select_templates.html:30
+#: templates/partials/modal_select_templates.html:31
 msgid "Downloads"
 msgstr "Descargas"
 
-#: templates/partials/modal_select_templates.html:41
+#: templates/partials/modal_select_templates.html:42
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: templates/partials/modal_select_templates.html:42
+#: templates/partials/modal_select_templates.html:43
 msgid "Proceed to download"
 msgstr "Proceder para la descarga"
 
@@ -348,8 +337,8 @@ msgstr "El  Sitio Web y Servicio"
 msgid ""
 "(\"we\", \"us\", or \"our\") informs you of its policies regarding the "
 "collection, use and disclosure of Personal Information we may receive from "
-"users or visitors of the Site. Additionally, we refer in this page \"Service"
-"\" as the service for generating automated cover letters."
+"users or visitors of the Site. Additionally, we refer in this page "
+"\"Service\" as the service for generating automated cover letters."
 msgstr ""
 
 #: templates/privacy_policy.html:20
@@ -366,8 +355,8 @@ msgstr ""
 #: templates/privacy_policy.html:23
 msgid ""
 "While using our Site, you may have to provide us with certain personally "
-"identifiable information that can be used to contact you if you get in touch "
-"with us and it can also be used to generate your cover letters if you want "
+"identifiable information that can be used to contact you if you get in touch"
+" with us and it can also be used to generate your cover letters if you want "
 "to use our Service. Personally identifiable information may include, but is "
 "not limited to your name and email address (\"Personal Information\")."
 msgstr ""
@@ -395,19 +384,19 @@ msgstr "Descarga"
 msgid "Preparing the Download"
 msgstr "Preparando la descarga"
 
-#: templates/processing_download.html:21
+#: templates/processing_download.html:20
 msgid "Consider supporting the creator of this site"
 msgstr "Considera la posibilidad de apoyar al creador de este sitio"
 
-#: templates/processing_download.html:22
+#: templates/processing_download.html:21
 msgid "Buy me a coffee"
 msgstr "Invítame a un café"
 
-#: templates/processing_download.html:46
+#: templates/processing_download.html:44
 msgid "Download your coverletters"
 msgstr "Descarga tus cartas de motivación"
 
-#: templates/processing_download.html:51
+#: templates/processing_download.html:49
 msgid "There was an error, try again"
 msgstr "Ha habido un error, inténtalo de nuevo"
 
@@ -424,8 +413,8 @@ msgstr ""
 #: venv/lib/python3.8/site-packages/click/_unicodefun.py:20
 msgid ""
 "Click will abort further execution because Python was configured to use "
-"ASCII as encoding for the environment. Consult https://click.palletsprojects."
-"com/unicode-support/ for mitigation steps."
+"ASCII as encoding for the environment. Consult "
+"https://click.palletsprojects.com/unicode-support/ for mitigation steps."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/click/_unicodefun.py:56
@@ -779,8 +768,8 @@ msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/core/validators.py:266
 msgid ""
-"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
-"hyphens."
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or"
+" hyphens."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/core/validators.py:275
@@ -965,15 +954,15 @@ msgstr ""
 #: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1288
 #, python-format
 msgid ""
-"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
-"uuuuuu]][TZ] format."
+"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD "
+"HH:MM[:ss[.uuuuuu]][TZ] format."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1292
 #, python-format
 msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
-"[TZ]) but it is an invalid date/time."
+"“%(value)s” value has the correct format (YYYY-MM-DD "
+"HH:MM[:ss[.uuuuuu]][TZ]) but it is an invalid date/time."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1296
@@ -992,8 +981,8 @@ msgstr ""
 #: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1585
 #, python-format
 msgid ""
-"“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
-"uuuuuu] format."
+"“%(value)s” value has an invalid format. It must be in [DD] "
+"[[HH:]MM:]ss[.uuuuuu] format."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1588
@@ -1152,7 +1141,8 @@ msgid "Many-to-many relationship"
 msgstr ""
 
 #. Translators: If found as last label character, these punctuation
-#. characters will prevent the default label_suffix to be appended to the label
+#. characters will prevent the default label_suffix to be appended to the
+#. label
 #: venv/lib/python3.8/site-packages/django/forms/boundfield.py:150
 msgid ":?.!"
 msgstr ""
@@ -1202,7 +1192,8 @@ msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/forms/fields.py:542
 #, python-format
-msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid ""
+"Ensure this filename has at most %(max)d character (it has %(length)d)."
 msgid_plural ""
 "Ensure this filename has at most %(max)d characters (it has %(length)d)."
 msgstr[0] ""
@@ -1305,7 +1296,8 @@ msgid "The inline value did not match the parent instance."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/forms/models.py:1193
-msgid "Select a valid choice. That choice is not one of the available choices."
+msgid ""
+"Select a valid choice. That choice is not one of the available choices."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/forms/models.py:1311
@@ -1765,11 +1757,11 @@ msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/views/csrf.py:124
 msgid ""
-"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
-"including the “Referrer-Policy: no-referrer” header, please remove them. The "
-"CSRF protection requires the “Referer” header to do strict referer checking. "
-"If you’re concerned about privacy, use alternatives like <a rel=\"noreferrer"
-"\" …> for links to third-party sites."
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or"
+" including the “Referrer-Policy: no-referrer” header, please remove them. "
+"The CSRF protection requires the “Referer” header to do strict referer "
+"checking. If you’re concerned about privacy, use alternatives like <a "
+"rel=\"noreferrer\" …> for links to third-party sites."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/views/csrf.py:132
@@ -1820,8 +1812,8 @@ msgstr ""
 #: venv/lib/python3.8/site-packages/django/views/generic/dates.py:594
 #, python-format
 msgid ""
-"Future %(verbose_name_plural)s not available because %(class_name)s."
-"allow_future is False."
+"Future %(verbose_name_plural)s not available because "
+"%(class_name)s.allow_future is False."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/views/generic/dates.py:628
@@ -1877,10 +1869,10 @@ msgstr ""
 #: venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:222
 #, python-format
 msgid ""
-"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
-"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
-"\">DEBUG=True</a> is in your settings file and you have not configured any "
-"URLs."
+"You are seeing this page because <a "
+"href=\"https://docs.djangoproject.com/en/%(version)s/ref/settings/#debug\" "
+"target=\"_blank\" rel=\"noopener\">DEBUG=True</a> is in your settings file "
+"and you have not configured any URLs."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:230
@@ -1995,8 +1987,8 @@ msgstr ""
 #: venv/lib/python3.8/site-packages/django_celery_results/models.py:65
 #: venv/lib/python3.8/site-packages/django_celery_results/models.py:198
 msgid ""
-"The data returned by the task.  Use content_encoding and content_type fields "
-"to read."
+"The data returned by the task.  Use content_encoding and content_type fields"
+" to read."
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django_celery_results/models.py:69
@@ -2099,13 +2091,19 @@ msgstr ""
 msgid "Unable to connect to qpid with SASL mechanism %s"
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/shortuuid/django_fields.py:8
-msgid "A short UUID field."
-msgstr ""
-
 #: venv/lib/python3.8/site-packages/timezone_field/rest_framework.py:9
 msgid "A valid timezone is required."
 msgstr ""
+
+#, fuzzy
+#~ msgid "coverletters/"
+#~ msgstr "carta-de-motivacion"
+
+#~ msgid "my-coverletters/"
+#~ msgstr "mis-cartas-de-motivacion/"
+
+#~ msgid "coverletter"
+#~ msgstr "carta-de-motivacion"
 
 #~ msgid "The Site"
 #~ msgstr "El Sitio Web"
