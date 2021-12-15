@@ -12,7 +12,7 @@ from django.utils.translation import gettext_lazy as _
 from texfiles.models import TexFile
 from utils.files import delete_path_file
 
-DEFAULT_HASHTAGS = [_('#recluiter'), _('#company'), _('#street_number'), _('#zipcode_city'), _('#job_position')]
+DEFAULT_HASHTAGS = [_('#recruiter'), _('#company'), _('#street_number'), _('#zipcode_city'), _('#job_position')]
 DEFAULT_NUMBER_OF_ROWS = 10
 
 
