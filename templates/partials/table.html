@@ -13,7 +13,7 @@
               <input class="form-control border-0" type="text" autocomplete="off"
               name="hashtag_{{ column.hashtag.pk }}" value="{{ column.hashtag.name }}"
               hx-post="{{ column.hashtag.save_url }}" hx-trigger="keyup changed delay:2s"
-              hx-swap="outerHTML" hx-target="this" spellcheck="false" readonly>
+              hx-swap="outerHTML" hx-target="this" spellcheck="false">
               <button type="button" class="btn btn-outline-secondary border-0" name="button"
                 hx-post="{{column.delete_url}}" hx-target="#table-related-stuff" hx-swap="innerHTML"
                 hx-confirm="{% trans 'Are you sure you wish to delete this column?' %}" >
