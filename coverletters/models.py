@@ -19,7 +19,7 @@ DEFAULT_NUMBER_OF_ROWS = 10
 class CoverLetter(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     session = models.ForeignKey(Session, related_name='coverletters', on_delete=models.CASCADE)
-    tex_file = models.OneToOneField(TexFile, blank=True, null=True, on_delete=models.SET_NULL)
+    tex_file = models.ForeignKey(TexFile, blank=True, null=True, on_delete=models.SET_NULL)
 
     candidate_name = models.CharField(max_length=50, blank=True, null=True)
     candidate_position = models.CharField(max_length=50, blank=True, null=True)

@@ -14,16 +14,12 @@ def prepare_the_download_view(request, pk):
     session_object, request = create_or_get_session_object(request)
     object = get_object_or_404(CoverLetter, pk=pk, session=session_object)
     if request.method == 'POST':
+        result = process_download.delay(request.POST, pk)
         # update number of downloads in the tex file
         texfile_obj = TexFile.objects.get(pk=int(request.POST.get("texfileselected_pk")))
         texfile_obj.downloads = texfile_obj.downloads + 1
         texfile_obj.save()
-        if not object.zip_file and object.tex_file != texfile_obj:
-            result = process_download.delay(request.POST, pk)
-            result_dict = {'task_id': result.task_id}
-        else:
-            result_dict = {}
-        context={**result_dict, 'object': object, 'selected_texfile': texfile_obj}
+        context={'task_id': result.task_id, 'object': object}
         return render(request, 'processing_download.html', context)
     return redirect(object.get_update_url())
 

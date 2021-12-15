@@ -7,12 +7,6 @@
 {% block content %}
 <div class="container my-5">
 
-{% if object.zip_file and object.tex_file == selected_texfile %}
-  <div class="row text-center">
-    <a  class="btn btn-primary text-center btn-lg my-5"  href="{{ object.download_the_zip_file_url }}">
-     {% trans "Download your coverletters" %} <i class="bi bi-download"></i> </a>
-  </div>
-{% else %}
   <h1 class="text-center my-2">{% trans "Preparing the Download" %}</h1>
   <div class="row text-center">
     <div class='progress-wrapper'>
@@ -21,7 +15,6 @@
         <div  id="progress-bar-message"></div>
     </div>
   </div>
-{% endif %}
 
   <div class="row text-center my-5">
     <h5 class="text-center text-muted my-3">{% trans "Consider supporting the creator of this site" %}</h5>
@@ -35,30 +28,28 @@
 
 
 {% block scripts %}
-{% if not object.zip_file %}
-<script src="{% static 'celery_progress/celery_progress.js' %}"></script>
 
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function () {
-  var progressUrl = "{% url 'celery_progress:task_status' task_id %}";
-  CeleryProgressBar.initProgressBar(progressUrl, {
-      onSuccess: customSuccess,
-      onError: customError,
-  });;
-});
+  <script src="{% static 'celery_progress/celery_progress.js' %}"></script>
 
-function customSuccess(progressBarElement, progressBarMessageElement) {
-    progressBarElement.innerHTML = (
-     '<a  class="btn btn-primary text-center btn-lg my-5"  href="{{ object.download_the_zip_file_url }}"> {% trans "Download your coverletters" %} <i class="bi bi-download"></i> </a>')
-    progressBarElement.style.backgroundColor = '#fff';
-}
-function customError(progressBarElement, progressBarMessageElement) {
-    progressBarElement.innerHTML = (
-     '<p>{% trans "There was an error, try again" %} </p>'
-    )
-    progressBarElement.style.backgroundColor = '#fff';
-}
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+      var progressUrl = "{% url 'celery_progress:task_status' task_id %}";
+      CeleryProgressBar.initProgressBar(progressUrl, {
+          onSuccess: customSuccess,
+          onError: customError,
+      });;
+    });
+    function customSuccess(progressBarElement, progressBarMessageElement) {
+        progressBarElement.innerHTML = (
+         '<a  class="btn btn-primary text-center btn-lg my-5"  href="{{ object.download_the_zip_file_url }}"> {% trans "Download your coverletters" %} <i class="bi bi-download"></i> </a>')
+        progressBarElement.style.backgroundColor = '#fff';
+    }
+    function customError(progressBarElement, progressBarMessageElement) {
+        progressBarElement.innerHTML = (
+         '<p>{% trans "There was an error, try again" %} </p>'
+        )
+        progressBarElement.style.backgroundColor = '#fff';
+    }
 </script>
-{% endif %}
 
 {% endblock %}

@@ -1,7 +1,28 @@
 {% load i18n %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-    <a class="navbar-brand" href="{% url 'landing_page_url' %}"> {{ request.get_host }} </a>
+    <a class="btn btn-outline-secondary me-3" href="{% url 'landing_page_url' %}"> <i class="bi bi-house"></i> </a>
+    <form class="form-inline" action="{% url 'set_language' %}" method="post">
+      {% csrf_token %}
+      <input name="next" type="hidden" value="{{ redirect_to }}">
+      <div class="input-group mb-0">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><i class="bi bi-globe"></i></span>
+        </div>
+
+        <select onchange="this.form.submit()" name="language" class="form-control">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}selected{% endif %}>
+                {{ language.name_local|capfirst }} ({{ language.code }})
+                </option>
+            {% endfor %}
+        </select>
+        </div>
+    </form>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
