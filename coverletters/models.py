@@ -35,10 +35,12 @@ class CoverLetter(models.Model):
 
     text = models.TextField() #body text
 
+    zip_file = models.FileField(upload_to='zipfiles/%Y/%m/%d', blank=True, null=True)
+
     max_of_rows = models.SmallIntegerField(default=50)
     max_of_columns = models.SmallIntegerField(default=10)
-    zip_file = models.FileField(upload_to='zipfiles/%Y/%m/%d', blank=True, null=True)
-    created_on = models.DateField(auto_now=True)
+    created_date = models.DateTimeField(auto_now_add = True, blank=True, null=True)
+    updated_date = models.DateTimeField(auto_now = True, blank=True, null=True)
 
     def __str__(self):
         return f'{self.pk} {self.candidate_name}'
