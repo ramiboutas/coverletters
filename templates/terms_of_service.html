@@ -6,6 +6,32 @@
 
 {% block content %}
 
-<a href="https://stackabuse.com/terms-of-service/">https://stackabuse.com/terms-of-service/</a>
+
+<div class="container ">
+<h1 class="display-4 text-muted text-center my-4" >{% trans "Terms of Service and Conditions of Use" %}</h1>
+
+
+<h2 class="display-6 fs-3 my-4">{% trans "1. Terms" %}</h2>
+  <p> {% trans "When getting into this web site, you are agreeing to be bound by these web site Terms and Conditions of Use, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you need leave the site." %} </p>
+
+<h2 class="display-6 fs-3 my-4">{% trans "2. Use License and Disclaimer" %}</h2>
+  <p> {% trans "You may use the material from this site for any purpuse you like, since it is not copyright protected and it does not have any kind licence attached to it. However, be aware that not all the material from our Site is originally made from us, we use open source and commercial tools to make possible that the site provides value to the public. So if you are copying something from the site, you may break someone's Licence. We are not responsible for that." %} </p>
+
+<h2 class="display-6 fs-3 my-4">{% trans "3. Revisions and Errata" %}</h2>
+  <p> {% trans "The materials appearing this site could include technical, typographical, or photographic errors. We do no not warrant that any of the materials on its web site are accurate, complete, or current. We try to make changes to the materials contained on the web site in order to to improve the Service and the Site in general. However, we are not obliged to maintain or make those changes." %} </p>
+
+<h2 class="display-6 fs-3 my-4">{% trans "4. Links" %}</h2>
+  <p> {% trans "We make sure that the external links mentioned in our site are properly working and they are secure on the time we add them to our site. However, we are not responsible for the contents of any external site links if there is a change. We do not take neither any resposability if any of those external links are broken. Use of any such linked web site is at the user's own risk." %} </p>
+
+<h2 class="display-6 fs-3 my-4">{% trans "5. Site Terms of Use Modifications" %}</h2>
+  <p> {% trans "We may revise these terms of use for its web site at any time without notice. By using this web site you are agreeing to be bound by the then current version of these Terms and Conditions of Use." %} </p>
+
+<h2 class="display-6 fs-3 my-4">{% trans "6. Privacy Policy" %}</h2>
+<p> {% trans "The privacy policy can be found here:" %} <a href="{% url 'privacy_policy_url' %}"> {{request.get_host}}{% url 'privacy_policy_url' %}</a>.</p>
+
+
+
+</div>
+
 
 {% endblock %}
