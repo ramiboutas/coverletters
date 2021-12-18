@@ -220,7 +220,7 @@ CELERYBEAT_SCHEDULE = {
 CELERY_BEAT_SCHEDULE = {
       'scheduled_task': {
         'task': 'coverletters.tasks.cleanup_unmodified_coverletters',
-        'schedule': 60.0,
+        'schedule': 3600.0,
         # 'args': (16, 16),
         'options': {
             'expires': 15.0,
@@ -231,8 +231,8 @@ CELERY_BEAT_SCHEDULE = {
 
 
 SITE_NAME = _('Cover letters')
-META_KEYWORDS = _('coverletters, coverletter, motivationletters, motivationletter, career, job search, career shifting')
-META_DESCRIPTION = _('In this site you can create up to 50 personalized cover letters within 10 Minutes without needing to register and for free')
+META_KEYWORDS = _('coverletters, coverletter, motivationletters, motivationletter, career, job, search, career, shifting')
+META_DESCRIPTION = _('In this site you can create for FREE up to 50 personalized cover letters within 10 Minutes without needing to register')
 
 
 
