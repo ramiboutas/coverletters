@@ -1,10 +1,6 @@
 from celery import shared_task
 from celery_progress.backend import ProgressRecorder
 
-from pathlib import Path
-from io import BytesIO
-import zipfile
-
 from django_htmx.http import trigger_client_event
 from django_tex.shortcuts import render_to_pdf
 from django_tex.core import compile_template_to_pdf
@@ -13,28 +9,12 @@ from django.core.files.base import ContentFile
 from django.shortcuts import get_object_or_404
 from django.conf import settings
 from django.http import HttpResponse
+from django.utils.translation import gettext_lazy as _
 
 from utils.sessions import create_or_get_session_object
+from utils.files import get_tex_template_name, generate_zip
 from .models import TexFile
 from coverletters.models import CoverLetter
-
-
-
-def get_tex_template_name(file_obj):
-    template_name_abs = Path(file_obj.file.path)
-    template_name_rel = template_name_abs.relative_to(settings.MEDIA_ROOT)
-    return str(template_name_rel)
-
-
-def generate_zip(files):
-    mem_zip = BytesIO()
-
-    with zipfile.ZipFile(mem_zip, mode="w",compression=zipfile.ZIP_DEFLATED) as zf:
-        for f in files:
-            zf.writestr(f[0], f[1])
-
-    return mem_zip.getvalue()
-
 
 
 @shared_task(bind=True)
@@ -50,7 +30,6 @@ def process_download(self, POST_dict, pk):
     texfile_obj = TexFile.objects.get(pk=texfile_pk)
     settings.LATEX_INTERPRETER = texfile_obj.interpreter
     template_name = get_tex_template_name(texfile_obj)
-
 
     # getting the data that does not changes
     candidate_name = POST_dict.get("candidate_name").strip()
@@ -68,9 +47,9 @@ def process_download(self, POST_dict, pk):
     files = []
     for index, row in enumerate(rows):
         try:
-            filenames.append(f"{index+1}_Application_{row.items.all()[1].name}_{row.items.all()[2].name}/coverletter.pdf")
+            filenames.append(f'{index+1}_{_("Application")}_{row.items.all()[1].name}_{row.items.all()[2].name}/{_("coverletter")}.pdf')
         except:
-            filenames.append(f"{index+1}_Application/coverletter.pdf")
+            filenames.append(f'{index+1}_{_("Application")}/{_("coverletter")}.pdf')
 
     for index, (row, filename) in enumerate(zip(rows, filenames)):
         text = POST_dict.get("text")
@@ -93,7 +72,7 @@ def process_download(self, POST_dict, pk):
 
 
     full_zip_in_memory = generate_zip(files)
-    zip_file = ContentFile(full_zip_in_memory, f'{object.pk}.zip')
+    zip_file = ContentFile(full_zip_in_memory, f'{_("coverletters")}_{object.pk}.zip')
     object.zip_file = zip_file
     object.tex_file = texfile_obj
     object.save()

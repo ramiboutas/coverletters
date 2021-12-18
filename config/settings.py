@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # third-party apps
     'django_htmx',
     'django_tex',
+    'django_celery_beat',
     'django_celery_results',
     'celery_progress',
     'rosetta',
@@ -161,7 +162,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Berlin'
 
 USE_I18N = True
 
@@ -212,6 +213,21 @@ from session_cleanup.settings import weekly_schedule
 CELERYBEAT_SCHEDULE = {
     'session_cleanup': weekly_schedule
 }
+
+
+# cleanup unmodified coverletters every hour
+
+CELERY_BEAT_SCHEDULE = {
+      'scheduled_task': {
+        'task': 'coverletters.tasks.cleanup_unmodified_coverletters',
+        'schedule': 60.0,
+        # 'args': (16, 16),
+        'options': {
+            'expires': 15.0,
+        },
+    },
+}
+
 
 
 SITE_NAME = _('Cover letters')
