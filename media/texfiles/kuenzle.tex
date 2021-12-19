@@ -1,0 +1,82 @@
+\documentclass[
+    11pt,
+    a4paper,
+    letter,
+    parskip=yes,
+    backaddress=off,
+    ]{scrlttr2}
+
+\usepackage{lipsum} % Remove if you don't need sample text
+\RequirePackage{fix-cm}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{graphicx}
+\RequirePackage{csquotes}
+\RequirePackage{hyperref}
+\KOMAoptions{
+        paper=a4,
+        pagenumber=botcenter,
+        fromalign=right,
+        fromrule=afteraddress,{% if candidate_phone %}fromphone, {% endif %}{% if applying_position %}fromlogo, {% endif %}{% if candidate_website %}fromurl, {% endif %}{% if candidate_email %}fromemail, {% endif %}
+        foldmarks,
+        headsepline,
+        footsepline,
+        enlargefirstpage
+}
+
+\setkomafont{fromaddress}{\sffamily}
+\setkomafont{fromname}{\sffamily}
+\addtokomafont{fromname}{\scriptsize}
+\addtokomafont{fromaddress}{\scriptsize}
+\addtokomafont{subject}{\scriptsize}
+\pagestyle{headings}
+%\setkomavar{place}{}
+
+{% if candidate_name %}
+\setkomavar{fromname}{ {{- candidate_name | latex_escape -}} }
+{% endif %}
+
+{% if candidate_location %}
+\setkomavar{fromaddress}{ {{- candidate_location | latex_escape -}} }
+{% endif %}
+
+{% if candidate_phone %}
+\setkomavar{fromphone}{ {{- candidate_phone | latex_escape -}} }
+\setkomavar{phoneseparator}[]{}
+{% endif %}
+
+{% if candidate_email %}
+  \setkomavar{fromemail}{ {{- candidate_email | latex_escape-}} }
+  \setkomavar{emailseparator}[]{}
+{% endif %}
+
+{% if candidate_website %}
+  \setkomavar{fromurl}{ {{- candidate_website | latex_escape -}} }
+  \setkomavar{urlseparator}[]{}
+{% endif %}
+
+{% if applying_position %}
+  \setkomavar{fromlogo}{\parbox[b]{8cm}{
+      {\mbox{\large \bfseries {{ applying_position | latex_escape }} }}
+      \smallskip}
+  }
+{% endif %}
+
+\renewcommand*{\raggedsignature}{\raggedright}
+
+{% if applying_position %}
+  \date{ {{- location_date -}} }
+{% endif %}
+
+
+\begin{document}
+
+\begin{letter}{ {{- company_text | latex_escape | linebreaks -}} }
+
+\opening{Sehr geehrte Damen und Herren,}
+
+\lipsum[2-3] % Remove this and write your text here
+
+\closing{Mit freundlichen Grüßen}
+\end{letter}
+\end{document}
