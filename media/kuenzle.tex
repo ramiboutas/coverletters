@@ -2,10 +2,8 @@
     11pt,
     a4paper,
     letter,
-    parskip=half,
+    parskip=yes,
     backaddress=off,
-    foldmarks=off,
-    firstfoot=false,
     ]{scrlttr2}
 
 \usepackage{lipsum} % Remove if you don't need sample text
@@ -20,11 +18,11 @@
         pagenumber=botcenter,
         fromalign=right,
         fromrule=afteraddress,{% if candidate_phone %}fromphone, {% endif %}{% if applying_position %}fromlogo, {% endif %}{% if candidate_website %}fromurl, {% endif %}{% if candidate_email %}fromemail, {% endif %}
+        foldmarks,
         headsepline,
         footsepline,
         enlargefirstpage
 }
-\areaset{6.5in}{11in}
 
 \setkomafont{fromaddress}{\sffamily}
 \setkomafont{fromname}{\sffamily}
@@ -58,13 +56,13 @@
 {% endif %}
 
 {% if applying_position %}
-  \setkomavar{fromlogo}{\parbox[b]{1cm}{
+  \setkomavar{fromlogo}{\parbox[b]{8cm}{
       {\mbox{\large \bfseries {{ applying_position | latex_escape }} }}
       \smallskip}
   }
 {% endif %}
 
-%\renewcommand*{\raggedsignature}{\raggedright}/
+\renewcommand*{\raggedsignature}{\raggedright}
 
 {% if applying_position %}
   \date{ {{- location_date -}} }
@@ -75,22 +73,10 @@
 
 \begin{letter}{ {{- company_text | latex_escape | linebreaks -}} }
 
-{% for paragraph in text_paragraphs %}
+\opening{Sehr geehrte Damen und Herren,}
 
-  {% if loop.first %}
-    \opening{ {{- paragraph | latex_escape -}} }
-  {% endif %}
+\lipsum[2-3] % Remove this and write your text here
 
-  {% if not loop.first and loop.index < loop.length - 1 %}
-    {{- paragraph | latex_escape -}}
-  {% endif %}
-
-  {% if loop.index == loop.length - 1 %}
-    \closing{ {{- paragraph | latex_escape -}} }
-  {% endif %}
-
-{% endfor %}
-
-
+\closing{Mit freundlichen Grüßen}
 \end{letter}
 \end{document}
