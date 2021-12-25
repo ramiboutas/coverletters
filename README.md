@@ -1,7 +1,45 @@
-## What is this?
+### What is this?
 
-This a django web app to create multiple cover letters using one template
+This a django web app to create multiple cover letters using #hashtag fields in the fields that change in every job application. 
 
+### Example
+
+Imagine you write something like this:
+~~~
+Dear #recruiter,
+I am a passionate django developer interested in your job application as #job_position...
+[...]
+~~~
+And you fill out the table as follows:
+
+| Application | #recruiter | #job_position             |
+|-------------|------------|---------------------------|
+| 1           | John Doe   | Senior Backend Developer   |
+| 2           | Elon Musk  | Rocket & Backend engineer |
+| 3           | Manolo     | Fullstack Developer       |
+
+Once you select your template, you will get 3 pdf files with this content:
+
+1_Application_John_Doe/coverletter.pdf
+~~~
+Dear John Doe,
+I am a passionate django developer interested in your job application as Senior Backend Developer...
+[...]
+~~~
+
+2_Application_Elon_Musk/coverletter.pdf
+~~~
+Dear Elon Musk,
+I am a passionate django developer interested in your job application as Rocket & Backend engineer...
+[...]
+~~~
+
+3_Application_Manolo/coverletter.pdf
+~~~
+Dear Manolo,
+I am a passionate django developer interested in your job application as Fullstack Developer...
+[...]
+~~~
 
 ### How can I start?
 
