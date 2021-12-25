@@ -1,7 +1,12 @@
 {% load i18n %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
+
     <a class="btn btn-outline-secondary me-3 border-0" href="{% url 'landing_page_url' %}"> <i class="bi bi-house"></i> </a>
+
+    <a class="btn btn-outline-secondary me-3 border-0" target="_blank"
+    href="https://github.com/ramiboutas/coverletters"> <i class="bi bi-github"></i> {% trans "Code" %}</a>
+
     <form class="form-inline" action="{% url 'set_language' %}" method="post">
       {% csrf_token %}
       <input name="next" type="hidden" value="{{ redirect_to }}">
