@@ -1,6 +1,4 @@
-![Visitors](https://visitor-badge.laobi.icu/badge?page_id=ramiboutas.coverletters.visitor-badge)
-
-[![coverletters.online](Life)](https://coverletters.online)
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=ramiboutas.coverletters.visitor-badge) [![coverletters.online](https://img.shields.io/website-up-down-green-red/http/monip.org.svg)](https://coverletters.online)
 
 
 ### :information_desk_person: What is this?
