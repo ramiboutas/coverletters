@@ -1,3 +1,5 @@
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=ramiboutas.coverletters.visitor-badge)
+
 ### :information_desk_person: What is this?
 
 This a django web app to create multiple cover letters using #hashtag fields in the fields that change in every job application.
