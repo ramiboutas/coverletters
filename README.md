@@ -1,6 +1,6 @@
 ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=ramiboutas.coverletters.visitor-badge)
 
-[![coverletters.online](https://img.shields.io/website-up-down-green-red/https/perso.crans.org.svg)](https://coverletters.online)
+[![coverletters.online](Life)](https://coverletters.online)
 
 
 ### :information_desk_person: What is this?
