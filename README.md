@@ -45,7 +45,7 @@ I am a passionate django developer interested in your job application as Fullsta
 
 ### :arrow_forward: How can I start?
 
-Create your coverletters here: [https://motivationletters.online/coverletters/new/](https://motivationletters.online/coverletters/new/)
+Create your coverletters here: [coverletters.online/coverletters/new/](https://www.coverletters.online/coverletters/new/)
 
 ### :scroll: How it works?
 
