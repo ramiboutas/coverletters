@@ -25,7 +25,7 @@ DEBUG = str(os.environ.get("DEBUG")) == "1"
 PRODUCTION = str(os.environ.get("PRODUCTION", "")) == "1"
 
 
-ALLOWED_HOSTS = ["coverletters.ramiboutas.com",]
+ALLOWED_HOSTS = ["ramiboutas.com", "www.ramiboutas.com"]
 
 
 # Application definition
@@ -185,7 +185,7 @@ LOCALE_PATHS = (
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = "/static/"
+STATIC_URL = "/coverletters/static/"
 STATICFILES_DIRS = [
     BASE_DIR / "static_dev",
 ]
@@ -193,7 +193,7 @@ STATIC_ROOT = str(BASE_DIR.joinpath("static")) # for production
 
 # Media files
 MEDIA_ROOT = BASE_DIR.joinpath("media")
-MEDIA_URL = "/media/"
+MEDIA_URL = "/coverletters/media/"
 
 
 # Default primary key field type

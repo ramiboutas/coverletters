@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('coverletters/admin/', admin.site.urls),
     path('coverletters/i18n/', include('django.conf.urls.i18n')),
-    path('', include('pages.urls')),
+    path('coverletters/', include('pages.urls')),
     path('coverletters/coverletters/', include('coverletters.urls')),
     path('coverletters/templates/', include('texfiles.urls')),
     re_path(r'^celery-progress/', include('celery_progress.urls')),
