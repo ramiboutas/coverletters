@@ -26,9 +26,9 @@ urlpatterns = [
     path('coverletters/coverletters/', include('coverletters.urls')),
     path('coverletters/templates/', include('texfiles.urls')),
     re_path(r'^celery-progress/', include('celery_progress.urls')),
+    static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
-    urlpatterns += re_path(r'^rosetta/', include('rosetta.urls')) 
+    urlpatterns.append(re_path(r'^rosetta/', include('rosetta.urls')))
