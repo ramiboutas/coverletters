@@ -25,7 +25,7 @@ DEBUG = str(os.environ.get("DEBUG")) == "1"
 PRODUCTION = str(os.environ.get("PRODUCTION", "")) == "1"
 
 
-ALLOWED_HOSTS = ["ramiboutas.com", "www.ramiboutas.com"]
+ALLOWED_HOSTS = ["ramiboutas.com", "www.ramiboutas.com", "localhost", "127.0.0.1"]
 
 
 # Application definition
