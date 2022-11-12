@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('coverletters/admin/', admin.site.urls),
-    path('coverletters/i18n/', include('django.conf.urls.i18n')),
+    path('i18n/coverletters/', include('django.conf.urls.i18n')),
     path('coverletters/', include('pages.urls')),
     path('coverletters/coverletters/', include('coverletters.urls')),
     path('coverletters/templates/', include('texfiles.urls')),
