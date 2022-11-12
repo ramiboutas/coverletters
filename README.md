@@ -1,4 +1,4 @@
-![Visitors](https://visitor-badge.laobi.icu/badge?page_id=ramiboutas.coverletters.visitor-badge) [![coverletters.online](https://img.shields.io/website-up-down-green-red/http/monip.org.svg)](https://coverletters.online) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/ramiboutas/) 
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=ramiboutas.coverletters.visitor-badge) [![coverletters website](https://img.shields.io/website-up-down-green-red/http/monip.org.svg)](https://www.ramiboutas.com/coverletters/) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/ramiboutas/) 
 
 ### :information_desk_person: What is this?
 
@@ -45,7 +45,7 @@ I am a passionate django developer interested in your job application as Fullsta
 
 ### :arrow_forward: How can I start?
 
-Create your coverletters here: [coverletters.online/coverletters/new/](https://www.coverletters.online/coverletters/new/)
+Create your coverletters [here](https://www.ramiboutas.com/coverletters/)
 
 ### :scroll: How it works?
 
