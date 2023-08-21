@@ -18,6 +18,12 @@ from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.http import FileResponse
+
+def awful_function_to_send_a_file(request, dir_path, file_path):
+    file = open(f"media/{dir_path}/{file_path}", 'rb')
+    response = FileResponse(file)
+    return response
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,9 +32,11 @@ urlpatterns = [
     path('coverletters/', include('coverletters.urls')),
     path('templates/', include('texfiles.urls')),
     re_path(r'^celery-progress/', include('celery_progress.urls')),
+    path('media/<str:dir_path>/<str:file_path>/', awful_function_to_send_a_file),
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # it does not work...
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
     urlpatterns.append(re_path(r'^rosetta/', include('rosetta.urls')))

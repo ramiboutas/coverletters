@@ -56,6 +56,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -71,7 +72,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR.joinpath("templates")],
+        "DIRS": [BASE_DIR /"templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -86,7 +87,7 @@ TEMPLATES = [
     {
         "NAME": "tex",
         "BACKEND": "django_tex.engine.TeXEngine",
-        "DIRS": (BASE_DIR.joinpath("media"),),
+        "DIRS": (BASE_DIR / "media",),
         "APP_DIRS": True,
         "OPTIONS": {
             "environment": "texfiles.environment.my_environment",
@@ -179,20 +180,22 @@ LANGUAGES = (
 )
 
 LOCALE_PATHS = (
-    BASE_DIR.joinpath("locale"),
+    BASE_DIR / "locale",
 )
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+STATIC_ROOT = BASE_DIR / "staticfiles" # for production
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [
-    BASE_DIR / "static_dev",
+    BASE_DIR / "static",
 ]
-STATIC_ROOT = str(BASE_DIR.joinpath("static")) # for production
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 # Media files
-MEDIA_ROOT = BASE_DIR.joinpath("media")
+MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"
 
 
@@ -235,6 +238,7 @@ SITE_NAME = _("Cover letters")
 META_KEYWORDS = _("coverletters, coverletter, motivationletters, motivationletter, career, job, search, career, shifting")
 META_DESCRIPTION = _("In this site you can create for FREE up to 50 personalized cover letters within 10 Minutes without needing to register")
 
+APPEND_SLASH = False
 
 
 if PRODUCTION:
